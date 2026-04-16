@@ -1,0 +1,486 @@
+# Implementation Plan: AWS Bootcamp Curriculum
+
+## Overview
+
+Build all 20 modules, 5 phase exams, and maintain the progress tracker for the "AWS Bootcamp: From Novice to Architect" curriculum. Module 01 is upgraded first as the reference template. Each subsequent module is built in numerical order. Phase exams are written after all modules in that phase are complete. The progress tracker is updated after every module and exam completion.
+
+All content is Markdown. Every module README, lab, quiz, and resources file must meet the content standards defined in `.kiro/steering/content-standards.md`. Use the AWS documentation MCP tools (`mcp_aws_documentation_search_documentation`, `mcp_aws_documentation_read_documentation`, `mcp_aws_documentation_read_sections`) to find and verify all AWS documentation URLs before including them. No em dashes in any content. Bloom's Taxonomy verbs must match the module's phase. Labs progress from guided (Phase 1-2) to semi-guided (Phase 3, Modules 13-14) to open-ended (Modules 15-19) to capstone (Module 20).
+
+## Tasks
+
+- [x] 1. Upgrade Module 01 (Cloud Fundamentals) to full content-standards compliance as the reference template
+  - [x] 1.1 Rewrite Module 01 README
+    - Rewrite `modules/01-cloud-fundamentals/README.md` to full compliance
+    - Add Learning Objectives using Phase 1 Bloom's verbs (define, describe, explain, identify, list, summarize, distinguish): 4-8 objectives
+    - Add Prerequisites section (external only: basic programming knowledge, AWS account, web browser)
+    - Rewrite Concepts section with detailed `###` subsections for each topic, inline links to official AWS documentation for every key concept
+    - Use AWS documentation MCP tools to search for and verify every URL before including it
+    - Add Instructor Notes with estimated lecture time, at least 3 common student questions, teaching tips, and pause points
+    - Add Key Takeaways with 3-5 concise bullet points
+    - Use tables for service comparisons, callout blocks for warnings/tips, fenced code blocks with language tags
+    - Define all acronyms on first use, use active voice, address student as "you", no em dashes, no exclamation points
+    - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 2.1, 2.6, 3.1, 3.3, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 5.1, 5.2, 5.3, 5.4, 6.1, 6.2, 14.1, 14.2_
+  - [x] 1.2 Rewrite Module 01 Lab
+    - Rewrite `modules/01-cloud-fundamentals/lab/lab-01-aws-account-setup.md` to full compliance
+    - Add Objective (single sentence), Architecture Diagram (text description), Prerequisites, Duration (estimated minutes)
+    - Write fully guided step-by-step Instructions with exact console paths, CLI commands, and expected outputs
+    - Specify AWS Region (default `us-east-1`)
+    - Add Validation section with specific checks as a checklist
+    - Add Cleanup section with exact steps to delete all resources
+    - Add Challenge section with a stretch goal using only Module 01 concepts
+    - Verify all AWS doc links using MCP tools
+    - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8.1, 9.1, 9.2, 9.3, 14.3_
+  - [x] 1.3 Rewrite Module 01 Quiz
+    - Rewrite `modules/01-cloud-fundamentals/quiz.md` to 8-12 questions
+    - Include a mix of multiple choice, true/false, and short answer
+    - Use plausible distractors based on common misconceptions for wrong answers
+    - Add answer key in a collapsible `<details>` block with brief explanations and AWS doc links for each answer
+    - Phase 1: focus on recall and comprehension, no scenario-based questions required
+    - Verify all doc links in answer key using MCP tools
+    - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 11.3, 14.4_
+  - [x] 1.4 Rewrite Module 01 Resources
+    - Rewrite `modules/01-cloud-fundamentals/resources.md` with all four required sections
+    - Official Documentation: direct links to every AWS doc page referenced in README and lab
+    - AWS Whitepapers: relevant whitepapers or "No whitepapers specific to this module"
+    - AWS FAQs: service-specific FAQ pages
+    - AWS Architecture References: relevant references or "No specific architecture references for this module"
+    - All links from official AWS domains only; verify each using MCP tools
+    - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 13.1, 13.2, 13.3, 14.5_
+  - [x] 1.5 Update progress tracker for Module 01
+    - Update `modules/01-cloud-fundamentals` row in `.kiro/steering/progress.md`: README, Lab, Quiz, Resources to ✅, Standards Met to "Yes"
+    - Update Summary section totals
+    - Add Decision Log entry
+    - _Requirements: 22.1, 22.2, 22.3_
+
+- [x] 2. Build Module 02 (IAM and Security)
+  - [x] 2.1 Write Module 02 README
+    - Rewrite `modules/02-iam-and-security/README.md` to full compliance using Module 01 as the reference template
+    - Learning Objectives with Phase 1 Bloom's verbs (define, describe, explain, identify, list, summarize, distinguish)
+    - Prerequisites referencing Module 01 by number and name with relative link
+    - Detailed Concepts section with `###` subsections, inline AWS doc links for IAM, policies, roles, MFA, shared responsibility model
+    - Instructor Notes, Key Takeaways
+    - Verify all URLs with MCP tools; no em dashes
+    - _Requirements: 1.1-1.5, 2.1, 2.6, 3.1, 3.2, 4.1-4.6, 5.1-5.4, 6.1-6.2, 15.1, 15.2, 15.5_
+  - [x] 2.2 Write Module 02 Lab
+    - Create `modules/02-iam-and-security/lab/` folder and lab file
+    - Fully guided lab with all required sections (Objective, Architecture Diagram, Prerequisites, Duration, Instructions, Validation, Cleanup, Challenge)
+    - Exact step-by-step instructions with console paths, CLI commands, expected outputs
+    - _Requirements: 7.1-7.9, 8.1, 9.1-9.3, 15.3_
+  - [x] 2.3 Write Module 02 Quiz
+    - Create `modules/02-iam-and-security/quiz.md` with 8-12 questions
+    - Recall and comprehension focus (Phase 1), answer key with explanations and doc links
+    - _Requirements: 10.1-10.6, 11.3, 15.4_
+  - [x] 2.4 Write Module 02 Resources
+    - Create `modules/02-iam-and-security/resources.md` with all four sections
+    - Aggregate all AWS doc links from README and lab; verify with MCP tools
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 2.5 Update progress tracker for Module 02
+    - _Requirements: 22.1-22.3_
+
+- [x] 3. Build Module 03 (Networking Basics)
+  - [x] 3.1 Write Module 03 README
+    - Rewrite `modules/03-networking-basics/README.md` to full compliance
+    - Phase 1 Bloom's verbs; Prerequisites referencing Modules 01 and 02
+    - Concepts covering VPC, subnets, route tables, internet gateways, security groups, NACLs with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.1, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 15.1, 15.2_
+  - [x] 3.2 Write Module 03 Lab
+    - Create `modules/03-networking-basics/lab/` folder and lab file
+    - Fully guided VPC lab with all required sections
+    - _Requirements: 7.1-7.9, 8.1, 9.1-9.3, 15.3_
+  - [x] 3.3 Write Module 03 Quiz
+    - Create `modules/03-networking-basics/quiz.md` with 8-12 questions
+    - _Requirements: 10.1-10.6, 11.3, 15.4_
+  - [x] 3.4 Write Module 03 Resources
+    - Create `modules/03-networking-basics/resources.md` with all four sections
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 3.5 Update progress tracker for Module 03
+    - _Requirements: 22.1-22.3_
+
+- [x] 4. Write Phase 1 Exam
+  - Create `modules/phase-1-exam.md` covering Modules 01-03
+  - 20-30 questions testing cumulative knowledge across cloud fundamentals, IAM, and networking
+  - Header with title, modules covered, estimated duration (60-90 min), passing score (70%)
+  - Question types: multiple choice (single and multiple correct), scenario-based, ordering/sequencing
+  - Phase 1 Bloom's level: focus on recall, comprehension, distinguishing between concepts
+  - At least 40% scenario-based questions; at least 2 multi-service reasoning questions
+  - Plausible distractors based on common misconceptions
+  - Answer key in `<details>` block with detailed explanations, why distractors are wrong, and AWS doc links
+  - Study Guide section listing key review topics organized by module
+  - Verify all doc links with MCP tools; no em dashes
+  - Update progress tracker for Phase 1 Exam
+  - _Requirements: 24.1-24.5, 25.1-25.5, 26.1, 27.1-27.4, 22.1-22.3_
+
+- [x] 5. Checkpoint: Phase 1 complete
+  - Ensure all Module 01-03 content and Phase 1 Exam meet content standards. Ask the user if questions arise.
+
+- [x] 6. Build Module 04 (Compute: EC2)
+  - [x] 6.1 Write Module 04 README
+    - Rewrite `modules/04-compute-ec2/README.md` to full compliance
+    - Phase 2 Bloom's verbs (demonstrate, configure, implement, use, deploy, set up)
+    - Prerequisites referencing Modules 02 (IAM roles) and 03 (VPC, subnets, security groups)
+    - Concepts covering EC2 instance types, AMIs, key pairs, security groups, EBS, user data, auto scaling with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.2, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 16.1, 16.2, 16.4_
+  - [x] 6.2 Write Module 04 Lab
+    - Create `modules/04-compute-ec2/lab/` folder and lab file
+    - Fully guided lab: launch EC2 instance, configure security group, connect via SSH, attach EBS volume
+    - All required sections; exact step-by-step instructions with expected outputs
+    - _Requirements: 7.1-7.9, 8.1, 9.1-9.3, 16.3_
+  - [x] 6.3 Write Module 04 Quiz
+    - Create `modules/04-compute-ec2/quiz.md` with 8-12 questions
+    - Comprehension and application focus (Phase 2), no scenario questions required
+    - _Requirements: 10.1-10.6, 11.3_
+  - [x] 6.4 Write Module 04 Resources
+    - Create `modules/04-compute-ec2/resources.md` with all four sections
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 6.5 Update progress tracker for Module 04
+    - _Requirements: 22.1-22.3_
+
+- [x] 7. Build Module 05 (Storage: S3)
+  - [x] 7.1 Write Module 05 README
+    - Rewrite `modules/05-storage-s3/README.md` to full compliance
+    - Phase 2 Bloom's verbs; Prerequisites referencing Modules 02 (IAM policies, bucket policies) and 04 (EC2)
+    - Concepts covering S3 buckets, objects, storage classes, versioning, lifecycle policies, encryption, access control with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.2, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 16.1, 16.2, 16.4_
+  - [x] 7.2 Write Module 05 Lab
+    - Fully guided S3 lab with all required sections
+    - _Requirements: 7.1-7.9, 8.1, 9.1-9.3, 16.3_
+  - [x] 7.3 Write Module 05 Quiz
+    - 8-12 questions, comprehension and application focus
+    - _Requirements: 10.1-10.6, 11.3_
+  - [x] 7.4 Write Module 05 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 7.5 Update progress tracker for Module 05
+    - _Requirements: 22.1-22.3_
+
+- [x] 8. Build Module 06 (Databases: RDS and DynamoDB)
+  - [x] 8.1 Write Module 06 README
+    - Rewrite `modules/06-databases-rds-dynamodb/README.md` to full compliance
+    - Phase 2 Bloom's verbs; Prerequisites referencing Modules 03 (VPC, subnets), 02 (IAM), 04 (EC2 for connectivity)
+    - Concepts covering RDS, DynamoDB, comparison table, backups, read replicas, partition keys with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.2, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 16.1, 16.2, 16.4_
+  - [x] 8.2 Write Module 06 Lab
+    - Fully guided database lab with all required sections
+    - _Requirements: 7.1-7.9, 8.1, 9.1-9.3, 16.3_
+  - [x] 8.3 Write Module 06 Quiz
+    - 8-12 questions, comprehension and application focus
+    - _Requirements: 10.1-10.6, 11.3_
+  - [x] 8.4 Write Module 06 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 8.5 Update progress tracker for Module 06
+    - _Requirements: 22.1-22.3_
+
+- [x] 9. Build Module 07 (Load Balancing and DNS)
+  - [x] 9.1 Write Module 07 README
+    - Rewrite `modules/07-load-balancing-and-dns/README.md` to full compliance
+    - Phase 2 Bloom's verbs; Prerequisites referencing Modules 03 (VPC) and 04 (EC2 instances)
+    - Concepts covering ALB, NLB, target groups, health checks, Route 53, DNS routing policies with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.2, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 16.1, 16.2, 16.4_
+  - [x] 9.2 Write Module 07 Lab
+    - Fully guided load balancing lab with all required sections
+    - _Requirements: 7.1-7.9, 8.1, 9.1-9.3, 16.3_
+  - [x] 9.3 Write Module 07 Quiz
+    - 8-12 questions, comprehension and application focus
+    - _Requirements: 10.1-10.6, 11.3_
+  - [x] 9.4 Write Module 07 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 9.5 Update progress tracker for Module 07
+    - _Requirements: 22.1-22.3_
+
+- [x] 10. Build Module 08 (Messaging and Integration)
+  - [x] 10.1 Write Module 08 README
+    - Rewrite `modules/08-messaging-and-integration/README.md` to full compliance
+    - Phase 2 Bloom's verbs; Prerequisites referencing Modules 02 (IAM), 04 (EC2), 05 (S3 events)
+    - Concepts covering SQS, SNS, EventBridge, comparison table, dead-letter queues, fan-out patterns with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.2, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 16.1, 16.2, 16.4_
+  - [x] 10.2 Write Module 08 Lab
+    - Fully guided messaging lab with all required sections
+    - _Requirements: 7.1-7.9, 8.1, 9.1-9.3, 16.3_
+  - [x] 10.3 Write Module 08 Quiz
+    - 8-12 questions, comprehension and application focus
+    - _Requirements: 10.1-10.6, 11.3_
+  - [x] 10.4 Write Module 08 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 10.5 Update progress tracker for Module 08
+    - _Requirements: 22.1-22.3_
+
+- [x] 11. Write Phase 2 Exam
+  - Create `modules/phase-2-exam.md` covering Modules 04-08
+  - 20-30 questions; Phase 2 Bloom's level: applying knowledge to configure and deploy, choosing the right service
+  - At least 40% scenario-based; at least 2 multi-service reasoning questions
+  - Answer key with detailed explanations and doc links; Study Guide section
+  - Verify all doc links with MCP tools; no em dashes
+  - Update progress tracker for Phase 2 Exam
+  - _Requirements: 24.1-24.5, 25.1-25.5, 26.2, 27.1-27.4, 22.1-22.3_
+
+- [x] 12. Checkpoint: Phase 2 complete
+  - Ensure all Module 04-08 content and Phase 2 Exam meet content standards. Ask the user if questions arise.
+
+- [x] 13. Build Module 09 (Serverless: Lambda)
+  - [x] 13.1 Write Module 09 README
+    - Rewrite `modules/09-serverless-lambda/README.md` to full compliance
+    - Phase 3 Bloom's verbs (build, construct, integrate, troubleshoot, compare, differentiate)
+    - Prerequisites referencing Modules 02 (IAM roles), 05 (S3 triggers), 06 (DynamoDB), 08 (SQS/SNS triggers)
+    - Concepts covering Lambda functions, event sources, execution model, API Gateway integration, Step Functions with inline AWS doc links
+    - Connect new concepts to previously learned material from Phases 1-2
+    - _Requirements: 1.1-1.5, 2.3, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 17.1, 17.2, 17.5_
+  - [x] 13.2 Write Module 09 Lab
+    - Create `modules/09-serverless-lambda/lab/` folder and lab file
+    - Semi-guided lab: some steps describe the goal and let the student determine the approach
+    - Include hints and reference links for open-ended steps
+    - All required sections (Objective, Architecture Diagram, Prerequisites, Duration, Instructions, Validation, Cleanup, Challenge)
+    - _Requirements: 7.1-7.9, 8.2, 9.1-9.3, 17.3_
+  - [x] 13.3 Write Module 09 Quiz
+    - Create `modules/09-serverless-lambda/quiz.md` with 8-12 questions
+    - Application and analysis focus; at least 2 scenario-based questions presenting real-world situations
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 17.4_
+  - [x] 13.4 Write Module 09 Resources
+    - Create `modules/09-serverless-lambda/resources.md` with all four sections
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 13.5 Update progress tracker for Module 09
+    - _Requirements: 22.1-22.3_
+
+- [x] 14. Build Module 10 (Containers: ECS)
+  - [x] 14.1 Write Module 10 README
+    - Rewrite `modules/10-containers-ecs/README.md` to full compliance
+    - Phase 3 Bloom's verbs; Prerequisites referencing Modules 03 (VPC), 04 (EC2/compute), 07 (ALB)
+    - Concepts covering ECS, Fargate, task definitions, services, ECR, container orchestration with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.3, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 17.1, 17.2, 17.5_
+  - [x] 14.2 Write Module 10 Lab
+    - Semi-guided container lab with all required sections
+    - _Requirements: 7.1-7.9, 8.2, 9.1-9.3, 17.3_
+  - [x] 14.3 Write Module 10 Quiz
+    - 8-12 questions; at least 2 scenario-based
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 17.4_
+  - [x] 14.4 Write Module 10 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 14.5 Update progress tracker for Module 10
+    - _Requirements: 22.1-22.3_
+
+- [x] 15. Build Module 11 (Infrastructure as Code)
+  - [x] 15.1 Write Module 11 README
+    - Rewrite `modules/11-infrastructure-as-code/README.md` to full compliance
+    - Phase 3 Bloom's verbs; Prerequisites referencing all prior modules (codifies what was built manually)
+    - Concepts covering CloudFormation, SAM, CDK, template structure, stacks, change sets with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.3, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 17.1, 17.2, 17.5_
+  - [x] 15.2 Write Module 11 Lab
+    - Semi-guided IaC lab with all required sections
+    - _Requirements: 7.1-7.9, 8.2, 9.1-9.3, 17.3_
+  - [x] 15.3 Write Module 11 Quiz
+    - 8-12 questions; at least 2 scenario-based
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 17.4_
+  - [x] 15.4 Write Module 11 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 15.5 Update progress tracker for Module 11
+    - _Requirements: 22.1-22.3_
+
+- [x] 16. Build Module 12 (CI/CD Pipelines)
+  - [x] 16.1 Write Module 12 README
+    - Rewrite `modules/12-cicd-pipelines/README.md` to full compliance
+    - Phase 3 Bloom's verbs; Prerequisites referencing Module 11 (IaC templates), 09 (Lambda), 10 (ECS)
+    - Concepts covering CodeCommit, CodeBuild, CodeDeploy, CodePipeline, deployment strategies with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.3, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 17.1, 17.2, 17.5_
+  - [x] 16.2 Write Module 12 Lab
+    - Semi-guided CI/CD lab with all required sections
+    - _Requirements: 7.1-7.9, 8.2, 9.1-9.3, 17.3_
+  - [x] 16.3 Write Module 12 Quiz
+    - 8-12 questions; at least 2 scenario-based
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 17.4_
+  - [x] 16.4 Write Module 12 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 16.5 Update progress tracker for Module 12
+    - _Requirements: 22.1-22.3_
+
+- [x] 17. Write Phase 3 Exam
+  - Create `modules/phase-3-exam.md` covering Modules 09-12
+  - 20-30 questions; Phase 3 Bloom's level: building solutions, troubleshooting failures, comparing approaches
+  - At least 40% scenario-based; at least 2 multi-service reasoning questions
+  - Answer key with detailed explanations and doc links; Study Guide section
+  - Verify all doc links with MCP tools; no em dashes
+  - Update progress tracker for Phase 3 Exam
+  - _Requirements: 24.1-24.5, 25.1-25.5, 26.3, 27.1-27.4, 22.1-22.3_
+
+- [x] 18. Checkpoint: Phase 3 complete
+  - All Module 09-12 content and Phase 3 Exam meet content standards. Phase 3 is fully complete.
+
+- [x] 19. Build Module 13 (Security in Depth)
+  - [x] 19.1 Write Module 13 README
+    - Rewrite `modules/13-security-in-depth/README.md` to full compliance
+    - Phase 4 Bloom's verbs (analyze, assess, evaluate, optimize, recommend, justify)
+    - Prerequisites referencing Module 02 (IAM foundations) and all prior modules (securing existing infra)
+    - Concepts covering KMS, Secrets Manager, WAF, Shield, GuardDuty, CloudTrail, Config, security best practices with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.4, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 18.1, 18.2, 18.6_
+  - [x] 19.2 Write Module 13 Lab
+    - Create `modules/13-security-in-depth/lab/` folder and lab file
+    - Semi-guided lab with increasing portions left for the student to figure out independently
+    - _Requirements: 7.1-7.9, 8.3, 9.1-9.3, 18.3_
+  - [x] 19.3 Write Module 13 Quiz
+    - 8-12 questions; analysis and evaluation focus; at least 2 scenario-based questions
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 18.5_
+  - [x] 19.4 Write Module 13 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 19.5 Update progress tracker for Module 13
+    - _Requirements: 22.1-22.3_
+
+- [x] 20. Build Module 14 (Monitoring and Observability)
+  - [x] 20.1 Write Module 14 README
+    - Rewrite `modules/14-monitoring-and-observability/README.md` to full compliance
+    - Phase 4 Bloom's verbs; Prerequisites referencing all prior modules (monitoring existing applications)
+    - Concepts covering CloudWatch metrics/alarms/logs, X-Ray tracing, dashboards, anomaly detection with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.4, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 18.1, 18.2, 18.6_
+  - [x] 20.2 Write Module 14 Lab
+    - Semi-guided monitoring lab with increasing portions left for the student
+    - _Requirements: 7.1-7.9, 8.3, 9.1-9.3, 18.3_
+  - [x] 20.3 Write Module 14 Quiz
+    - 8-12 questions; at least 2 scenario-based
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 18.5_
+  - [x] 20.4 Write Module 14 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 20.5 Update progress tracker for Module 14
+    - _Requirements: 22.1-22.3_
+
+- [x] 21. Build Module 15 (Cost Optimization)
+  - [x] 21.1 Write Module 15 README
+    - Rewrite `modules/15-cost-optimization/README.md` to full compliance
+    - Phase 4 Bloom's verbs; Prerequisites referencing all prior modules (optimizing existing architectures)
+    - Concepts covering Cost Explorer, Budgets, Savings Plans, Reserved Instances, right-sizing, storage class optimization with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.4, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 18.1, 18.2, 18.6_
+  - [x] 21.2 Write Module 15 Lab
+    - Create `modules/15-cost-optimization/lab/` folder and lab file
+    - Open-ended lab: describe the goal and constraints, student designs the solution
+    - Provide reference links and deliverables list instead of step-by-step instructions
+    - _Requirements: 7.1-7.9, 8.4, 9.1-9.3, 18.4_
+  - [x] 21.3 Write Module 15 Quiz
+    - 8-12 questions; at least 2 scenario-based
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 18.5_
+  - [x] 21.4 Write Module 15 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 21.5 Update progress tracker for Module 15
+    - _Requirements: 22.1-22.3_
+
+- [x] 22. Build Module 16 (Reliability and Disaster Recovery)
+  - [x] 22.1 Write Module 16 README
+    - Rewrite `modules/16-reliability-and-disaster-recovery/README.md` to full compliance
+    - Phase 4 Bloom's verbs; Prerequisites referencing Modules 03 (multi-AZ), 06 (database backups), 07 (load balancing)
+    - Concepts covering RTO/RPO, multi-AZ, multi-Region, backup strategies, Route 53 failover, auto scaling with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.4, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 18.1, 18.2, 18.6_
+  - [x] 22.2 Write Module 16 Lab
+    - Open-ended lab: goal and constraints format, student designs the DR solution
+    - _Requirements: 7.1-7.9, 8.4, 9.1-9.3, 18.4_
+  - [x] 22.3 Write Module 16 Quiz
+    - 8-12 questions; at least 2 scenario-based
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 18.5_
+  - [x] 22.4 Write Module 16 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 22.5 Update progress tracker for Module 16
+    - _Requirements: 22.1-22.3_
+
+- [x] 23. Write Phase 4 Exam
+  - Create `modules/phase-4-exam.md` covering Modules 13-16
+  - 20-30 questions; Phase 4 Bloom's level: evaluating architectures for security, cost, reliability, recommending improvements
+  - At least 40% scenario-based; at least 2 multi-service reasoning questions; trade-off reasoning required
+  - Answer key with detailed explanations and doc links; Study Guide section
+  - Verify all doc links with MCP tools; no em dashes
+  - Update progress tracker for Phase 4 Exam
+  - _Requirements: 24.1-24.5, 25.1-25.5, 26.4, 27.1-27.4, 22.1-22.3_
+
+- [x] 24. Checkpoint: Phase 4 complete
+  - All Module 13-16 content and Phase 4 Exam meet content standards. Phase 4 is fully complete.
+
+- [x] 25. Build Module 17 (Well-Architected Framework)
+  - [x] 25.1 Write Module 17 README
+    - Rewrite `modules/17-well-architected-framework/README.md` to full compliance
+    - Phase 5 Bloom's verbs (design, architect, propose, critique, defend, create)
+    - Prerequisites referencing all prior modules (review existing architectures against the framework)
+    - Concepts covering the six pillars, Well-Architected Tool, lens reviews, trade-off analysis with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.5, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 19.1, 19.2, 19.6_
+  - [x] 25.2 Write Module 17 Lab
+    - Create `modules/17-well-architected-framework/lab/` folder and lab file
+    - Open-ended lab: describe the goal and constraints, student designs the solution
+    - _Requirements: 7.1-7.9, 8.4, 9.1-9.3, 19.3_
+  - [x] 25.3 Write Module 17 Quiz
+    - 8-12 questions; evaluation and design judgment focus; at least 2 scenario-based
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 19.5_
+  - [x] 25.4 Write Module 17 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 25.5 Update progress tracker for Module 17
+    - _Requirements: 22.1-22.3_
+
+- [x] 26. Build Module 18 (Architecture Patterns)
+  - [x] 26.1 Write Module 18 README
+    - Rewrite `modules/18-architecture-patterns/README.md` to full compliance
+    - Phase 5 Bloom's verbs; Prerequisites referencing all prior modules
+    - Concepts covering microservices, event-driven, CQRS, saga pattern, multi-tier, serverless patterns with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.5, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 19.1, 19.2, 19.6_
+  - [x] 26.2 Write Module 18 Lab
+    - Open-ended architecture design lab with all required sections
+    - _Requirements: 7.1-7.9, 8.4, 9.1-9.3, 19.3_
+  - [x] 26.3 Write Module 18 Quiz
+    - 8-12 questions; at least 2 scenario-based
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 19.5_
+  - [x] 26.4 Write Module 18 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 26.5 Update progress tracker for Module 18
+    - _Requirements: 22.1-22.3_
+
+- [x] 27. Build Module 19 (Advanced Topics)
+  - [x] 27.1 Write Module 19 README
+    - Rewrite `modules/19-advanced-topics/README.md` to full compliance
+    - Phase 5 Bloom's verbs; Prerequisites referencing all prior modules
+    - Concepts covering multi-account strategy (Organizations, Control Tower), edge services (CloudFront), advanced networking, emerging services with inline AWS doc links
+    - _Requirements: 1.1-1.5, 2.5, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 19.1, 19.2, 19.6_
+  - [x] 27.2 Write Module 19 Lab
+    - Open-ended advanced topics lab with all required sections
+    - _Requirements: 7.1-7.9, 8.4, 9.1-9.3, 19.3_
+  - [x] 27.3 Write Module 19 Quiz
+    - 8-12 questions; at least 2 scenario-based
+    - _Requirements: 10.1-10.6, 11.1, 11.2, 19.5_
+  - [x] 27.4 Write Module 19 Resources
+    - _Requirements: 12.1-12.6, 13.1-13.3_
+  - [x] 27.5 Update progress tracker for Module 19
+    - _Requirements: 22.1-22.3_
+
+- [x] 28. Build Module 20 (Capstone Project)
+  - [x] 28.1 Write Module 20 README
+    - Rewrite `modules/20-capstone-project/README.md` to full compliance
+    - Phase 5 Bloom's verbs; Prerequisites referencing all prior modules
+    - Include project requirements (functional and technical), deliverables list, suggested project ideas, evaluation criteria with weights, and timeline
+    - Technical requirements: IaC, CI/CD pipeline, multi-AZ deployment, monitoring, security best practices, cost-conscious design
+    - Reference the Well-Architected Framework as a self-assessment tool
+    - No lab folder, no quiz file (by design)
+    - _Requirements: 1.1-1.5, 2.5, 2.6, 3.1, 3.2, 3.4, 4.1-4.6, 5.1-5.4, 6.1-6.2, 8.5, 19.1, 19.2, 19.4, 20.1, 20.2, 20.3, 20.4_
+  - [x] 28.2 Write Module 20 Resources
+    - Create `modules/20-capstone-project/resources.md` with all four sections
+    - Include links to official AWS documentation relevant to capstone-level architecture
+    - _Requirements: 12.1-12.6, 13.1-13.3, 20.3_
+  - [x] 28.3 Update progress tracker for Module 20
+    - _Requirements: 22.1-22.3_
+
+- [x] 29. Write Phase 5 Exam
+  - Create `modules/phase-5-exam.md` covering Modules 17-19 only (Module 20 capstone is not examined)
+  - 20-30 questions; Phase 5 Bloom's level: designing complete architectures, defending decisions, critiquing proposals
+  - At least 40% scenario-based; at least 2 multi-service reasoning questions; trade-off reasoning required
+  - Answer key with detailed explanations and doc links; Study Guide section
+  - Verify all doc links with MCP tools; no em dashes
+  - Update progress tracker for Phase 5 Exam
+  - _Requirements: 24.1-24.5, 25.1-25.5, 26.5, 27.1-27.4, 22.1-22.3_
+
+- [x] 30. Final checkpoint: Full curriculum complete
+  - All 20 modules are ✅ in the progress tracker.
+  - All 5 phase exams are ✅ in the progress tracker.
+  - Summary totals are accurate (20 modules complete, 5 exams complete).
+  - Curriculum is 100% complete.
+  - Verify Summary section totals are accurate (20 modules complete, 5 exams complete)
+  - Ensure all content meets content standards. Ask the user if questions arise.
+
+## Notes
+
+- Module 01 is built first as the reference template for all subsequent modules
+- Each module has 4 sub-tasks (README, lab, quiz, resources) except Module 20 which has only README and resources
+- Phase exams are written only after all modules in that phase are complete
+- Progress tracker is updated after every module and exam completion
+- All AWS documentation URLs must be verified using MCP tools before inclusion
+- No em dashes anywhere in any content file
+- Bloom's Taxonomy verbs must match the module's phase (see design document for verb lists)
+- Lab guidance levels: fully guided (Phases 1-2), semi-guided (Phase 3, Modules 13-14), open-ended (Modules 15-19), capstone (Module 20)
+- Scenario-based quiz questions required starting from Module 09 (at least 2 per quiz)
+- Checkpoints ensure incremental validation at phase boundaries

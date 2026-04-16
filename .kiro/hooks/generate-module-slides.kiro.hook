@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Generate Module Slides",
+  "description": "Generates a Marp-compatible Markdown slide deck from a module's README. The slide deck can be converted to PowerPoint (.pptx) using Marp CLI (`npx @marp-team/marp-cli slides.md --pptx`). Trigger manually, then specify which module number to generate slides for.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "The user wants to generate presentation slides for a bootcamp module. Ask the user which module number (01-20) they want slides for. Then:\n\n1. Read the module's README.md file from the appropriate `modules/XX-*/README.md` path.\n2. Create a Marp-compatible Markdown slide deck at `modules/XX-*/slides.md` with the following structure:\n   - Use `---` as slide separators\n   - Add Marp front matter: `marp: true`, `theme: default`, `paginate: true`, `header: 'AWS Bootcamp'`, `footer: 'Module XX: Title'`\n   - Slide 1: Title slide with module name and learning objectives\n   - Slide 2: Prerequisites and agenda overview\n   - One slide per major concept (### heading) from the Concepts section, with key points as bullet points (max 5 bullets per slide, concise)\n   - Use tables from the README where they fit on a slide\n   - Include code examples on dedicated slides with syntax highlighting\n   - Add an \"Instructor Notes\" slide with timing and key discussion points\n   - Add a \"Key Takeaways\" slide with the summary bullets\n   - Add a \"Lab Preview\" slide summarizing what students will build\n   - Add a \"Questions?\" closing slide\n3. Keep slide content concise: no full paragraphs, use short bullet points\n4. Do not use em dashes anywhere in the slides\n5. After creating the file, tell the user they can convert it to PowerPoint with: `npx @marp-team/marp-cli modules/XX-*/slides.md --pptx`"
+  }
+}

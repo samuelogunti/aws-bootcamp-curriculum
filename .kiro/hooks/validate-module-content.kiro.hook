@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Validate Module Content",
+  "description": "When a module content file (README, lab, quiz, or resources) is created or edited, validates it against the content standards defined in .kiro/steering/content-standards.md. Checks for: Bloom's Taxonomy verb compliance for the module's phase, presence of all required sections, inline AWS documentation links, no em dashes or en dashes, no exclamation points, active voice, acronyms defined on first use, fenced code blocks with language tags, and heading hierarchy consistency.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "modules/**/*.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A module content file was just edited. Validate it against the content standards in `.kiro/steering/content-standards.md`. Check the following and report any violations:\n\n1. **Em dashes/en dashes:** Search for — and – characters. Report any found with the line number and surrounding text.\n2. **Exclamation points:** Search for ! characters in prose (ignore shebangs in code blocks). Report any found.\n3. **Required sections:** Based on the file type:\n   - README: Must have Learning Objectives, Prerequisites, Concepts, Instructor Notes, Key Takeaways (in that order)\n   - Lab: Must have Objective, Architecture Diagram, Prerequisites, Duration, Instructions, Validation, Cleanup, Challenge\n   - Quiz: Must have 8-12 questions and an answer key in a `<details>` block\n   - Resources: Must have Official Documentation, AWS Whitepapers, AWS FAQs, AWS Architecture References\n4. **Bloom's Taxonomy verbs:** For READMEs, check that learning objectives use verbs appropriate to the module's phase:\n   - Phase 1 (Modules 01-03): define, describe, explain, identify, list, summarize, distinguish\n   - Phase 2 (Modules 04-08): demonstrate, configure, implement, use, deploy, set up\n   - Phase 3 (Modules 09-12): build, construct, integrate, troubleshoot, compare, differentiate\n   - Phase 4 (Modules 13-16): analyze, assess, evaluate, optimize, recommend, justify\n   - Phase 5 (Modules 17-20): design, architect, propose, critique, defend, create\n5. **AWS doc links:** Verify that the file contains inline links to docs.aws.amazon.com. Flag if a README or lab has zero AWS doc links.\n6. **Heading hierarchy:** Check that # is used for the title, ## for sections, ### for topics. Flag any skipped levels.\n\nReport results as a checklist with PASS/FAIL for each check. If all checks pass, say \"Content validation: all checks passed.\" If any fail, list the specific violations with line references."
+  }
+}

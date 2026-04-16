@@ -1,0 +1,29 @@
+{
+  "enabled": true,
+  "name": "Code Quality Review on Save",
+  "description": "Analyzes modified source code files when saved for potential improvements including code smells, design patterns, and best practices. Generates suggestions for improving readability, maintainability, and performance while preserving existing functionality.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*.ts",
+      "*.tsx",
+      "*.js",
+      "*.jsx",
+      "*.py",
+      "*.java",
+      "*.go",
+      "*.rs",
+      "*.rb",
+      "*.cs",
+      "*.cpp",
+      "*.c",
+      "*.swift",
+      "*.kt"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Review the modified code in the changed file and analyze it for potential improvements. Focus on:\n\n1. **Code Smells**: Identify any anti-patterns, overly complex logic, duplicated code, long methods, or deeply nested conditionals.\n2. **Design Patterns**: Suggest applicable design patterns that could improve structure, or flag misused patterns.\n3. **Best Practices**: Check adherence to language-specific best practices, naming conventions, and idiomatic usage.\n4. **Readability**: Suggest improvements to variable/function naming, code organization, and clarity.\n5. **Maintainability**: Identify tightly coupled code, missing error handling, or areas that would benefit from abstraction.\n6. **Performance**: Flag potential performance issues like unnecessary computations, memory leaks, or inefficient algorithms.\n\nProvide concise, actionable suggestions. Do not rewrite the entire file — just highlight specific areas with brief recommendations. Maintain the existing functionality; suggestions should be improvements, not behavioral changes."
+  }
+}
