@@ -1,0 +1,16 @@
+# Kiro configuration (steering, hooks, specs)
+.kiro/
+
+# Generated PowerPoint files (regenerate with: python3 scripts/md_to_pptx.py --all)
+*.pptx
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
