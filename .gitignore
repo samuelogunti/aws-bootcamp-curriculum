@@ -1,11 +1,16 @@
 # Kiro configuration (steering, hooks, specs)
 .kiro/
 
-# Generated PowerPoint files (regenerate with: python3 scripts/md_to_pptx.py --all)
+# Scripts (internal tooling)
+scripts/
+
+# Generated PowerPoint files
 *.pptx
 
-# Node modules
+# Node modules and package files
 node_modules/
+package.json
+package-lock.json
 
 # OS files
 .DS_Store
