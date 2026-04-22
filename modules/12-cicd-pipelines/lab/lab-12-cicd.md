@@ -65,7 +65,7 @@ You start by initializing a SAM application and creating a CodeBuild project tha
 
 ### Step 1: Create a SAM Application Using sam init (Guided)
 
-In this step, you use the [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/using-sam-cli-init.html) to initialize a Python hello-world application. This application serves as the codebase that your CI/CD pipeline will build, test, and deploy.
+In this step, you use the [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/using-sam-cli-init.html) to scaffold a Python hello-world application. This gives you a working codebase that your CI/CD pipeline will build, test, and deploy automatically.
 
 1. Open CloudShell by choosing the terminal icon in the navigation bar. Verify that the Region selector displays **US East (N. Virginia) us-east-1**.
 
@@ -137,7 +137,7 @@ You should see the unit tests pass.
 
 ### Step 2: Create a CodeBuild Project with a buildspec.yml (Guided)
 
-In this step, you create a [buildspec.yml](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html) file that tells CodeBuild how to build and test the SAM application, then create a CodeBuild project.
+In this step, you create a [buildspec.yml](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html) file that instructs CodeBuild on how to build and test the SAM application, then create a CodeBuild project that uses it.
 
 1. Create the buildspec.yml file in the root of the SAM project:
 

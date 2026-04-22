@@ -23,9 +23,9 @@ By the end of this module, you will be able to:
 
 ### VPC Fundamentals
 
-A [Virtual Private Cloud (VPC)](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) is a logically isolated virtual network that you define within your AWS account. Every AWS resource that requires networking, such as Amazon EC2 instances, Amazon RDS databases, and Elastic Load Balancers, runs inside a VPC. You control the VPC's IP address range, create subnets, configure route tables, and set up network gateways.
+A [Virtual Private Cloud (VPC)](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) is your own logically isolated network inside AWS. Every resource that needs networking (EC2 instances, RDS databases, load balancers) lives inside a VPC. You define the IP address range, carve out subnets, configure route tables, and attach gateways.
 
-Think of a VPC as your own private data center inside the AWS cloud. You decide the network layout, and AWS provides the physical infrastructure underneath. In Module 01, you learned that AWS organizes its infrastructure into [Regions and Availability Zones](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html). A VPC exists within a single Region but can span multiple Availability Zones within that Region.
+Think of a VPC as a private data center floor plan that you design, except AWS provides the physical building. In Module 01, you learned that AWS organizes infrastructure into [Regions and Availability Zones](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html). A VPC exists within a single Region but can span multiple Availability Zones in that Region.
 
 #### Default VPC vs. Custom VPC
 
@@ -126,9 +126,9 @@ Resources in your VPC need a path to the internet for software updates, API call
 
 #### Internet Gateway
 
-An [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) is a horizontally scaled, redundant, and highly available VPC component that allows communication between your VPC and the internet. It serves two purposes:
+An [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) connects your VPC to the public internet. It is horizontally scaled, redundant, and highly available by design, so you never need to worry about its capacity. It serves two purposes:
 
-1. It provides a target in your route table for internet-routable traffic.
+1. It acts as a target in your route table for internet-bound traffic.
 2. It performs network address translation (NAT) for instances that have a public IPv4 address.
 
 To enable internet access for a subnet, you must:
@@ -142,7 +142,7 @@ A subnet with a route to an internet gateway is what makes it a "public" subnet.
 
 #### NAT Gateway
 
-A [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) allows instances in a private subnet to initiate outbound connections to the internet (for example, to download software updates) while preventing the internet from initiating inbound connections to those instances.
+A [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) gives private subnet instances a path to the internet for outbound traffic (downloading patches, calling external APIs) while blocking any inbound connections from the internet. It acts as a one-way door.
 
 The NAT gateway sits in a public subnet and has an Elastic IP address. Private subnet instances send their outbound traffic to the NAT gateway, which forwards it to the internet gateway using its own public IP. Return traffic is routed back through the NAT gateway to the originating instance.
 
@@ -167,7 +167,7 @@ Key characteristics of NAT gateways:
 
 ### Route Tables: How Traffic Flows
 
-A [route table](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) contains a set of rules (called routes) that determine where network traffic from your subnets or gateway is directed. Every subnet in your VPC must be associated with a route table. The route table controls the routing for that subnet.
+A [route table](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) contains rules (called routes) that tell the VPC router where to send network traffic. Every subnet must be associated with exactly one route table, and that table controls routing for the subnet.
 
 #### Main Route Table vs. Custom Route Tables
 
@@ -237,7 +237,7 @@ In Module 02, you learned about [IAM policies](https://docs.aws.amazon.com/IAM/l
 
 #### Security Groups (Stateful)
 
-A [security group](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) acts as a virtual firewall for your AWS resources (such as EC2 instances, RDS databases, and Lambda functions in a VPC). Security groups control inbound and outbound traffic at the resource level.
+A [security group](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) acts as a virtual firewall for individual AWS resources (EC2 instances, RDS databases, Lambda functions in a VPC). It controls inbound and outbound traffic at the resource level.
 
 Key characteristics of security groups:
 
@@ -259,7 +259,7 @@ Example security group rules for a web server:
 
 #### Network Access Control Lists (Stateless)
 
-A [network ACL](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html) is an optional layer of security that acts as a firewall at the subnet level. Unlike security groups, NACLs are stateless and support both allow and deny rules.
+A [network ACL](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html) is an optional security layer that filters traffic at the subnet boundary. Unlike security groups, NACLs are stateless and support both allow and deny rules.
 
 Key characteristics of NACLs:
 

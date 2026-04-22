@@ -29,7 +29,7 @@ By the end of this module, you will be able to:
 
 In Modules 03 through 10, you created AWS resources manually through the console and CLI. Manual provisioning works for learning, but it introduces serious problems in production environments. If you need to recreate the same VPC, EC2 instances, and Lambda functions in a second AWS Region or a staging account, you must repeat every step by hand. Manual processes are slow, error-prone, and impossible to audit reliably.
 
-[Infrastructure as Code (IaC)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) solves these problems by defining your infrastructure in text files that you store in version control. Instead of clicking through the console, you write a template that describes the resources you need. A provisioning engine reads the template and creates, updates, or deletes resources to match the desired state.
+[Infrastructure as Code (IaC)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) eliminates these problems. You define your infrastructure in text files stored in version control. Rather than clicking through the console, you write a template describing the resources you need, and a provisioning engine reads it to create, update, or delete resources until reality matches the template.
 
 IaC provides five core benefits:
 
@@ -45,7 +45,7 @@ IaC provides five core benefits:
 
 ### CloudFormation Overview
 
-[AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) is the native IaC service for AWS. You write a template in YAML or JSON that declares the AWS resources you want. CloudFormation reads the template, determines the order of resource creation based on dependencies, and provisions everything as a single unit called a [stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html).
+[AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) is the native IaC service on AWS. Think of it as a recipe system for infrastructure: you describe what you want in a YAML or JSON file, and CloudFormation figures out the dependency order and builds everything for you. The result is a [stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html), a single manageable unit containing all the resources defined in your template.
 
 The core concepts in CloudFormation are:
 
@@ -123,7 +123,7 @@ Each section serves a specific purpose:
 
 ### Intrinsic Functions
 
-[Intrinsic functions](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/intrinsic-function-reference.html) are built-in functions that you use within CloudFormation templates to assign values that are available only at runtime. You cannot hardcode an EC2 instance ID or a VPC ID into your template because those values do not exist until CloudFormation creates the resources. Intrinsic functions solve this by referencing resources, substituting variables, and retrieving attributes dynamically.
+[Intrinsic functions](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/intrinsic-function-reference.html) let you inject runtime values into your templates. Since you cannot know an EC2 instance ID or VPC ID before CloudFormation creates the resource, intrinsic functions bridge that gap by referencing resources, substituting variables, and pulling attributes dynamically.
 
 #### Ref
 
@@ -417,7 +417,7 @@ When you detect drift, you have two options: update the template to match the ac
 
 ### AWS Serverless Application Model (AWS SAM)
 
-The [AWS Serverless Application Model (AWS SAM)](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam-overview.html) is an open-source framework that extends CloudFormation with a simplified syntax for defining serverless applications. SAM templates are CloudFormation templates with additional resource types and a `Globals` section that reduces repetition.
+The [AWS Serverless Application Model (AWS SAM)](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam-overview.html) sits on top of CloudFormation and gives you a shorthand for serverless resources. Under the hood, SAM templates are still CloudFormation, but they add resource types like `AWS::Serverless::Function` and a `Globals` section that eliminates repetitive configuration across multiple functions.
 
 In Module 09, you built Lambda functions, API Gateway endpoints, and DynamoDB tables manually. SAM lets you define all of those resources in a single template with significantly less YAML than raw CloudFormation.
 
@@ -486,7 +486,7 @@ Globals reduce duplication when your template contains multiple Lambda functions
 
 #### SAM Policy Templates
 
-SAM provides [policy templates](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html) that generate scoped IAM policies for common access patterns. Instead of writing a full IAM policy document, you reference a template name and pass the required parameters:
+SAM provides [policy templates](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html) that generate properly scoped IAM policies for common access patterns. Rather than writing a full IAM policy document by hand, you reference a template name and pass the target resource:
 
 | Policy Template | Permissions Granted |
 |-----------------|---------------------|
@@ -500,7 +500,7 @@ These policy templates follow the principle of least privilege by scoping permis
 
 ### SAM CLI: Local Development and Deployment
 
-The [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/using-sam-cli-corecommands.html) is a command-line tool that helps you build, test, and deploy SAM applications. It uses Docker to simulate the Lambda execution environment on your local machine, so you can test functions before deploying to AWS.
+The [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/using-sam-cli-corecommands.html) brings your serverless development loop local. It leverages Docker to spin up containers that mirror the Lambda execution environment, letting you test functions on your machine before pushing anything to AWS.
 
 #### Core SAM CLI Commands
 
@@ -540,7 +540,7 @@ The `--guided` flag on `sam deploy` walks you through configuration options (sta
 
 ### AWS Cloud Development Kit (AWS CDK)
 
-The [AWS Cloud Development Kit (AWS CDK)](https://docs.aws.amazon.com/cdk/v2/guide/getting-started.html) takes a fundamentally different approach to IaC. Instead of writing declarative YAML templates, you define infrastructure using a general-purpose programming language such as TypeScript, Python, Java, C#, or Go. The CDK synthesizes your code into a CloudFormation template, which it then deploys.
+The [AWS Cloud Development Kit (AWS CDK)](https://docs.aws.amazon.com/cdk/v2/guide/getting-started.html) flips the IaC model on its head. Rather than writing YAML, you write infrastructure definitions in a real programming language (TypeScript, Python, Java, C#, or Go). The CDK compiler then synthesizes your code into a CloudFormation template and deploys it.
 
 #### Imperative vs. Declarative
 

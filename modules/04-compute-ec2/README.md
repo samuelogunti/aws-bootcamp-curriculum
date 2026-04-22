@@ -23,9 +23,9 @@ By the end of this module, you will be able to:
 
 ### EC2 Overview: Virtual Servers in the Cloud
 
-[Amazon Elastic Compute Cloud (Amazon EC2)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) provides resizable virtual servers in the AWS cloud. Each virtual server is called an instance. You can launch instances with different operating systems, CPU and memory configurations, and storage options, then connect to them remotely to install software and run applications.
+[Amazon Elastic Compute Cloud (Amazon EC2)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) gives you virtual servers (called instances) that you can launch, configure, and terminate on demand. You pick the operating system, CPU/memory combination, and storage, then connect remotely to install software and run applications.
 
-EC2 is an Infrastructure as a Service (IaaS) offering. As you learned in Module 01, IaaS gives you the highest level of control over your computing resources. With EC2, AWS manages the physical hardware and virtualization layer, while you manage the operating system, runtime, and applications.
+EC2 is an Infrastructure as a Service (IaaS) offering. As you learned in Module 01, IaaS gives you the highest level of control: AWS manages the physical hardware and virtualization layer, while you manage everything from the operating system up.
 
 Common use cases for EC2 include:
 
@@ -84,7 +84,7 @@ For development and testing, the `t3.micro` or `t3.small` instances provide a co
 
 ### Amazon Machine Images (AMIs)
 
-An [Amazon Machine Image (AMI)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) is a template that contains the software configuration (operating system, application server, and applications) required to launch an EC2 instance. Every instance launch requires an AMI.
+An [Amazon Machine Image (AMI)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) is a template containing the software configuration (operating system, application server, applications) needed to launch an EC2 instance. Every launch requires an AMI, so choosing the right one is your first decision when spinning up compute.
 
 #### What an AMI Contains
 
@@ -151,7 +151,7 @@ In Module 02, you learned about [IAM roles for EC2](https://docs.aws.amazon.com/
 
 ### Amazon Elastic Block Store (Amazon EBS) Volumes
 
-[Amazon Elastic Block Store (Amazon EBS)](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html) provides persistent block storage volumes for EC2 instances. An EBS volume behaves like an unformatted external hard drive that you can attach to a single instance. Data on an EBS volume persists independently of the instance's lifecycle: if you stop or terminate the instance, the data on the EBS volume remains (unless you configure the volume to delete on termination).
+[Amazon Elastic Block Store (Amazon EBS)](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html) provides persistent block storage for EC2 instances. An EBS volume behaves like a raw, unformatted external drive that you attach to a single instance. The key difference from instance store (ephemeral) storage: data on an EBS volume survives instance stops and terminations (unless you configure the volume to delete on termination).
 
 #### EBS Volume Types
 
@@ -175,7 +175,7 @@ EBS offers four current-generation volume types, divided into two categories: So
 
 #### EBS Snapshots
 
-An [EBS snapshot](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html) is a point-in-time backup of an EBS volume. Snapshots are stored in Amazon S3 (managed by AWS; you do not see them in your S3 buckets) and are incremental: only the blocks that have changed since the last snapshot are saved. This makes snapshots storage-efficient and cost-effective.
+An [EBS snapshot](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html) captures the state of an EBS volume at a specific point in time. Snapshots are stored in Amazon S3 (managed by AWS; you do not see them in your S3 buckets) and are incremental: only blocks that changed since the last snapshot are saved. This keeps snapshots storage-efficient and cost-effective.
 
 Common uses for snapshots:
 
@@ -213,7 +213,7 @@ xvdf    202:80   0   20G  0 disk
 
 ### User Data Scripts: Bootstrapping Instances at Launch
 
-[User data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) is a feature that lets you pass a script to an EC2 instance at launch time. The instance executes the script automatically during the first boot. This is called bootstrapping, and it allows you to automate software installation, configuration, and other setup tasks without manually connecting to the instance.
+[User data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) lets you pass a script to an EC2 instance at launch time. The instance runs the script automatically during first boot, a process called bootstrapping. This means you can automate software installation and configuration without ever SSH-ing into the machine manually.
 
 On Linux instances, user data scripts run as the `root` user. You can provide a shell script (starting with `#!/bin/bash`) or a cloud-init directive.
 
@@ -249,13 +249,13 @@ As your application grows, you need a way to automatically add or remove EC2 ins
 
 #### Launch Templates
 
-A [launch template](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-templates.html) specifies the configuration for instances that Auto Scaling launches. It includes the AMI ID, instance type, key pair, security groups, EBS volume configuration, user data, and IAM instance profile. Launch templates support versioning, so you can update the configuration and roll back to a previous version if needed.
+A [launch template](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-templates.html) captures the full configuration for launching instances: AMI ID, instance type, key pair, security groups, EBS volumes, user data, and IAM instance profile. Templates support versioning, so you can update the configuration and roll back if something breaks.
 
-Launch templates replace the older launch configurations. AWS recommends using launch templates for all new Auto Scaling groups because they support additional features such as multiple instance types and mixed purchase options.
+Launch templates replace the older launch configurations. AWS recommends templates for all new Auto Scaling groups because they support additional features such as mixed instance types and purchase options.
 
 #### Auto Scaling Groups
 
-An [Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-groups.html) is a collection of EC2 instances managed as a logical unit. You define three capacity settings:
+An [Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-groups.html) manages a fleet of EC2 instances as a single logical unit. You define three capacity boundaries:
 
 | Setting | Description |
 |---------|-------------|
@@ -314,7 +314,7 @@ Payment options include All Upfront (largest discount), Partial Upfront, and No 
 
 #### Spot Instances
 
-[Spot Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) let you use spare EC2 capacity at discounts of up to 90% compared to On-Demand prices. The trade-off is that AWS can reclaim (interrupt) your Spot Instance with a two-minute warning when it needs the capacity back.
+[Spot Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) let you tap into spare EC2 capacity at discounts of up to 90% compared to On-Demand prices. The trade-off: AWS can reclaim your instance with a two-minute warning when it needs the capacity back.
 
 Spot Instances are ideal for workloads that are:
 

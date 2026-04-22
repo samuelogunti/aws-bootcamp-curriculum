@@ -45,7 +45,7 @@ Data transfer is one of the most overlooked cost drivers. Transfer within the sa
 
 ### AWS Cost Explorer
 
-[AWS Cost Explorer](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html) is a tool that visualizes and analyzes your AWS spending. It provides pre-built reports, custom filtering, and forecasting capabilities.
+[AWS Cost Explorer](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html) is your primary tool for understanding where money goes. It visualizes spending across services, accounts, Regions, and tags, and projects future costs based on historical trends.
 
 Key features:
 
@@ -56,7 +56,7 @@ Key features:
 
 #### Cost Allocation Tags
 
-[Cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) are key-value pairs attached to AWS resources that enable you to categorize and track costs. After you activate cost allocation tags in the Billing console, they appear as filterable dimensions in Cost Explorer.
+[Cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) are key-value pairs you attach to resources so you can slice your bill by project, team, or environment. Once you activate them in the Billing console, they show up as filterable dimensions in Cost Explorer.
 
 A recommended tagging strategy includes:
 
@@ -71,7 +71,7 @@ A recommended tagging strategy includes:
 
 ### AWS Budgets
 
-[AWS Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) lets you set custom cost and usage thresholds and receive alerts when your spending approaches or exceeds those thresholds. Budgets can track overall account spending, spending by service, spending by tag, Reserved Instance utilization, and Savings Plans coverage.
+[AWS Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) lets you draw a line in the sand for spending and get notified when you approach or cross it. You can track overall account costs, per-service spending, spending by tag, Reserved Instance utilization, and Savings Plans coverage.
 
 Budget types:
 
@@ -88,7 +88,7 @@ You can configure budgets to send notifications at multiple thresholds (for exam
 
 ### Right-Sizing with AWS Compute Optimizer
 
-[AWS Compute Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html) analyzes the utilization metrics of your EC2 instances, EBS volumes, Lambda functions, and ECS services, and recommends optimal resource configurations. It uses machine learning to identify resources that are over-provisioned (paying for more capacity than you use) or under-provisioned (risking performance issues).
+[AWS Compute Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html) looks at the CloudWatch metrics for your EC2 instances, EBS volumes, Lambda functions, and ECS services, then tells you whether each resource is the right size. It uses machine learning to compare your actual utilization against the capacity you are paying for and flags resources that are over-provisioned (wasting money) or under-provisioned (risking performance).
 
 #### How Compute Optimizer Works
 
@@ -112,7 +112,7 @@ AWS offers two commitment-based pricing models that provide significant discount
 
 #### Savings Plans
 
-[Savings Plans](https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html) are a flexible pricing model where you commit to a consistent amount of compute usage (measured in dollars per hour) for one or three years. Savings Plans automatically apply to eligible usage across EC2, Fargate, and Lambda.
+[Savings Plans](https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html) work like a phone plan: you commit to spending a certain dollar amount per hour on compute for one or three years, and AWS gives you a discount on all eligible usage (EC2, Fargate, Lambda) up to that commitment level.
 
 | Plan Type | Flexibility | Discount Level |
 |-----------|------------|----------------|
@@ -121,7 +121,7 @@ AWS offers two commitment-based pricing models that provide significant discount
 
 #### Reserved Instances
 
-[Reserved Instances (RIs)](https://docs.aws.amazon.com/savingsplans/latest/userguide/sp-ris.html) provide a discount for committing to a specific instance type in a specific Region for one or three years. RIs are available for EC2, RDS, ElastiCache, OpenSearch, and Redshift.
+[Reserved Instances (RIs)](https://docs.aws.amazon.com/savingsplans/latest/userguide/sp-ris.html) lock you into a specific instance type in a specific Region for one or three years in exchange for a discount. They are available for EC2, RDS, ElastiCache, OpenSearch, and Redshift.
 
 Payment options affect the discount level:
 

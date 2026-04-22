@@ -26,7 +26,7 @@ By the end of this module, you will be able to:
 
 ### Availability: Uptime, SLAs, and the Cost of Nines
 
-Availability measures the percentage of time a system is operational and accessible. It is typically expressed as a percentage or in "nines" notation:
+Availability measures how often your system is up and reachable. You will see it expressed as a percentage or in "nines" notation:
 
 | Availability | Nines | Downtime per Year | Downtime per Month |
 |-------------|-------|-------------------|-------------------|
@@ -67,11 +67,11 @@ RTO and RPO are independent. A system might have an RPO of 1 hour (hourly backup
 
 ### Disaster Recovery Strategies on AWS
 
-AWS supports four disaster recovery strategies, each with different RTO, RPO, cost, and complexity characteristics. The [Disaster Recovery of Workloads on AWS](https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html) whitepaper describes these strategies in detail.
+AWS supports four disaster recovery strategies, each trading cost for speed of recovery. The [Disaster Recovery of Workloads on AWS](https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html) whitepaper covers these in depth.
 
 #### Backup and Restore
 
-The simplest and least expensive strategy. You back up data and configuration to another Region (using AWS Backup, S3 cross-Region replication, or EBS snapshots) and restore from backups when a disaster occurs. During normal operation, no infrastructure runs in the recovery Region.
+The simplest and cheapest approach. You copy data and configuration to another Region (using AWS Backup, S3 cross-Region replication, or EBS snapshots) and rebuild from those backups if disaster strikes. No infrastructure runs in the recovery Region during normal operations.
 
 - **RTO:** Hours (time to provision infrastructure and restore data)
 - **RPO:** Hours (depends on backup frequency)
@@ -80,7 +80,7 @@ The simplest and least expensive strategy. You back up data and configuration to
 
 #### Pilot Light
 
-A minimal version of the production environment runs in the recovery Region. Core infrastructure (database replicas, AMIs, network configuration) is maintained, but compute resources (EC2 instances, ECS tasks) are not running. When a disaster occurs, you scale up the compute resources and switch traffic.
+A minimal footprint of the production environment stays running in the recovery Region. Core components (database replicas, AMIs, network configuration) are maintained, but compute resources (EC2 instances, ECS tasks) remain off. When disaster strikes, you spin up compute and switch traffic.
 
 - **RTO:** Minutes to hours (time to scale up compute and switch DNS)
 - **RPO:** Minutes (depends on replication lag)
@@ -89,7 +89,7 @@ A minimal version of the production environment runs in the recovery Region. Cor
 
 #### Warm Standby
 
-A scaled-down but fully functional copy of the production environment runs in the recovery Region. The standby environment handles a fraction of the production traffic (or no traffic) but can be scaled up quickly. When a disaster occurs, you scale the standby to full production capacity and redirect all traffic.
+A scaled-down but fully running copy of production exists in the recovery Region. This standby environment can handle a fraction of traffic (or none) but is ready to scale up quickly. When disaster strikes, you increase capacity and redirect all traffic.
 
 - **RTO:** Minutes (the environment is already running; you only need to scale and switch traffic)
 - **RPO:** Seconds to minutes (continuous replication)
@@ -98,7 +98,7 @@ A scaled-down but fully functional copy of the production environment runs in th
 
 #### Multi-Site Active-Active
 
-The production workload runs simultaneously in two or more Regions, each handling a portion of the traffic. If one Region fails, the remaining Regions absorb the traffic. There is no failover delay because all Regions are already serving traffic.
+Your workload runs simultaneously in two or more Regions, with each Region handling live traffic. If one Region fails, the remaining Regions absorb the load. There is no failover delay because every Region is already serving users.
 
 - **RTO:** Near-zero (traffic is already distributed; failed Region is simply removed from rotation)
 - **RPO:** Near-zero (data is replicated synchronously or near-synchronously across Regions)
@@ -133,7 +133,7 @@ AWS services that support Multi-AZ deployment:
 
 #### Multi-Region: For Disaster Recovery and Global Reach
 
-Multi-Region architectures deploy resources in two or more AWS Regions. This protects against Region-level failures (extremely rare but possible) and reduces latency for globally distributed users.
+Multi-Region architectures place resources in two or more AWS Regions. This guards against Region-level failures (extremely rare, but possible) and brings your application closer to globally distributed users.
 
 Key AWS services for multi-Region architectures:
 
@@ -150,7 +150,7 @@ Key AWS services for multi-Region architectures:
 
 ### Resilience Patterns for Distributed Applications
 
-Distributed applications (microservices, serverless, containerized) must handle failures in individual components without cascading to the entire system. These patterns, introduced in the [Reliability Pillar](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html) of the Well-Architected Framework, help build resilient applications.
+When your application is spread across multiple services (microservices, Lambda functions, containers), a failure in one component can ripple outward and take down the whole system. The patterns below, drawn from the [Reliability Pillar](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html) of the Well-Architected Framework, prevent that cascade.
 
 #### Retry with Exponential Backoff and Jitter
 
@@ -198,7 +198,7 @@ When a service call fails (even after retries), provide a degraded but functiona
 
 ### AWS Backup: Centralized Backup Management
 
-[AWS Backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html) is a centralized service for managing backups across AWS services. Instead of configuring backups individually for each service (RDS snapshots, EBS snapshots, DynamoDB backups), you define backup plans in AWS Backup that apply to multiple resources.
+[AWS Backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html) gives you a single place to define and enforce backup policies for all your AWS resources. Rather than juggling separate snapshot schedules for RDS, EBS, and DynamoDB (which you configured individually in earlier modules), you create one backup plan that covers everything.
 
 Key concepts:
 
@@ -216,9 +216,9 @@ Supported services include EC2 (AMIs), EBS (snapshots), RDS (snapshots), DynamoD
 
 ### Chaos Engineering: Testing Reliability
 
-Chaos engineering is the practice of intentionally injecting failures into a system to verify that it handles them correctly. Instead of waiting for a production incident to discover weaknesses, you proactively test failure scenarios in a controlled environment.
+Chaos engineering means deliberately breaking things on purpose, in a controlled way, to find out how your system responds before a real outage does it for you. Think of it like a fire drill for your infrastructure.
 
-[AWS Fault Injection Service (FIS)](https://docs.aws.amazon.com/fis/latest/userguide/what-is.html) is a managed service for running chaos engineering experiments on AWS. FIS provides pre-built actions for common failure scenarios:
+[AWS Fault Injection Service (FIS)](https://docs.aws.amazon.com/fis/latest/userguide/what-is.html) lets you run these experiments without building custom failure-injection tooling. It ships with pre-built actions for common scenarios:
 
 | FIS Action | What It Simulates |
 |-----------|-------------------|

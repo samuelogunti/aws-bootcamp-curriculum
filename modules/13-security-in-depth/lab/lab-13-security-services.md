@@ -53,7 +53,7 @@ AWS Account (us-east-1)
 
 ### Step 1: Create a Customer Managed KMS Key
 
-In this step, you create a [customer managed KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html) that you will use to encrypt an S3 bucket and a Secrets Manager secret.
+In this step, you create a [customer managed KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html) that gives you full control over who can encrypt and decrypt data. You will use this key to protect both an S3 bucket and a Secrets Manager secret in subsequent steps.
 
 1. Sign in to the [AWS Management Console](https://console.aws.amazon.com/) as `bootcamp-admin`.
 2. Verify that the Region selector displays **US East (N. Virginia) us-east-1**.
@@ -231,7 +231,7 @@ After creating the trail, perform a test action (for example, create and delete 
 
 ### Step 5: Enable Amazon GuardDuty
 
-In this step, you enable [Amazon GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html) to begin monitoring your account for threats.
+In this step, you enable [Amazon GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html) so it begins watching your account for suspicious activity. Once enabled, GuardDuty immediately starts analyzing CloudTrail, VPC Flow Logs, and DNS query data without any additional configuration on your part.
 
 Enable GuardDuty in the `us-east-1` Region. After enabling it, explore the GuardDuty console to understand the findings interface.
 
@@ -248,7 +248,7 @@ After enabling GuardDuty:
 
 ### Step 6: Configure AWS Config Rules
 
-In this step, you enable [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html) and create rules to evaluate the compliance of your resources.
+In this step, you enable [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html) and add rules that continuously check whether your resources meet security baselines. Config evaluates each resource against the rules you select and flags anything that falls out of compliance.
 
 Enable AWS Config recording for your account and add the following managed rules:
 

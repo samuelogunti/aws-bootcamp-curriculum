@@ -251,7 +251,7 @@ aws cloudwatch describe-alarms \
 
 ### Step 3: Query Logs with CloudWatch Logs Insights
 
-In this step, you use [CloudWatch Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) to analyze the structured logs from your Lambda function.
+In this step, you use [CloudWatch Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) to query the structured logs your Lambda function produces. Logs Insights uses a purpose-built query language that lets you filter, aggregate, and visualize log data without exporting it to another tool.
 
 Navigate to the CloudWatch console, choose **Logs Insights** in the left navigation pane, and select the log group `/aws/lambda/bootcamp-monitored-function`.
 

@@ -40,7 +40,7 @@ AWS provides several managed messaging and integration services for building loo
 
 ### Amazon SQS: Message Queues
 
-[Amazon Simple Queue Service (Amazon SQS)](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) is a fully managed message queuing service that enables you to decouple and scale distributed systems. SQS acts as a buffer between a message producer (the component that sends messages) and a message consumer (the component that processes messages). The producer sends a message to the queue, and the consumer retrieves and processes it independently.
+[Amazon Simple Queue Service (Amazon SQS)](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) acts as a buffer between the parts of your application that produce work and the parts that consume it. A producer drops a message into the queue and moves on; a consumer picks it up whenever it is ready. This decoupling means neither side needs to know about the other, and a failure on one side does not cascade to the other.
 
 SQS is a pull-based service: consumers poll the queue to retrieve messages. This is different from push-based services like SNS, where messages are delivered to subscribers automatically.
 
@@ -136,7 +136,7 @@ In Module 02, you learned about [IAM policies](../02-iam-and-security/README.md)
 
 ### Amazon SNS: Publish/Subscribe Notifications
 
-[Amazon Simple Notification Service (Amazon SNS)](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) is a fully managed publish/subscribe (pub/sub) messaging service. Unlike SQS, where consumers pull messages from a queue, SNS pushes messages to subscribers. A publisher sends a message to an SNS topic, and SNS delivers that message to all endpoints subscribed to the topic.
+[Amazon Simple Notification Service (Amazon SNS)](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) flips the messaging model from pull to push. Instead of consumers polling for messages, SNS delivers messages directly to every subscriber the moment a publisher sends one. Think of it as a broadcast channel: one announcement reaches everyone who is listening.
 
 The pub/sub model is useful when a single event needs to reach multiple consumers. For example, when a new order is placed, you might want to notify the fulfillment system, the analytics pipeline, and the customer notification service simultaneously. With SNS, you publish one message to a topic, and all three subscribers receive it.
 
@@ -210,9 +210,9 @@ Message filtering reduces the need for subscribers to receive and discard irrele
 
 ### Amazon EventBridge: Event-Driven Routing
 
-[Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html) is a serverless event bus service that makes it easy to connect applications using events. While SQS and SNS focus on message delivery, EventBridge focuses on event routing: it receives events from sources, evaluates them against rules, and routes matching events to targets.
+[Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html) is a serverless event router. While SQS and SNS focus on delivering messages you explicitly send, EventBridge listens for state changes across AWS services, SaaS applications, and your own code, then routes matching events to the right target based on rules you define.
 
-EventBridge is particularly useful for building event-driven architectures where different AWS services, Software as a Service (SaaS) applications, or your own applications need to react to state changes. For example, when an S3 object is uploaded (Module 05), an EC2 instance changes state (Module 04), or a custom application emits a business event, EventBridge can route that event to the appropriate handler.
+EventBridge is particularly useful when different AWS services, SaaS applications, or your own code need to react to state changes. For example, when someone uploads an object to S3 (Module 05), when an EC2 instance changes state (Module 04), or when your application emits a custom business event, EventBridge can route that event to the appropriate handler without you writing any polling logic.
 
 #### Event Buses
 
@@ -389,7 +389,7 @@ After you fix the issue that caused messages to fail, you can redrive messages f
 
 ### AWS Step Functions: Orchestrating Multi-Step Workflows
 
-[AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) is a serverless orchestration service that lets you coordinate multiple AWS services into workflows. While SQS, SNS, and EventBridge handle message passing between components, Step Functions manages the sequence, branching, error handling, and retry logic of multi-step processes.
+[AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) coordinates multi-step workflows across AWS services. While SQS, SNS, and EventBridge pass messages between components, Step Functions manages the sequencing, branching, error handling, and retry logic of processes that span multiple steps. If your workflow has conditional paths or needs to wait for human approval, Step Functions keeps track of where you are in the process.
 
 A Step Functions workflow is defined as a [state machine](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-statemachines.html). A state machine is a collection of states, where each state performs a task, makes a decision, waits for input, or runs steps in parallel. The state machine definition specifies the order of states, the conditions for transitioning between them, and how to handle errors.
 

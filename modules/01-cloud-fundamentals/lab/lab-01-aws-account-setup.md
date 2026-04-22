@@ -45,6 +45,8 @@ The root account is the account owner identity. You will secure it with Multi-Fa
 
 If you already have an AWS account, skip to Step 2.
 
+> **Warning:** Account creation requires a credit or debit card. AWS will not charge you for Free Tier usage, but charges apply if you exceed Free Tier limits or forget to delete resources after labs. The zero spend budget you create in Step 5 helps catch unexpected charges early.
+
 1. Open your web browser and navigate to the [AWS sign-up page](https://signin.aws.amazon.com/signup?request_type=register).
 2. Enter your email address in the **Root user email address** field.
 3. Enter a name for your account in the **AWS account name** field (for example, `my-bootcamp-account`).
@@ -63,6 +65,9 @@ If you already have an AWS account, skip to Step 2.
 13. Select the **Basic Support (Free)** plan.
 14. Choose **Complete sign up**.
 15. Wait for the activation email from AWS. Activation typically takes a few minutes but can take up to 24 hours.
+
+> **Troubleshooting:** If you do not receive the activation email within 15 minutes, check your spam/junk folder. If the email does not arrive after 1 hour, try signing in anyway at [console.aws.amazon.com](https://console.aws.amazon.com/). Some accounts activate before the email is sent. If you still cannot sign in after 24 hours, contact [AWS Support](https://aws.amazon.com/contact-us/).
+
 16. Once activated, sign in to the [AWS Management Console](https://console.aws.amazon.com/) using your root user email and password.
 
 **Expected result:** You see the AWS Management Console home page after signing in.
@@ -81,8 +86,12 @@ The [root user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.ht
 
 > **Tip:** If you cannot scan the QR code, choose **Show secret key** and manually enter the key into your authenticator app.
 
+> **Troubleshooting:** If your authenticator app does not recognize the QR code, ensure your phone's camera has permission to access the browser. Alternatively, use the manual secret key option.
+
 8. Your authenticator app begins generating six-digit codes that rotate every 30 seconds. Enter the current code in the **MFA code 1** field.
-9. Wait for the code to rotate (up to 30 seconds), then enter the new code in the **MFA code 2** field.
+9. Wait for the code to rotate (up to 30 seconds), then enter the new code in the **MFA code 2** field. The two codes must be different and consecutive.
+
+> **Troubleshooting:** If you receive an "invalid MFA code" error, check that your phone's clock is synchronized. MFA codes are time-based, and a clock skew of more than 30 seconds causes failures. On iPhone, go to Settings, General, Date and Time, and enable "Set Automatically." On Android, go to Settings, System, Date and Time, and enable "Automatic date and time."
 10. Choose **Add MFA**.
 
 **Expected result:** A success banner confirms that the MFA device has been assigned to the root user. The **Multi-Factor Authentication (MFA)** section now shows your registered device.
@@ -99,20 +108,28 @@ AWS [recommends](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices
 4. In the **User name** field, enter `bootcamp-admin`.
 5. Select the checkbox **Provide user access to the AWS Management Console**.
 6. Select **I want to create an IAM user**.
+
+> **Troubleshooting:** If you do not see the "I want to create an IAM user" option, AWS may default to IAM Identity Center. For this bootcamp, select the option to create an IAM user directly. If the console interface has changed, look for a link that says "Create IAM user" or similar.
+
 7. Choose **Custom password** and enter a strong password. Optionally, clear the **User must create a new password at next sign-in** checkbox for convenience during the bootcamp.
+
+> **Tip:** Write down or securely store the password you create. You will use this password to sign in as `bootcamp-admin` for every subsequent lab.
 8. Choose **Next**.
 9. On the **Set permissions** page, select **Attach policies directly**.
 10. In the search box, type `AdministratorAccess`.
 11. Select the checkbox next to the **AdministratorAccess** managed policy.
 12. Choose **Next**.
 13. Review the user details and choose **Create user**.
+
+> **Verification:** After creation, choose the user name `bootcamp-admin` from the Users list. On the **Permissions** tab, confirm that the `AdministratorAccess` policy is listed. If it is missing, choose **Add permissions**, then **Attach policies directly**, search for `AdministratorAccess`, select it, and choose **Add permissions**.
+
 14. On the confirmation page, note the **Console sign-in URL**. It follows this format:
 
 ```
 https://<account-id>.signin.aws.amazon.com/console
 ```
 
-> **Tip:** Bookmark this URL. You will use it to sign in as your IAM user going forward.
+> **Tip:** Your account ID is a 12-digit number (for example, `123456789012`). You can find it in the top-right corner of the console under your account name dropdown. Bookmark the sign-in URL. You will use it to sign in as your IAM user going forward.
 
 15. Choose **Return to users list**.
 16. Sign out of the root account: choose your account name in the top-right corner and select **Sign out**.
@@ -131,7 +148,9 @@ Now that you are signed in as your IAM user, take a tour of the [AWS Management 
 
 > **Warning:** If you create resources in a different Region, you may not see them when viewing `us-east-1`. Always verify your Region before creating or searching for resources.
 
-4. **CloudShell:** In the navigation bar, locate the [CloudShell](https://docs.aws.amazon.com/cloudshell/latest/userguide/welcome.html) icon (a terminal/command-prompt icon). Choose it to open a browser-based shell environment. Wait for the shell to initialize (this may take 15 to 30 seconds on first launch).
+4. **CloudShell:** In the navigation bar, locate the [CloudShell](https://docs.aws.amazon.com/cloudshell/latest/userguide/welcome.html) icon (a terminal/command-prompt icon, typically located near the Region selector and notification bell in the top-right area). Choose it to open a browser-based shell environment. Wait for the shell to initialize (this may take 15 to 30 seconds on first launch).
+
+> **Troubleshooting:** If you do not see the CloudShell icon, ensure you are in a Region that supports CloudShell (us-east-1 supports it). If the icon is still not visible, type `CloudShell` in the console search bar and select it from the results. If CloudShell fails to launch, try refreshing the browser page or clearing your browser cache.
 5. In CloudShell, run the following command to verify your identity:
 
 ```bash
@@ -182,6 +201,8 @@ A [zero spend budget](https://docs.aws.amazon.com/cost-management/latest/usergui
 1. In the console search bar, type `Budgets` and select **AWS Budgets** under the Billing and Cost Management section.
 
 > **Tip:** If you see a message that you need to enable Cost Explorer, choose **Enable Cost Explorer**. It can take up to 24 hours for cost data to appear, but you can still create a budget immediately.
+
+> **Troubleshooting:** If you receive an "access denied" error when navigating to Budgets, ensure you are signed in as `bootcamp-admin` (not the root user) and that the `AdministratorAccess` policy is attached. New accounts may also require a few hours before the Billing console is fully accessible to IAM users. If the issue persists, sign in as the root user to create the budget, then return to the IAM user for subsequent labs.
 
 2. Choose **Create budget**.
 3. Under **Budget setup**, select **Use a template (simplified)**.

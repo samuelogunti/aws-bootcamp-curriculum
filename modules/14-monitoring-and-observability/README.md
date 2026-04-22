@@ -42,7 +42,7 @@ In previous modules, you built infrastructure (EC2, Lambda, ECS, RDS, ALB) that 
 
 ### Amazon CloudWatch Metrics
 
-[Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html) collects and stores metrics from AWS services and your applications. A metric is a time-ordered set of data points that represents a measurement (for example, the CPU utilization of an EC2 instance every 5 minutes).
+[Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html) is the metrics backbone on AWS. It collects time-series data points from AWS services and your applications, stores them, and makes them available for visualization and alarming. A metric is simply a named series of measurements over time (for example, the CPU percentage of an EC2 instance sampled every 5 minutes).
 
 #### Built-in Metrics
 
@@ -87,7 +87,7 @@ CloudWatch also provides statistics for each metric: Average, Sum, Minimum, Maxi
 
 ### CloudWatch Alarms
 
-[CloudWatch alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html) watch a metric and trigger actions when the metric crosses a threshold. Alarms have three states: OK (the metric is within the threshold), ALARM (the metric has crossed the threshold), and INSUFFICIENT_DATA (not enough data to evaluate).
+[CloudWatch alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html) monitor a metric and fire when it crosses a boundary you define. Each alarm lives in one of three states: OK (metric is within bounds), ALARM (metric has breached the threshold), or INSUFFICIENT_DATA (not enough data points to evaluate yet).
 
 #### Static Threshold Alarms
 
@@ -95,7 +95,7 @@ A static threshold alarm triggers when a metric exceeds (or falls below) a fixed
 
 #### Anomaly Detection Alarms
 
-[Anomaly detection alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html) use machine learning to establish a baseline for a metric and trigger when the metric deviates from the expected range. This is useful for metrics with patterns that vary by time of day or day of week (for example, traffic that peaks during business hours and drops at night). Instead of setting a fixed threshold, you define a sensitivity band, and CloudWatch alerts you when the metric falls outside the expected range.
+[Anomaly detection alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html) let CloudWatch learn what "normal" looks like for a metric and alert you when behavior deviates from that baseline. This is valuable for metrics with daily or weekly patterns (like traffic that peaks during business hours). Instead of guessing a fixed threshold, you set a sensitivity band and let the model flag outliers.
 
 #### Composite Alarms
 
@@ -116,7 +116,7 @@ When an alarm enters the ALARM state, it can trigger actions:
 
 ### CloudWatch Logs
 
-[Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) collects, stores, and provides access to log data from AWS services and your applications. Logs are organized into log groups (a collection of log streams that share the same retention and access settings) and log streams (a sequence of log events from a single source).
+[Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) is where your application's event records live. It organizes data into log groups (a collection of streams sharing the same retention and access settings) and log streams (a sequence of events from one source, like a single Lambda invocation or container).
 
 #### Log Sources
 
@@ -156,7 +156,7 @@ With structured logs, you can query for all errors related to a specific order, 
 
 #### CloudWatch Logs Insights
 
-[CloudWatch Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) is a query engine for log data. It uses a purpose-built [query language](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html) to search, filter, aggregate, and visualize log entries.
+[CloudWatch Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) gives you a SQL-like [query language](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html) for searching and aggregating log data directly in the console. You can filter by field values, compute statistics, and visualize trends without exporting logs to a separate analytics tool.
 
 Example: Find the top 10 most frequent error messages in the last hour:
 
@@ -193,7 +193,7 @@ CloudWatch Logs charges for data ingestion and storage. By default, log groups r
 
 ### AWS X-Ray: Distributed Tracing
 
-[AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html) traces requests as they travel through your application, from the entry point (API Gateway, ALB) through backend services (Lambda, ECS, EC2) to downstream dependencies (DynamoDB, RDS, SQS, external APIs). Each trace shows the complete path of a request, including the time spent in each service and any errors encountered.
+[AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html) follows a request from the moment it enters your system (through API Gateway or an ALB) all the way through backend services (Lambda, ECS, EC2) and into downstream dependencies (DynamoDB, RDS, SQS, external APIs). Each trace shows the full journey of a single request, including how long each hop took and where errors occurred.
 
 #### How X-Ray Works
 

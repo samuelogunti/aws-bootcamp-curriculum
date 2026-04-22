@@ -26,7 +26,7 @@ By the end of this module, you will be able to:
 
 ### Multi-Account Strategy with AWS Organizations and Control Tower
 
-In a production environment, running all workloads in a single AWS account creates security, billing, and operational risks. A compromised credential in one workload could affect all others. Cost attribution becomes difficult. Service quotas are shared across all workloads. [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html) solves these problems by letting you create and manage multiple AWS accounts under a single management account.
+In a production environment, running everything in one AWS account is like putting all your eggs in one basket. A compromised credential in one workload could affect all others. Cost attribution becomes guesswork. Service quotas are shared across unrelated projects. [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html) solves these problems by letting you create and govern multiple accounts under a single management account.
 
 #### Organizational Units and Account Structure
 
@@ -42,7 +42,7 @@ In a production environment, running all workloads in a single AWS account creat
 
 #### Service Control Policies (SCPs)
 
-[Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html) are guardrails that restrict what actions accounts in an OU can perform. SCPs do not grant permissions; they set the maximum permissions boundary. Even if an IAM policy in a member account grants `AdministratorAccess`, an SCP on the OU can deny specific actions.
+[Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html) act as permission boundaries for entire OUs. They do not grant access; they cap the maximum permissions available. Even if an IAM policy in a member account grants `AdministratorAccess`, an SCP on the parent OU can block specific actions.
 
 Common SCP use cases:
 
@@ -55,19 +55,19 @@ Common SCP use cases:
 
 #### AWS Control Tower
 
-[AWS Control Tower](https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html) automates the setup of a [multi-account landing zone](https://docs.aws.amazon.com/controltower/latest/userguide/aws-multi-account-landing-zone.html) following AWS best practices. It creates the organizational structure, configures centralized logging, sets up guardrails (preventive and detective controls), and provides a dashboard for monitoring compliance across all accounts.
+[AWS Control Tower](https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html) automates the setup of a [multi-account landing zone](https://docs.aws.amazon.com/controltower/latest/userguide/aws-multi-account-landing-zone.html) that follows AWS best practices. It creates the organizational structure, configures centralized logging, applies guardrails (preventive and detective controls), and provides a compliance dashboard across all accounts.
 
-Control Tower is the recommended starting point for organizations setting up a multi-account environment. It automates what would otherwise require manual configuration of Organizations, CloudTrail, Config, IAM Identity Center, and SCPs.
+If you are setting up a multi-account environment from scratch, Control Tower is the recommended starting point. It automates what would otherwise require manual configuration of Organizations, CloudTrail, Config, IAM Identity Center, and SCPs.
 
 > **Tip:** Even if you start with a single AWS account for learning, plan for multi-account from the beginning. Design your IaC templates ([Module 11](../11-infrastructure-as-code/README.md)) to be account-agnostic using parameters for account IDs and Region names. This makes the transition to multi-account smoother when the time comes.
 
 ### Amazon CloudFront: Global Content Delivery
 
-[Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html) is a Content Delivery Network (CDN) that caches and delivers content from edge locations worldwide. CloudFront reduces latency by serving content from the edge location closest to the user, rather than from the origin (S3 bucket, ALB, or custom HTTP server) in a single Region.
+[Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html) is a CDN (Content Delivery Network) that caches your content at edge locations around the world. Instead of every user request traveling all the way to your origin server in a single Region, CloudFront serves cached copies from the nearest edge location, cutting latency dramatically for global audiences.
 
-#### How CloudFront Works
+#### Request Flow
 
-When a user requests content, CloudFront routes the request to the nearest edge location. If the content is cached at that edge location (a cache hit), CloudFront returns it immediately. If not (a cache miss), CloudFront fetches the content from the origin, caches it at the edge location, and returns it to the user. Subsequent requests for the same content from nearby users are served from the cache.
+Here is what happens when a user in Tokyo requests an image from your site hosted in us-east-1:
 
 ```
 User (Tokyo) --> CloudFront Edge (Tokyo) --> Cache hit? --> Return cached content
@@ -75,6 +75,8 @@ User (Tokyo) --> CloudFront Edge (Tokyo) --> Cache hit? --> Return cached conten
                                                           --> Cache at edge
                                                           --> Return to user
 ```
+
+On the first request, CloudFront fetches from the origin and caches the response at the Tokyo edge location. Every subsequent request for that same content from nearby users is served directly from the cache, avoiding the round trip to us-east-1.
 
 #### Origins and Behaviors
 
@@ -91,13 +93,13 @@ Cache behaviors let you route different URL paths to different origins. For exam
 
 #### Origin Access Control (OAC)
 
-[Origin Access Control](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html) restricts access to your S3 origin so that users can only access content through CloudFront, not by accessing the S3 bucket directly. OAC replaces the older Origin Access Identity (OAI) mechanism and supports additional features including SSE-KMS encryption.
+[Origin Access Control](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html) ensures that users can only reach your S3 content through CloudFront, not by hitting the bucket URL directly. OAC replaces the older Origin Access Identity (OAI) mechanism and adds support for SSE-KMS encryption.
 
 > **Tip:** Always use OAC when serving S3 content through CloudFront. This ensures that your S3 bucket remains private (Block Public Access enabled) while CloudFront serves the content globally. Without OAC, you would need to make the bucket public, which is a security risk.
 
 ### Amazon ElastiCache: In-Memory Caching
 
-[Amazon ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html) provides managed in-memory data stores using Redis or Memcached. Caching reduces database load and improves response times by storing frequently accessed data in memory, where reads take microseconds instead of the milliseconds required for database queries.
+[Amazon ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html) runs Redis or Memcached as a managed service, giving you an in-memory data store that sits between your application and your database. By caching frequently accessed data in memory (where reads take microseconds), you reduce load on your database and speed up response times significantly.
 
 #### Caching Strategies
 
@@ -124,7 +126,7 @@ The [caching strategy](https://docs.aws.amazon.com/whitepapers/latest/database-c
 
 ### AWS Step Functions: Workflow Orchestration
 
-[AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) is a serverless orchestration service that coordinates multiple AWS services into workflows defined as state machines. Instead of writing complex orchestration logic in Lambda functions (calling one Lambda from another, handling retries, managing state), you define the workflow visually and let Step Functions handle execution, error handling, and state management.
+[AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) lets you define multi-step workflows as state machines, then handles execution, error recovery, and state tracking for you. Instead of writing tangled orchestration code inside Lambda functions (calling one function from another, managing retries, tracking progress), you declare the workflow visually and let Step Functions run it.
 
 #### When to Use Step Functions
 
@@ -150,11 +152,11 @@ Step Functions offers two workflow types:
 
 ### Amazon Athena: Serverless SQL Analytics
 
-[Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) is a serverless query service that lets you analyze data in Amazon S3 using standard SQL. You do not need to load data into a database or set up any infrastructure. Point Athena at your S3 data, define a schema, and start querying.
+[Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) lets you run standard SQL queries directly against data sitting in S3, with no database to provision or manage. You point Athena at your S3 data, define a schema in the Glue Data Catalog, and start querying. There is no infrastructure to set up or maintain.
 
-#### How Athena Works
+#### Schema-on-Read Approach
 
-Athena uses a schema-on-read approach. Your data stays in S3 in its original format (CSV, JSON, Parquet, ORC, Avro). You define a table in the AWS Glue Data Catalog that describes the schema (column names, data types) and the S3 location. When you run a SQL query, Athena reads the data from S3, applies the schema, and returns results.
+Athena does not require you to load data into a separate database. Your data stays in S3 in its original format (CSV, JSON, Parquet, ORC, Avro). You define a table in the AWS Glue Data Catalog that maps column names and data types to the S3 location. When you run a query, Athena reads the relevant files from S3, applies the schema, and returns results.
 
 ```sql
 -- Example: Query CloudTrail logs stored in S3
@@ -185,13 +187,13 @@ AWS continuously launches new services and features. As an architect, you should
 
 #### Amazon Bedrock (Generative AI)
 
-[Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) is a fully managed service for building generative AI applications. It provides access to foundation models (FMs) from Amazon (Titan), Anthropic (Claude), Meta (Llama), and others through a unified API. You can use Bedrock to add text generation, summarization, image generation, and conversational AI capabilities to your applications without managing ML infrastructure.
+[Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) gives you access to foundation models (from Amazon, Anthropic, Meta, and others) through a single API, without managing any ML infrastructure. You can add text generation, summarization, image generation, and conversational AI to your applications by calling the Bedrock API from Lambda, just like you would call DynamoDB.
 
 Bedrock integrates with the serverless patterns you learned in this bootcamp: API Gateway receives a user request, Lambda calls the Bedrock API with the prompt, and the response is returned to the user. The architecture is the same serverless API pattern from [Module 18](../18-architecture-patterns/README.md), with Bedrock as the backend service instead of DynamoDB.
 
 #### AWS App Runner
 
-[AWS App Runner](https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html) is a fully managed service for deploying containerized web applications and APIs. It abstracts away the infrastructure (no VPC, ALB, ECS cluster, or task definition configuration). You provide a container image or source code repository, and App Runner handles building, deploying, scaling, and load balancing.
+[AWS App Runner](https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html) deploys containerized web applications without requiring you to configure a VPC, ALB, ECS cluster, or task definition. You provide a container image or source code repository, and App Runner handles building, deploying, scaling, and load balancing automatically.
 
 App Runner sits between Lambda (fully serverless, per-invocation pricing, 15-minute timeout) and ECS Fargate (full container orchestration, VPC configuration, ALB setup). It is a good fit for teams that want container-based deployment without the operational complexity of ECS.
 

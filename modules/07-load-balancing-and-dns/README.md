@@ -23,7 +23,7 @@ By the end of this module, you will be able to:
 
 ### Elastic Load Balancing Overview
 
-[Elastic Load Balancing (ELB)](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html) automatically distributes incoming application traffic across multiple targets, such as EC2 instances, containers, and IP addresses. A load balancer serves as the single point of contact for clients and spreads the workload across your backend resources to improve application availability and fault tolerance.
+[Elastic Load Balancing (ELB)](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html) sits between your users and your backend resources, spreading incoming requests across multiple targets (EC2 instances, containers, or IP addresses). Instead of one server handling all the traffic and becoming a single point of failure, the load balancer ensures that requests reach healthy targets across multiple Availability Zones.
 
 In Module 03, you learned how to deploy resources across multiple [Availability Zones](../03-networking-basics/README.md) for high availability. Load balancers build on that foundation by routing traffic only to healthy targets across those AZs. If an instance in one AZ fails, the load balancer automatically redirects traffic to healthy instances in other AZs.
 
@@ -218,7 +218,7 @@ Key points about deregistration delay:
 
 ### Route 53 Overview: DNS as a Service
 
-[Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html) is a highly available and scalable Domain Name System (DNS) web service. Route 53 performs three main functions:
+[Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html) is the DNS service on AWS. It translates human-readable domain names (like `www.example.com`) into IP addresses that computers use to find each other. Beyond basic DNS resolution, Route 53 also handles domain registration and health-based traffic routing, making it a central piece of any production architecture on AWS.
 
 1. **Domain registration.** You can register new domain names (for example, `example.com`) directly through Route 53.
 2. **DNS routing.** Route 53 translates human-readable domain names into IP addresses that computers use to connect to each other. When a user types `www.example.com` in a browser, Route 53 responds with the IP address of the resource that serves that domain.

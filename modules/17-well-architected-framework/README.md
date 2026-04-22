@@ -24,11 +24,11 @@ By the end of this module, you will be able to:
 
 ### What Is the AWS Well-Architected Framework?
 
-The [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html) is a set of best practices and design principles for building and operating workloads on AWS. It provides a consistent approach for evaluating architectures against proven standards and identifying areas for improvement.
+The [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html) gives you a structured way to evaluate your cloud workloads against proven design principles. Think of it as a rubric for cloud architecture: it surfaces the questions you should be asking about your system's design, and it highlights gaps you might not notice until something breaks in production.
 
-The Framework is not a checklist to pass or fail. It is a conversation tool that helps architects, developers, and operations teams make informed decisions about trade-offs. Every architecture involves compromises: you might accept higher cost for better reliability, or accept slightly lower performance for significantly lower cost. The Framework helps you make these trade-offs consciously rather than accidentally.
+The Framework is not a pass/fail checklist. It is a conversation tool that forces you to confront trade-offs explicitly. Every architecture involves compromises: you might spend more for better reliability, or accept slightly lower performance to cut costs significantly. The Framework ensures you make these trade-offs on purpose rather than by accident.
 
-The Framework is organized around six [pillars](https://docs.aws.amazon.com/wellarchitected/2025-02-25/framework/the-pillars-of-the-framework.html), each representing a fundamental aspect of a well-designed cloud workload:
+Six [pillars](https://docs.aws.amazon.com/wellarchitected/2025-02-25/framework/the-pillars-of-the-framework.html) organize the Framework, each covering a fundamental dimension of a well-designed workload:
 
 | Pillar | Focus | Key Question |
 |--------|-------|-------------|
@@ -43,7 +43,7 @@ The Framework is organized around six [pillars](https://docs.aws.amazon.com/well
 
 ### Pillar 1: Operational Excellence
 
-The [Operational Excellence Pillar](https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/welcome.html) focuses on running and monitoring systems to deliver business value and continuously improving processes and procedures.
+The [Operational Excellence Pillar](https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/welcome.html) asks: "Can your team run this system effectively day after day, and improve it over time?" It covers how you deploy, monitor, and evolve your workloads.
 
 Design principles:
 
@@ -57,7 +57,7 @@ Key AWS services for operational excellence: CloudFormation, CDK, CodePipeline, 
 
 ### Pillar 2: Security
 
-The [Security Pillar](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html) focuses on protecting information, systems, and assets while delivering business value through risk assessments and mitigation strategies.
+The [Security Pillar](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html) asks: "How do you keep your data, systems, and users safe?" It covers identity management, detection, infrastructure protection, data protection, and incident response.
 
 Design principles:
 
@@ -72,7 +72,7 @@ Key AWS services for security: IAM, KMS, WAF, Shield, GuardDuty, Security Hub, C
 
 ### Pillar 3: Reliability
 
-The [Reliability Pillar](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html) focuses on ensuring a workload performs its intended function correctly and consistently.
+The [Reliability Pillar](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html) asks: "Will this system keep working when things go wrong?" It covers fault tolerance, recovery automation, and capacity planning.
 
 Design principles:
 
@@ -86,35 +86,35 @@ Key AWS services for reliability: Auto Scaling, ALB, Route 53, RDS Multi-AZ, Dyn
 
 ### Pillar 4: Performance Efficiency
 
-The [Performance Efficiency Pillar](https://docs.aws.amazon.com/wellarchitected/2025-02-25/framework/a-performance-efficiency.html) focuses on using computing resources efficiently to meet system requirements and maintaining that efficiency as demand changes and technologies evolve.
+The [Performance Efficiency Pillar](https://docs.aws.amazon.com/wellarchitected/2025-02-25/framework/a-performance-efficiency.html) asks: "Are you using the right resources for the job, and will they keep up as demand changes?" It covers resource selection, monitoring, and trade-off awareness.
 
 Design principles:
 
-- **Democratize advanced technologies.** Use managed services (RDS, DynamoDB, Lambda, ECS Fargate) instead of building and managing infrastructure yourself. Let AWS handle the undifferentiated heavy lifting.
-- **Go global in minutes.** Deploy to multiple Regions using CloudFront for content delivery, Route 53 for DNS-based routing, and DynamoDB Global Tables for multi-Region data.
-- **Use serverless architectures.** Lambda, Fargate, API Gateway, and DynamoDB eliminate the need to manage servers and scale automatically. You built serverless applications in [Module 09](../09-serverless-lambda/README.md).
-- **Experiment more often.** Test different instance types, storage configurations, and architectures. Use CloudWatch metrics to measure the impact of changes.
-- **Consider mechanical sympathy.** Understand how the underlying technology works and use it in the way it was designed. For example, use DynamoDB for key-value access patterns (not complex joins) and RDS for relational queries (not high-throughput key-value lookups).
+- **Use managed services to offload undifferentiated work.** RDS, DynamoDB, Lambda, and ECS Fargate let AWS handle patching, scaling, and hardware management so you can focus on application logic.
+- **Deploy globally with minimal effort.** CloudFront for content delivery, Route 53 for DNS-based routing, and DynamoDB Global Tables for multi-Region data let you reach users worldwide without managing infrastructure in every Region.
+- **Prefer serverless where it fits.** Lambda, Fargate, API Gateway, and DynamoDB remove server management and scale automatically. You built serverless applications in [Module 09](../09-serverless-lambda/README.md).
+- **Experiment frequently.** Test different instance types, storage configurations, and architectures. Use CloudWatch metrics to measure whether changes actually improve performance.
+- **Match the tool to the access pattern.** Use DynamoDB for key-value lookups (not complex joins) and RDS for relational queries (not high-throughput key-value access). Understanding how a service works under the hood helps you use it effectively.
 
 Key AWS services for performance efficiency: EC2 (Graviton instances), Lambda, Fargate, CloudFront, ElastiCache, DynamoDB, Auto Scaling.
 
 ### Pillar 5: Cost Optimization
 
-The [Cost Optimization Pillar](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html) focuses on avoiding unnecessary costs and understanding where money is being spent.
+The [Cost Optimization Pillar](https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html) asks: "Are you spending money where it matters, and avoiding waste?" It covers financial governance, expenditure awareness, and resource right-sizing.
 
 Design principles:
 
-- **Implement cloud financial management.** Assign cost ownership to teams using cost allocation tags. Review spending regularly with Cost Explorer. Set budgets with alerts. You practiced these in [Module 15](../15-cost-optimization/README.md).
-- **Adopt a consumption model.** Pay only for what you use. Use Auto Scaling to match capacity to demand. Use serverless services that charge per request.
-- **Measure overall efficiency.** Track the cost per business outcome (cost per transaction, cost per user) rather than just total spend. A higher total spend that serves more users may be more efficient.
-- **Stop spending money on undifferentiated heavy lifting.** Use managed services instead of building and operating your own infrastructure. The operational cost of managing servers, databases, and networking often exceeds the service fees.
-- **Analyze and attribute expenditure.** Tag all resources. Use Cost Explorer to identify spending trends. Use Compute Optimizer to right-size resources.
+- **Assign cost ownership.** Use cost allocation tags to attribute spending to teams. Review spending regularly with Cost Explorer. Set budgets with alerts. You practiced these in [Module 15](../15-cost-optimization/README.md).
+- **Pay only for what you consume.** Use Auto Scaling to match capacity to demand. Use serverless services that charge per request rather than per hour.
+- **Track cost per business outcome.** Measure cost per transaction or cost per user, not just total spend. A higher bill that serves more users may represent better efficiency.
+- **Avoid building what AWS already offers.** The operational cost of managing your own servers, databases, and networking often exceeds the fees for managed services.
+- **Make spending visible.** Tag all resources. Use Cost Explorer to spot trends. Use Compute Optimizer to identify over-provisioned resources.
 
 Key AWS services for cost optimization: Cost Explorer, Budgets, Compute Optimizer, Savings Plans, S3 Lifecycle Policies, Trusted Advisor.
 
 ### Pillar 6: Sustainability
 
-The [Sustainability Pillar](https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sustainability-pillar.html) focuses on minimizing the environmental impact of running cloud workloads.
+The [Sustainability Pillar](https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sustainability-pillar.html) asks: "How can you reduce the environmental footprint of running this workload?" It covers resource efficiency, hardware selection, and data management.
 
 Design principles:
 
@@ -142,7 +142,7 @@ Every architectural decision involves trade-offs between pillars. The Well-Archi
 
 ### The AWS Well-Architected Tool
 
-The [AWS Well-Architected Tool](https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html) is a service in the AWS Management Console that guides you through a structured review of your workload against the Framework. The tool asks questions for each pillar, records your answers, identifies high-risk issues (HRIs) and medium-risk issues (MRIs), and generates an improvement plan.
+The [AWS Well-Architected Tool](https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html) is a free console-based service that walks you through a structured review of your workload. It asks pillar-specific questions, records your answers, flags high-risk issues (HRIs) and medium-risk issues (MRIs), and generates an improvement plan with links to relevant documentation.
 
 #### How a Review Works
 

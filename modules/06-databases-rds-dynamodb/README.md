@@ -30,7 +30,7 @@ AWS offers more than a dozen purpose-built database services. Before choosing a 
 
 A self-managed database runs on an Amazon EC2 instance that you provision and maintain yourself. You are responsible for installing the database software, applying patches, configuring backups, managing replication, and handling failover. This gives you full control over the database engine and operating system, but it requires significant operational effort.
 
-A managed database service, such as [Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html) or [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html), handles the undifferentiated heavy lifting for you. AWS manages provisioning, patching, backups, recovery, and scaling. You focus on your application and data, not on database administration.
+A managed database service, such as [Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html) or [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html), offloads the repetitive infrastructure work to AWS. Provisioning, patching, backups, recovery, and scaling all happen without your intervention. You spend your time on schema design and query optimization rather than on operating system updates and disk management.
 
 | Responsibility | Self-Managed (EC2) | Managed (RDS) | Fully Managed (DynamoDB) |
 |----------------|-------------------|---------------|--------------------------|
@@ -60,7 +60,7 @@ NoSQL databases use flexible data models such as key-value pairs, documents, gra
 
 ### Amazon RDS: Managed Relational Databases
 
-[Amazon Relational Database Service (Amazon RDS)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html) makes it straightforward to set up, operate, and scale a relational database in the cloud. RDS manages time-consuming administration tasks such as hardware provisioning, database setup, patching, and backups, so you can focus on your application.
+[Amazon Relational Database Service (Amazon RDS)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html) takes the operational burden off your plate when running relational databases. Instead of spending hours on patching, backup configuration, and failover setup, you hand those tasks to AWS and invest that time in your application logic. Think of it as hiring a dedicated database administrator who never sleeps and never forgets a maintenance window.
 
 #### Supported Database Engines
 
@@ -187,7 +187,7 @@ Expected output:
 
 ### Amazon DynamoDB: Key-Value and Document Database
 
-[Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) is a fully managed NoSQL database service that delivers single-digit millisecond performance at any scale. Unlike RDS, DynamoDB is serverless: you do not provision or manage servers, install software, or handle patching. You create a table, define its primary key, and start reading and writing data.
+[Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) is a NoSQL database built for speed and scale. Response times stay in the single-digit millisecond range whether your table holds 1,000 items or 100 million. Unlike RDS, there are no instances to size or servers to maintain. You create a table, define its primary key, and start reading and writing data immediately.
 
 DynamoDB supports two data models:
 
@@ -423,6 +423,6 @@ For DynamoDB, access control is handled entirely through [IAM policies](https://
 
 - Amazon RDS is a managed relational database service that handles provisioning, patching, backups, and failover. Use it for workloads that require complex SQL queries, multi-table transactions, and referential integrity.
 - RDS Multi-AZ provides high availability through a synchronous standby replica with automatic failover. Read replicas provide read scaling through asynchronous replication and can span Regions for disaster recovery.
-- Amazon DynamoDB is a fully managed, serverless NoSQL database that delivers single-digit millisecond performance at any scale. Design your table schema around your application's access patterns, not around entity relationships.
+- Amazon DynamoDB is a serverless NoSQL database that delivers single-digit millisecond response times regardless of table size. Design your table schema around your application's access patterns, not around entity relationships.
 - Always place RDS instances in private subnets, enable encryption at rest and in transit, and use IAM database authentication or IAM policies to control access. For DynamoDB, use VPC endpoints to keep traffic off the public internet.
 - Use the SQL vs. NoSQL decision framework to choose the right database for each workload. Many production architectures use both RDS and DynamoDB, each handling the access patterns it is best suited for.

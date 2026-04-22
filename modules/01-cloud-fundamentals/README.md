@@ -22,13 +22,13 @@ By the end of this module, you will be able to:
 
 ### What Is Cloud Computing?
 
-[Cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html) is the on-demand delivery of compute power, database, storage, applications, and other IT resources through a cloud services platform via the internet with pay-as-you-go pricing. Instead of purchasing and maintaining physical servers in your own data center, you rent computing resources from a cloud provider and pay only for what you use.
+[Cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html) lets you access servers, databases, storage, and other IT resources over the internet, paying only for what you consume. Rather than buying and maintaining physical hardware in your own facility, you provision what you need from a provider and release it when you are done.
 
 #### On-Premises vs. Cloud
 
 In a traditional on-premises environment, your organization owns and operates all the hardware, networking equipment, and software required to run applications. You are responsible for purchasing servers, provisioning storage, managing cooling systems, and handling hardware failures. This approach requires significant upfront investment and ongoing maintenance.
 
-With cloud computing, a provider such as [AWS](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html) owns and maintains the physical infrastructure. You provision the resources you need through a web console or Application Programming Interface (API), and the provider handles the underlying hardware. This shifts your focus from managing infrastructure to building applications.
+With cloud computing, a provider such as [AWS](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html) owns and maintains the physical infrastructure. You select the resources you need through a web console or Application Programming Interface (API), and the provider takes care of the underlying hardware. This frees you to focus on building applications rather than racking servers.
 
 | Aspect | On-Premises | Cloud |
 |--------|-------------|-------|
@@ -40,13 +40,13 @@ With cloud computing, a provider such as [AWS](https://docs.aws.amazon.com/white
 
 #### The Five Essential Characteristics of Cloud Computing (NIST)
 
-The [NIST definition of cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html) identifies five essential characteristics:
+The [NIST definition of cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html) identifies five essential characteristics. These matter because they distinguish true cloud services from traditional hosting:
 
-1. **On-demand self-service.** You can provision computing resources (servers, storage, networking) as needed, without requiring human interaction with the service provider.
-2. **Broad network access.** Resources are available over the network and accessed through standard mechanisms such as web browsers, APIs, or Command Line Interfaces (CLIs).
-3. **Resource pooling.** The provider's computing resources are pooled to serve multiple customers using a multi-tenant model. Physical and virtual resources are dynamically assigned and reassigned according to demand.
-4. **Rapid elasticity.** Resources can be elastically provisioned and released to scale outward and inward with demand. To the consumer, the resources available for provisioning often appear unlimited.
-5. **Measured service.** Cloud systems automatically control and optimize resource use by leveraging a metering capability. Resource usage is monitored, controlled, and reported, providing transparency for both the provider and the consumer.
+1. **On-demand self-service.** You spin up servers, storage, or networking whenever you need them, without filing a ticket or waiting for a human to approve the request.
+2. **Broad network access.** You reach your resources over the internet using standard tools: web browsers, APIs, or Command Line Interfaces (CLIs).
+3. **Resource pooling.** The provider serves many customers from shared physical hardware, dynamically assigning capacity as demand shifts. You never see the multi-tenant layer underneath.
+4. **Rapid elasticity.** Capacity grows and shrinks with your workload. From your perspective, available resources appear virtually limitless.
+5. **Measured service.** Usage is metered and reported, so you see exactly what you consumed and what it cost.
 
 #### CapEx vs. OpEx
 
@@ -55,7 +55,7 @@ Understanding the financial shift from on-premises to cloud is essential for eva
 - **Capital Expenditure (CapEx):** Upfront spending on physical infrastructure such as servers, networking equipment, and data center facilities. These are long-term investments that depreciate over time. With on-premises infrastructure, you pay a large sum before you use any resources.
 - **Operational Expenditure (OpEx):** Ongoing spending for services consumed on a pay-as-you-go basis. Cloud computing follows the OpEx model. You pay for compute, storage, and networking as you use them, and you can stop paying when you stop using them.
 
-AWS describes this shift as one of the [six advantages of cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html): "Trade fixed expense for variable expense." Instead of investing heavily in data centers before you know how you will use them, you pay only when you consume computing resources.
+AWS describes this shift as one of the [six advantages of cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html): trading fixed expense for variable expense. You stop guessing capacity years in advance and instead pay for resources as you consume them.
 
 > **Tip:** The CapEx-to-OpEx shift is a frequent topic on AWS certification exams. Remember that cloud computing converts large upfront costs into smaller, ongoing variable costs.
 
@@ -65,19 +65,19 @@ AWS and other cloud providers offer services at different levels of abstraction.
 
 #### Infrastructure as a Service (IaaS)
 
-IaaS provides the fundamental building blocks of cloud IT. You get access to networking features, virtual or dedicated hardware, and storage. IaaS gives you the highest level of flexibility and management control over your IT resources.
+IaaS provides the fundamental building blocks of cloud IT: networking, virtual or dedicated hardware, and storage. You get maximum flexibility because you control everything above the hypervisor layer.
 
-AWS example: [Amazon Elastic Compute Cloud (Amazon EC2)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) provides resizable virtual servers. You choose the operating system, configure networking, and install your own software. You manage the operating system, runtime, and application; AWS manages the physical hardware and virtualization layer.
+AWS example: [Amazon Elastic Compute Cloud (Amazon EC2)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) gives you virtual servers that you size, configure, and manage. You pick the operating system, install your own software, and handle patching. AWS takes care of the physical machines and the virtualization layer underneath.
 
 #### Platform as a Service (PaaS)
 
-PaaS removes the need for you to manage the underlying infrastructure (hardware and operating systems). You focus on deploying and managing your applications and data. The provider handles provisioning, patching, and scaling of the platform.
+PaaS removes the burden of managing the underlying infrastructure (hardware and operating systems). You focus on your application code and data while the provider handles provisioning, patching, and scaling of the platform underneath.
 
-AWS example: [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html) deploys and scales web applications automatically. You upload your code, and Elastic Beanstalk handles capacity provisioning, load balancing, auto-scaling, and application health monitoring.
+AWS example: [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html) deploys and scales web applications for you. Upload your code, and Beanstalk configures capacity, load balancing, auto-scaling, and health monitoring on your behalf.
 
 #### Software as a Service (SaaS)
 
-SaaS provides a complete product that the provider runs and manages. You simply use the software, typically through a web browser. You do not manage the infrastructure, platform, or application code.
+SaaS delivers a complete, ready-to-use product that the provider runs and manages. You simply use the software through a web browser without worrying about infrastructure, platform, or application code.
 
 AWS example: [Amazon Connect](https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html) is a cloud-based contact center service. You configure and use it through a web interface without managing any underlying servers or software.
 
@@ -93,7 +93,7 @@ The [deployment model](https://docs.aws.amazon.com/whitepapers/latest/aws-overvi
 
 #### Public Cloud
 
-In a public cloud deployment, all parts of the application run in the cloud. Applications are either built natively in the cloud or migrated from existing on-premises infrastructure. Public cloud providers such as AWS make resources available to the general public over the internet. You share the underlying physical infrastructure with other customers (multi-tenant), but your data and applications are logically isolated.
+In a public cloud deployment, all parts of the application run on the provider's infrastructure. You share the underlying physical hardware with other customers (multi-tenant), but your data and applications are logically isolated. Applications are either built natively in the cloud or migrated from existing on-premises infrastructure.
 
 Benefits of public cloud include low upfront cost, elastic scaling, and global reach.
 
@@ -113,7 +113,7 @@ A [hybrid deployment](https://docs.aws.amazon.com/whitepapers/latest/aws-overvie
 
 ### Why AWS?
 
-AWS is the world's most comprehensive and broadly adopted cloud platform. The [Overview of Amazon Web Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html) whitepaper describes how AWS offers over 200 fully featured services from data centers globally.
+AWS is the world's largest and most broadly adopted cloud platform. The [Overview of Amazon Web Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html) whitepaper describes its catalog of over 200 services spanning compute, storage, databases, machine learning, and more.
 
 #### Market Position
 
@@ -121,9 +121,9 @@ AWS was the first major cloud provider, launching Amazon Simple Storage Service 
 
 #### Global Infrastructure: Regions, Availability Zones, and Edge Locations
 
-The [AWS global infrastructure](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html) is designed for high availability, fault tolerance, and low latency.
+The [AWS global infrastructure](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html) is built around three layers of physical separation, each serving a distinct purpose for availability and performance.
 
-**Regions.** An [AWS Region](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html) is a physical location in the world where AWS clusters data centers. Each Region is a separate geographic area (for example, `us-east-1` for Northern Virginia, `eu-west-1` for Ireland). Regions are fully isolated from each other, which provides fault isolation and data sovereignty.
+**Regions.** An [AWS Region](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html) is a geographic area (for example, `us-east-1` for Northern Virginia, `eu-west-1` for Ireland) containing multiple data center clusters. Regions are fully isolated from each other, giving you fault isolation and data sovereignty.
 
 When choosing a Region, consider these factors:
 
@@ -132,11 +132,11 @@ When choosing a Region, consider these factors:
 - **Service availability:** Not all AWS services are available in every Region.
 - **Pricing:** Costs vary by Region.
 
-**Availability Zones (AZs).** Each Region consists of multiple [Availability Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html). An AZ is one or more discrete data centers with redundant power, networking, and connectivity. AZs within a Region are connected through low-latency links but are physically separated to protect against localized failures such as fires, floods, or power outages.
+**Availability Zones (AZs).** Each Region consists of multiple [Availability Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html). An AZ is one or more discrete data centers with independent power, cooling, and networking. AZs within a Region connect through low-latency links but sit far enough apart physically to survive localized disasters (fires, floods, power outages).
 
 > **Tip:** Deploying your application across multiple AZs within a Region is a foundational best practice for high availability on AWS.
 
-**Edge Locations.** [Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html) uses a global network of [edge locations](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/LocationsOfEdgeServers.html) to cache and deliver content closer to end users. Edge locations are separate from Regions and AZs. They reduce latency for content delivery by serving cached copies of your data from a location geographically close to the requester.
+**Edge Locations.** [Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html) uses a global network of [edge locations](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/LocationsOfEdgeServers.html) to cache content closer to end users. Edge locations are separate from Regions and AZs. They cut latency by serving cached copies of your data from a point geographically near the requester.
 
 | Infrastructure Component | What It Is | Purpose |
 |--------------------------|-----------|---------|
@@ -146,11 +146,11 @@ When choosing a Region, consider these factors:
 
 #### AWS Free Tier
 
-The [AWS Free Tier](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier.html) lets you explore and try AWS services without cost. It includes three types of offers:
+The [AWS Free Tier](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier.html) lets you experiment with AWS services at no cost. It includes three categories of offers:
 
-- **Always Free:** Offers that do not expire and are available to all AWS customers (for example, 1 million AWS Lambda requests per month).
-- **12 Months Free:** Offers available for 12 months following your initial sign-up date (for example, 750 hours per month of Amazon EC2 `t2.micro` or `t3.micro` instances).
-- **Trials:** Short-term free trial offers that start from the date you activate a particular service.
+- **Always Free:** Offers that never expire (for example, 1 million AWS Lambda requests per month).
+- **12 Months Free:** Offers available for the first year after sign-up (for example, 750 hours per month of Amazon EC2 `t2.micro` or `t3.micro` instances).
+- **Trials:** Short-term offers that begin when you activate a particular service.
 
 > **Warning:** Some AWS services are not covered by the Free Tier. Always check the [Free Tier usage tracking page](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html) in the AWS Billing console to monitor your usage and avoid unexpected charges.
 
@@ -172,17 +172,17 @@ Expected output:
 
 ### Shared Responsibility Model
 
-The [AWS Shared Responsibility Model](https://docs.aws.amazon.com/whitepapers/latest/aws-risk-and-compliance/shared-responsibility-model.html) defines the division of security and compliance responsibilities between AWS and the customer. Understanding this model is critical for securing your workloads on AWS.
+The [AWS Shared Responsibility Model](https://docs.aws.amazon.com/whitepapers/latest/aws-risk-and-compliance/shared-responsibility-model.html) draws a clear line between what AWS secures and what you must secure. Getting this boundary wrong is one of the most common causes of cloud security incidents, so understanding it now will save you trouble in every module that follows.
 
-The [Security Pillar of the AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/shared-responsibility.html) summarizes the model as: security "of" the cloud versus security "in" the cloud.
+The [Security Pillar of the AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/shared-responsibility.html) frames the split as: AWS handles security "of" the cloud, while you handle security "in" the cloud.
 
 #### AWS Responsibility: Security "of" the Cloud
 
-AWS is responsible for protecting the infrastructure that runs all of the services offered in the AWS Cloud. This includes:
+AWS protects the infrastructure that runs every service in the AWS Cloud. This covers:
 
 - Physical security of data centers (facilities, power, cooling, environmental controls)
 - Hardware and networking infrastructure (servers, storage devices, networking equipment)
-- Virtualization layer (hypervisor)
+- The virtualization layer (hypervisor)
 - Managed service software (for services such as Amazon S3, Amazon DynamoDB, and AWS Lambda, AWS also manages the operating system and platform)
 
 #### Customer Responsibility: Security "in" the Cloud

@@ -24,16 +24,16 @@ By the end of this module, you will be able to:
 
 ### What Is Serverless Computing?
 
-Serverless computing is a cloud execution model where the cloud provider manages the infrastructure entirely. You write code, deploy it, and the provider handles provisioning, scaling, patching, and capacity planning. The term "serverless" does not mean there are no servers. It means you do not manage, provision, or see the servers that run your code.
+Serverless computing is a cloud execution model where the cloud provider manages the infrastructure entirely. You write code, deploy it, and the provider handles provisioning, scaling, patching, and capacity planning. The term "serverless" is a bit misleading: servers still exist, but they are invisible to you. You never SSH into them, patch them, or worry about their capacity.
 
-[AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) is the core serverless compute service on AWS. Lambda runs your code in response to events and automatically scales from zero to thousands of concurrent executions. You pay only for the compute time your code consumes, measured in milliseconds. When your function is not running, you pay nothing.
+[AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) is the core serverless compute service on AWS. You upload your code, and Lambda handles everything else: provisioning, scaling, patching, and capacity planning. Your function runs only when triggered by an event, and you pay only for the milliseconds of compute time consumed. When nothing is happening, you pay nothing.
 
 Key characteristics of serverless computing:
 
-- **No server management.** You do not provision, patch, or maintain any servers. AWS handles the underlying compute infrastructure.
-- **Pay-per-invocation pricing.** You are charged based on the number of requests and the duration of each execution. There is no charge for idle time.
-- **Automatic scaling.** Lambda scales horizontally by running additional instances of your function in response to incoming events. Each instance handles one request at a time (by default).
-- **Event-driven execution.** Lambda functions run in response to events from other AWS services, HTTP requests, or custom triggers. Functions are not long-running processes.
+- **No server management.** You never provision, patch, or maintain servers. AWS handles the compute infrastructure behind the scenes.
+- **Pay-per-invocation pricing.** Charges are based on request count and execution duration. Idle time costs nothing, which is a significant shift from the always-on EC2 model you learned in Module 04.
+- **Automatic scaling.** Lambda spins up additional instances of your function as events arrive. Each instance handles one request at a time (by default), and Lambda can run thousands concurrently.
+- **Event-driven execution.** Functions run only when triggered. They are not long-running daemons waiting for work.
 
 Serverless is well suited for workloads that are event-driven, have variable traffic, or run for short durations. Examples include processing file uploads, handling API requests, transforming data streams, and running scheduled tasks.
 
@@ -119,7 +119,7 @@ This pattern is called connection reuse. It reduces latency on subsequent invoca
 
 ### Supported Runtimes
 
-Lambda provides [managed runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) for several programming languages. A runtime provides the language-specific environment that executes your function code. Lambda maintains these runtimes, applying security patches and updates automatically.
+Lambda provides [managed runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) for several programming languages. A runtime is the language-specific environment that executes your handler code. AWS maintains these runtimes and applies security patches automatically, so you do not need to track CVEs for the underlying platform.
 
 #### Managed Runtime Options
 
@@ -435,7 +435,7 @@ CMD ["lambda_function.lambda_handler"]
 
 ### API Gateway and Lambda: Building REST APIs
 
-[Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html) is a fully managed service for creating, publishing, and managing APIs at any scale. When combined with Lambda, API Gateway enables you to build serverless REST APIs with no infrastructure to manage. API Gateway handles request routing, authentication, throttling, and response formatting. Lambda handles the business logic.
+[Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html) handles the plumbing of building, deploying, and operating APIs. It manages request routing, authentication, throttling, and response formatting so your Lambda functions can focus purely on business logic. Together, API Gateway and Lambda let you run a production API without provisioning a single server.
 
 #### API Types
 

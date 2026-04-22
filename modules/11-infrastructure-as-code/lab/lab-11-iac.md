@@ -199,7 +199,7 @@ You should see eight resources (VPC, InternetGateway, AttachGateway, PublicSubne
 
 ### Step 2: Add Parameters and Update with a Change Set (Guided)
 
-In this step, you add [parameters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html) to your template so it can be reused across environments. You then update the stack using a [change set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html) to preview changes before applying them.
+In this step, you add [parameters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html) to your template so you can reuse it across environments without editing the YAML each time. You then update the running stack using a [change set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html), which lets you preview exactly what will change before committing.
 
 1. Update the template to add parameters for the environment name and VPC CIDR block. Replace the contents of `vpc-template.yaml`:
 
@@ -461,7 +461,7 @@ You should see the instance in the `running` state with a public IP address.
 
 ### Step 4: Add Outputs for Cross-Stack Reference (Guided)
 
-In this step, you add [outputs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html) to your template that export the VPC ID and subnet IDs. Other stacks can import these values using `Fn::ImportValue`, enabling a layered architecture where a network stack provides infrastructure for application stacks.
+In this step, you add [outputs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html) to your template that expose the VPC ID and subnet IDs for consumption by other stacks. This pattern, where a "network stack" exports identifiers and an "application stack" imports them via `Fn::ImportValue`, is how teams share infrastructure across independently managed stacks.
 
 1. Add the following `Outputs` section to the bottom of your `vpc-template.yaml` file (after the `Resources` section):
 
@@ -634,7 +634,7 @@ Write your `template.yaml` and `src/app.py` files, then proceed to Step 6 to bui
 
 ### Step 6: Test Locally and Deploy the SAM Application (Guided)
 
-In this step, you build the SAM application, test the Lambda function locally using `sam local invoke`, and deploy the application to AWS using `sam deploy --guided`.
+In this step, you build the SAM application, test the Lambda function locally using `sam local invoke`, and deploy to AWS using `sam deploy --guided`. This workflow mirrors what a CI/CD pipeline does automatically (Module 12), but here you run each step manually to understand what happens at each stage.
 
 1. Navigate to the SAM project directory:
 

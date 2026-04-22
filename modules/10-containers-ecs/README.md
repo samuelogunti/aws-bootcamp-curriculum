@@ -114,7 +114,7 @@ a1b2c3d4e5f6   my-web-app:1.0   "node server.js"  Up 10 seconds   0.0.0.0:8080->
 
 ### Amazon ECR: Storing and Managing Container Images
 
-[Amazon Elastic Container Registry (Amazon ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) is a fully managed container image registry that stores, manages, and deploys container images. ECR integrates with Amazon ECS, Amazon EKS, and AWS Lambda, so your container orchestration services can pull images directly from ECR without additional authentication configuration.
+[Amazon Elastic Container Registry (Amazon ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) is where you store your container images on AWS. It integrates directly with ECS, EKS, and Lambda, so your orchestration services can pull images without extra authentication steps. Think of ECR as a private Docker Hub that lives inside your AWS account.
 
 Each AWS account gets a default private registry in each Region. Within a registry, you organize images into repositories. A repository holds multiple versions of a related image, identified by tags (such as `latest`, `v1.0`, or a Git commit hash).
 
@@ -150,7 +150,7 @@ Lifecycle policy rules evaluate images based on:
 
 ### ECS Concepts: Clusters, Task Definitions, Services, and Tasks
 
-[Amazon Elastic Container Service (Amazon ECS)](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) is a fully managed container orchestration service. ECS runs your containers, monitors their health, replaces failed containers, and scales capacity up or down based on demand. You define what to run (task definitions), where to run it (clusters), and how to keep it running (services).
+[Amazon Elastic Container Service (Amazon ECS)](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) orchestrates your containers so you do not have to. It launches containers, monitors their health, replaces failures, and scales capacity based on demand. You tell ECS what to run (task definitions), where to run it (clusters), and how many copies to keep alive (services), and it handles the rest.
 
 #### Clusters
 

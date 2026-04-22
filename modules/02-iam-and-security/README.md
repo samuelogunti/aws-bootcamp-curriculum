@@ -21,7 +21,7 @@ By the end of this module, you will be able to:
 
 ### IAM Overview: Authentication vs. Authorization
 
-[AWS Identity and Access Management (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) is the service you use to control who can access your AWS account and what they can do once they are in. IAM addresses two fundamental security questions:
+[AWS Identity and Access Management (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) is the service you use to control who can sign in to your AWS account and what actions they can perform once authenticated. IAM answers two fundamental security questions:
 
 1. **Authentication:** Who are you? Authentication is the process of verifying identity. When you sign in to the AWS Management Console with a username and password, or when an application presents an access key to the AWS API, IAM authenticates the request by confirming the credentials are valid.
 
@@ -81,13 +81,13 @@ A [policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html
 
 ### IAM Roles: When and Why to Use Them
 
-An [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is an identity with specific permissions, but unlike a user, a role does not have permanent credentials (no password, no access keys). Instead, when an entity assumes a role, AWS Security Token Service (STS) provides temporary security credentials that expire after a configurable duration.
+An [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is an identity with specific permissions that does not carry permanent credentials (no password, no access keys). When an entity assumes a role, AWS Security Token Service (STS) issues temporary security credentials that expire after a configurable duration.
 
-Roles solve a critical security problem: they eliminate the need for long-lived credentials. Instead of embedding access keys in an application or sharing credentials between accounts, you grant temporary access through role assumption.
+Roles solve a critical security problem: they eliminate long-lived secrets. Instead of embedding access keys in an application or sharing credentials between accounts, you grant short-lived access through role assumption.
 
 #### Service Roles
 
-A service role allows an AWS service to perform actions on your behalf. For example, if you want an Amazon EC2 instance to read objects from an Amazon S3 bucket, you create a role with S3 read permissions and attach it to the EC2 instance as an [instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html). The EC2 instance automatically receives temporary credentials and can access S3 without any access keys stored on the instance.
+A service role allows an AWS service to act on your behalf. For example, if an Amazon EC2 instance needs to read objects from an Amazon S3 bucket, you create a role with S3 read permissions and attach it to the instance as an [instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html). The instance then receives temporary credentials automatically, with no access keys stored on disk.
 
 Common service role scenarios:
 
@@ -166,7 +166,7 @@ This means that if you have one policy that allows `s3:GetObject` and another th
 
 ### AWS Organizations and Service Control Policies
 
-As your cloud usage grows, you may need multiple AWS accounts to separate workloads, teams, or environments. [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html) is a service that lets you centrally manage and govern multiple AWS accounts.
+As your cloud usage grows, you may need multiple AWS accounts to separate workloads, teams, or environments. [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html) lets you centrally manage and govern multiple AWS accounts from a single place. Think of it as the control plane for your entire cloud estate.
 
 #### Key Concepts
 
@@ -176,7 +176,7 @@ As your cloud usage grows, you may need multiple AWS accounts to separate worklo
 
 #### Service Control Policies (SCPs)
 
-[Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html) act as guardrails for your organization. An SCP does not grant permissions; it sets the upper boundary of what permissions are possible. Even if an IAM policy in a member account allows an action, the action is denied if an SCP does not also allow it.
+[Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html) act as guardrails for your organization. An SCP does not grant permissions; it sets the ceiling on what permissions are possible. Even if an IAM policy in a member account explicitly allows an action, the action is blocked if the SCP does not also permit it.
 
 For example, you might attach an SCP to your "Production" OU that prevents anyone from deleting Amazon S3 buckets or disabling AWS CloudTrail logging, regardless of their IAM permissions within the account.
 
@@ -222,7 +222,7 @@ The root user has unrestricted access to everything in your AWS account. Follow 
 
 #### Enable Multi-Factor Authentication (MFA)
 
-[Multi-Factor Authentication (MFA)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html) adds a second layer of security beyond a password. When MFA is enabled, a user must provide both their password and a time-based code from an MFA device to sign in.
+[Multi-Factor Authentication (MFA)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html) adds a second verification step beyond a password. With MFA enabled, a user must present both their password and a time-based code from a registered device before gaining access.
 
 AWS supports several [MFA device types](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html):
 

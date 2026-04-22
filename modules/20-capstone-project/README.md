@@ -19,7 +19,7 @@ By the end of this module, you will be able to:
 - Git installed and configured for version control
 - Docker installed (if using containerized workloads)
 
-This capstone project synthesizes knowledge from every module in the bootcamp. You will apply concepts from cloud fundamentals, IAM, networking, compute, storage, databases, load balancing, messaging, serverless, containers, infrastructure as code, CI/CD, security, monitoring, cost optimization, reliability, the Well-Architected Framework, architecture patterns, and advanced topics.
+This capstone project pulls together everything you have learned across all 19 modules. You will apply concepts from cloud fundamentals, IAM, networking, compute, storage, databases, load balancing, messaging, serverless, containers, infrastructure as code, CI/CD, security, monitoring, cost optimization, reliability, the Well-Architected Framework, architecture patterns, and advanced topics into a single working application.
 
 ## Project Requirements
 

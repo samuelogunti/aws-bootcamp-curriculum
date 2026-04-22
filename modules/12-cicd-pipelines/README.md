@@ -111,9 +111,9 @@ When the source stage runs, it downloads the repository contents and packages th
 
 ### AWS CodeBuild: Compiling, Testing, and Packaging Your Code
 
-[AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html) is a fully managed build service that compiles source code, runs tests, and produces deployment-ready artifacts. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It scales automatically to handle multiple builds concurrently, so your team never waits in a build queue.
+[AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html) handles the "build and test" phase without requiring you to maintain build servers. You give it a buildspec file describing what to do, and CodeBuild spins up a fresh container, runs your commands, and tears down the environment when finished. You pay only for the minutes your builds consume, and it scales horizontally to handle concurrent builds without queuing.
 
-CodeBuild works by spinning up a temporary build environment (a Docker container), downloading your source code, executing the commands you define, and uploading the resulting artifacts. When the build finishes, the environment is destroyed. You pay only for the build minutes you consume.
+CodeBuild operates on a disposable-environment model: it launches a Docker container, pulls your source code, executes the commands in your buildspec, uploads the resulting artifacts, and destroys the container. Since each build starts clean, you avoid "works on my machine" problems caused by leftover state from previous builds.
 
 #### The buildspec.yml File
 
@@ -193,7 +193,7 @@ CodeBuild supports caching to speed up subsequent builds. The `cache` section in
 
 ### AWS CodeDeploy: Automating Application Deployments
 
-[AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html) automates application deployments to Amazon EC2 instances, AWS Lambda functions, and Amazon ECS services. CodeDeploy handles the complexity of updating your application across a fleet of instances or containers while minimizing downtime and providing automatic rollback if something goes wrong.
+[AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html) takes your build artifacts and rolls them out to EC2 instances, Lambda functions, or ECS services. It coordinates the update sequence, monitors health checks during rollout, and can automatically roll back if something breaks, so you do not have to babysit deployments manually.
 
 #### Core Concepts
 
@@ -279,7 +279,7 @@ Built-in ECS deployment configurations:
 
 ### AWS CodePipeline: Orchestrating the Release Process
 
-[AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html) is a continuous delivery service that models, visualizes, and automates the steps required to release software. CodePipeline connects your source repository, build service, test tools, and deployment targets into a single automated workflow. When code changes are detected, CodePipeline executes each stage in sequence, passing artifacts from one stage to the next.
+[AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html) ties everything together. It orchestrates the flow from source to production by connecting your repository, build service, test tools, and deployment targets into a single automated workflow. When a code change lands, CodePipeline moves it through each stage sequentially, passing artifacts along the way.
 
 #### Pipeline Structure
 
@@ -467,13 +467,13 @@ For teams that build container images, the "artifact" is often a reference to an
 
 #### Package Dependencies with AWS CodeArtifact
 
-[AWS CodeArtifact](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html) is a managed artifact repository service for software packages. It works with popular package managers including npm (Node.js), pip (Python), Maven and Gradle (Java), and NuGet (.NET).
+[AWS CodeArtifact](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html) acts as a private package registry that sits between your builds and public registries like npmjs.com or PyPI. It caches packages locally so your builds do not break when a public registry goes down, and it gives you a control point to block vulnerable or unapproved packages.
 
-CodeArtifact solves several problems in a CI/CD workflow:
+CodeArtifact addresses three pain points in CI/CD workflows:
 
-- **Dependency availability.** Public package registries (npmjs.com, PyPI) can experience outages. CodeArtifact caches packages from upstream registries, so your builds continue even if the public registry is unavailable.
-- **Security control.** CodeArtifact lets you control which packages your team can use. You can configure upstream repositories to allow only approved packages and block known-vulnerable versions.
-- **Private packages.** Teams that publish internal libraries can host them in CodeArtifact alongside public dependencies, using a single package manager configuration.
+- **Dependency availability.** If npmjs.com or PyPI goes down during your build, CodeArtifact serves packages from its local cache so builds keep running.
+- **Security control.** You can restrict which packages your team can pull, blocking known-vulnerable versions before they enter your codebase.
+- **Private packages.** Internal libraries live alongside public dependencies in one registry, so developers use a single package manager configuration.
 
 To configure npm to use CodeArtifact in a CodeBuild buildspec:
 

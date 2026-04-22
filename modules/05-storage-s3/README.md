@@ -22,13 +22,13 @@ By the end of this module, you will be able to:
 
 ### S3 Overview: Object Storage Fundamentals
 
-[Amazon Simple Storage Service (Amazon S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) is an object storage service that offers virtually unlimited storage capacity with 99.999999999% (eleven nines) durability. Unlike block storage (Amazon EBS) that you learned about in Module 04, object storage treats each file as a single, self-contained unit called an object. You do not format or mount object storage as a file system. Instead, you interact with objects through the S3 API, the AWS Management Console, or the AWS CLI.
+[Amazon Simple Storage Service (Amazon S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) stores data as objects in buckets, with virtually unlimited capacity and 99.999999999% (eleven nines) durability. Unlike block storage (Amazon EBS from Module 04), you do not format or mount S3 as a file system. Instead, you interact with objects through the S3 API, the AWS Management Console, or the AWS CLI.
 
-S3 is designed for a wide range of use cases: backup and restore, data archiving, content distribution, data lakes for analytics, and hosting static websites. You pay only for the storage you use, with no minimum commitment and no upfront cost.
+S3 fits a wide range of use cases: backup and restore, data archiving, content distribution, data lakes for analytics, and hosting static websites. You pay only for the storage you consume, with no minimum commitment.
 
 #### Buckets
 
-A [bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html) is a container for objects stored in Amazon S3. Every object is stored in a bucket. Bucket names are globally unique across all AWS accounts and all Regions. Once you create a bucket, no other AWS account can use the same name until you delete it.
+A [bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html) is a container for objects in Amazon S3. Every object lives inside a bucket. Bucket names are globally unique across all AWS accounts and all Regions, so once you claim a name, nobody else can use it until you delete the bucket.
 
 Key characteristics of buckets:
 
@@ -72,7 +72,7 @@ Individual objects can be up to 5 terabytes (TB) in size. For objects larger tha
 
 ### Storage Classes
 
-Amazon S3 offers multiple [storage classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) designed for different access patterns and cost requirements. Each storage class provides the same eleven-nines durability, but they differ in availability, retrieval time, and cost. Choosing the right storage class for your data is one of the most effective ways to optimize your AWS spending.
+Amazon S3 offers multiple [storage classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) optimized for different access patterns and cost requirements. All classes deliver the same eleven-nines durability, but they differ in availability, retrieval speed, and price. Picking the right class for each dataset is one of the simplest ways to cut your AWS bill.
 
 #### Storage Class Comparison
 
@@ -88,9 +88,9 @@ Amazon S3 offers multiple [storage classes](https://docs.aws.amazon.com/AmazonS3
 
 #### S3 Intelligent-Tiering
 
-[S3 Intelligent-Tiering](https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering.html) is unique because it automatically moves objects between access tiers based on usage patterns. It monitors access and moves objects that have not been accessed for 30 consecutive days to an infrequent access tier, and objects not accessed for 90 days to an archive instant access tier. When an object is accessed again, it moves back to the frequent access tier. There are no retrieval fees, but there is a small monthly monitoring and automation fee per object.
+[S3 Intelligent-Tiering](https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering.html) is unique because it monitors access patterns and moves objects between tiers automatically. Objects untouched for 30 days shift to an infrequent access tier; after 90 days, they move to an archive instant access tier. When accessed again, they return to the frequent access tier. There are no retrieval fees, just a small monthly monitoring charge per object.
 
-Intelligent-Tiering is a good default choice when you do not know the access pattern of your data in advance.
+Intelligent-Tiering works well as a default when you cannot predict how often data will be accessed.
 
 #### Choosing a Storage Class
 
@@ -106,7 +106,7 @@ Start with these guidelines:
 
 ### Versioning
 
-[S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html) lets you keep multiple versions of an object in the same bucket. When versioning is enabled, S3 assigns a unique version ID to every object stored in the bucket. If you upload an object with the same key as an existing object, S3 stores both versions rather than overwriting the original. This protects you from accidental deletions and overwrites.
+[S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html) keeps multiple copies of an object in the same bucket. When versioning is enabled, uploading an object with an existing key creates a new version rather than overwriting the original. This protects you from accidental deletions and overwrites, which is why you should enable it on any bucket storing data you cannot afford to lose.
 
 #### How Versioning Works
 
@@ -160,7 +160,7 @@ Only the bucket owner (the root account) can enable MFA delete. This prevents ev
 
 ### Lifecycle Policies
 
-[S3 Lifecycle policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html) let you define rules that automatically transition objects between storage classes or expire (delete) objects after a specified period. Lifecycle policies are the primary tool for automating storage cost optimization in S3.
+[S3 Lifecycle policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html) let you define rules that automatically move objects between storage classes or delete them after a specified period. They are your primary tool for automating storage cost optimization without manual intervention.
 
 #### Lifecycle Actions
 
@@ -274,9 +274,9 @@ As of April 2023, new S3 buckets have the [Bucket owner enforced](https://docs.a
 
 #### Block Public Access
 
-[S3 Block Public Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html) is a set of four settings that override any bucket policy or ACL that would grant public access. These settings act as a safety net to prevent accidental public exposure of your data.
+[S3 Block Public Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html) is a set of four settings that override any bucket policy or ACL that would otherwise grant public access. Think of it as a safety net: even if someone accidentally attaches a permissive policy, Block Public Access prevents exposure.
 
-The four Block Public Access settings are:
+The four settings are:
 
 1. **BlockPublicAcls.** Rejects any PUT request that includes a public ACL.
 2. **IgnorePublicAcls.** Ignores all public ACLs on the bucket and its objects.
@@ -347,7 +347,7 @@ aws s3api put-bucket-encryption \
 
 ### S3 Static Website Hosting
 
-Amazon S3 can host [static websites](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html) directly from a bucket. A static website serves fixed content (HTML, CSS, JavaScript, images) without server-side processing. S3 static website hosting is a simple, low-cost way to host landing pages, documentation sites, single-page applications, and other content that does not require a backend server.
+Amazon S3 can host [static websites](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html) directly from a bucket. A static website serves fixed content (HTML, CSS, JavaScript, images) without any server-side processing. This is a simple, low-cost option for landing pages, documentation sites, and single-page applications that do not need a backend server.
 
 #### Configuration
 
@@ -390,7 +390,7 @@ Amazon S3 provides features for managing data across geographic locations and op
 
 #### Cross-Region Replication (CRR)
 
-[S3 Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html) enables automatic, asynchronous copying of objects across S3 buckets. Cross-Region Replication (CRR) copies objects from a source bucket in one AWS Region to a destination bucket in a different Region. Same-Region Replication (SRR) copies objects between buckets in the same Region.
+[S3 Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html) automatically copies objects from one bucket to another, either across Regions (Cross-Region Replication, CRR) or within the same Region (Same-Region Replication, SRR). This runs asynchronously in the background.
 
 Common use cases for CRR include:
 
@@ -402,9 +402,7 @@ CRR requires versioning to be enabled on both the source and destination buckets
 
 #### Transfer Acceleration
 
-[S3 Transfer Acceleration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html) speeds up uploads to S3 by routing data through Amazon CloudFront edge locations. Instead of uploading directly to the S3 bucket over the public internet, your data travels to the nearest edge location and then moves to the S3 bucket over the optimized AWS backbone network.
-
-Transfer Acceleration is most effective when uploading data over long geographic distances (for example, from Asia to a bucket in `us-east-1`). It has no effect on downloads.
+[S3 Transfer Acceleration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html) speeds up uploads by routing data through the nearest CloudFront edge location, then moving it to the S3 bucket over the optimized AWS backbone network. This is most useful when uploading over long geographic distances (for example, from Asia to a bucket in `us-east-1`). It does not affect downloads.
 
 To use Transfer Acceleration, you enable it on the bucket and then use the accelerate endpoint for uploads:
 

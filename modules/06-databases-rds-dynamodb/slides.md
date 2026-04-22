@@ -319,7 +319,7 @@ Scenario B: A real-time gaming leaderboard that handles 50,000 reads per second 
 
 - Amazon RDS is a managed relational database handling provisioning, patching, backups, and failover. Use it for complex SQL queries, transactions, and reporting.
 - RDS Multi-AZ provides high availability with automatic failover. Read replicas provide read scaling and can span Regions for disaster recovery.
-- Amazon DynamoDB is a fully managed, serverless NoSQL database with single-digit millisecond performance. Design your table schema around access patterns.
+- Amazon DynamoDB is a serverless NoSQL database with single-digit millisecond response times at any table size. Design your table schema around access patterns.
 - Always place RDS in private subnets, enable encryption, and use IAM authentication. For DynamoDB, use VPC endpoints to keep traffic off the public internet.
 - Use the SQL vs. NoSQL decision framework to choose the right database. Many architectures use both RDS and DynamoDB together.
 

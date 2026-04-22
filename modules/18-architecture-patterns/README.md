@@ -27,7 +27,7 @@ By the end of this module, you will be able to:
 
 ### Monolith vs. Microservices: When to Split
 
-A monolithic architecture packages all application functionality into a single deployable unit. A microservices architecture decomposes the application into small, independently deployable services, each owning its own data and communicating through APIs or events.
+A monolithic architecture packages all functionality into a single deployable unit. A microservices architecture breaks the application into small, independently deployable services that own their own data and communicate through APIs or events. The table below highlights the key differences:
 
 | Characteristic | Monolith | Microservices |
 |---------------|----------|---------------|
@@ -38,7 +38,7 @@ A monolithic architecture packages all application functionality into a single d
 | Complexity | Simple to develop and deploy initially; complexity grows over time | Complex from the start (networking, service discovery, distributed tracing); complexity is distributed |
 | Failure isolation | A bug in one component can crash the entire application | A failure in one service does not necessarily affect others (if resilience patterns are applied) |
 
-The decision to use microservices should be driven by organizational and operational needs, not by technology trends. Start with a monolith (or a modular monolith) when your team is small, your domain is not well understood, and you need to move fast. Decompose into microservices when you have multiple teams that need to deploy independently, when specific components have different scaling requirements, or when you need to use different technologies for different components.
+The decision to adopt microservices should come from organizational and operational needs, not from hype. Start with a monolith (or a modular monolith) when your team is small, your domain boundaries are unclear, and speed of iteration matters most. Decompose into microservices when multiple teams need independent deployment cadences, when specific components have wildly different scaling profiles, or when you need different technology stacks for different components.
 
 > **Tip:** The [Implementing Microservices on AWS](https://docs.aws.amazon.com/whitepapers/latest/microservices-on-aws/simple-microservices-architecture-on-aws.html) whitepaper provides detailed guidance on building microservices architectures using AWS services. Read it before deciding to decompose a monolith.
 
@@ -76,7 +76,7 @@ You built each of these components in previous modules. This pattern combines th
 
 ### Pattern 2: Serverless API
 
-The serverless API pattern eliminates server management entirely. API Gateway handles HTTP routing, Lambda executes business logic, and DynamoDB stores data. All three services scale automatically and charge per request.
+The serverless API pattern removes server management from the equation entirely. API Gateway routes HTTP requests, Lambda runs your business logic, and DynamoDB stores your data. All three scale on demand and bill per request, so you pay nothing when traffic drops to zero.
 
 ```
 Client (browser, mobile app)
@@ -108,7 +108,7 @@ Optimizations for production:
 
 ### Pattern 3: Event-Driven Architecture
 
-Event-driven architecture decouples services by communicating through events rather than direct API calls. When something happens in one service (an order is placed, a file is uploaded, a user signs up), it publishes an event. Other services subscribe to events they care about and react independently.
+Event-driven architecture flips the communication model: instead of Service A calling Service B directly, Service A announces "something happened" and walks away. Other services pick up that announcement and react on their own schedule. This decoupling is what you built with SQS and SNS in [Module 08](../08-messaging-and-integration/README.md), and it scales to entire system architectures.
 
 ```
 Producer Service                    Consumer Services
@@ -148,7 +148,7 @@ The [decision guide](https://docs.aws.amazon.com/decision-guides/latest/sns-or-s
 
 ### Pattern 4: Static Website with Dynamic API Backend
 
-This pattern separates the frontend (static HTML, CSS, JavaScript) from the backend (API). The frontend is hosted on S3 and served through CloudFront for global low-latency delivery. The backend is a serverless API (API Gateway + Lambda + DynamoDB) that the frontend calls via AJAX/fetch requests.
+This pattern splits your frontend (static HTML, CSS, JavaScript) from your backend (API). The frontend lives in S3 and reaches users through CloudFront's global edge network. The backend is a serverless API that the frontend calls via fetch requests. You get global performance for pennies, independent scaling, and independent deployments.
 
 ```
 Users (browser)
@@ -177,7 +177,7 @@ You built the S3 static website hosting in [Module 05](../05-storage-s3/README.m
 
 ### Pattern 5: Data Processing Pipeline
 
-Data processing pipelines ingest, transform, and store data for analytics or downstream consumption. On AWS, these pipelines are typically event-driven: a file upload to S3 triggers processing, which stores results in a database or data lake.
+Data processing pipelines take raw data, transform it, and store the results for analytics or downstream use. On AWS, these pipelines are typically triggered by events: a file lands in S3, which kicks off a processing chain.
 
 ```
 Data Source
@@ -203,7 +203,7 @@ For larger-scale pipelines, replace Lambda with AWS Glue (managed ETL), Amazon K
 
 ### Pattern 6: CQRS (Command Query Responsibility Segregation)
 
-CQRS separates the read model (optimized for queries) from the write model (optimized for commands/updates). Instead of a single database handling both reads and writes, you use different data stores or different views of the same data for each purpose.
+CQRS separates your read model (optimized for queries) from your write model (optimized for updates). Instead of one database handling both workloads, you maintain different data representations for each purpose. This is powerful when read and write patterns diverge significantly, but it adds complexity you should not take on lightly.
 
 ```
 Write Path (Commands)                Read Path (Queries)
@@ -233,7 +233,7 @@ CQRS adds complexity (eventual consistency between read and write models, additi
 
 ### Pattern 7: Strangler Fig Migration
 
-The [strangler fig pattern](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/strangler-fig.html) is a migration strategy for incrementally replacing a monolithic application with microservices. Instead of rewriting the entire application at once (risky and time-consuming), you gradually route traffic from the monolith to new microservices, one feature at a time.
+The [strangler fig pattern](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/strangler-fig.html) lets you migrate from a monolith to microservices incrementally, one feature at a time. Rather than a risky "big bang" rewrite, you route specific URL paths to new services while the monolith continues handling everything else. Over time, the monolith shrinks until you can retire it.
 
 ```
 Phase 1: All traffic goes to the monolith

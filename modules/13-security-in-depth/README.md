@@ -46,7 +46,7 @@ In [Module 02](../02-iam-and-security/README.md), you learned about IAM policies
 
 ### AWS KMS: Managing Encryption Keys
 
-[AWS Key Management Service (AWS KMS)](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html) is a managed service that creates and controls the cryptographic keys used to encrypt your data. Most AWS services that support encryption (S3, EBS, RDS, DynamoDB, Lambda, and many others) integrate with KMS, allowing you to encrypt data with a single configuration change.
+[AWS Key Management Service (AWS KMS)](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html) gives you centralized control over the cryptographic keys that protect your data. Nearly every AWS service that supports encryption (S3, EBS, RDS, DynamoDB, Lambda, and many others) can delegate key management to KMS, so you configure encryption once and the service handles the rest.
 
 #### Key Types
 
@@ -93,7 +93,7 @@ Applications need credentials, API keys, database passwords, and other sensitive
 
 #### AWS Secrets Manager
 
-[AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) is purpose-built for managing secrets. It stores, retrieves, and automatically rotates credentials for databases, API keys, and other sensitive data. Secrets Manager encrypts secrets at rest using KMS and controls access through IAM policies and resource-based policies.
+[AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) solves the "where do I put my passwords" problem. It stores credentials, API keys, and other sensitive values in an encrypted vault, controls access through IAM, and (critically) can rotate database passwords on a schedule without any application downtime.
 
 Key capabilities:
 
@@ -123,7 +123,7 @@ Parameter Store is simpler and less expensive than Secrets Manager, but it does 
 
 ### AWS WAF: Protecting Web Applications
 
-[AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html) is a web application firewall that monitors HTTP and HTTPS requests forwarded to your protected resources. You can use WAF to protect Amazon CloudFront distributions, Application Load Balancers, Amazon API Gateway REST APIs, and AWS AppSync GraphQL APIs.
+[AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html) inspects HTTP and HTTPS traffic heading to your CloudFront distributions, Application Load Balancers, API Gateway REST APIs, or AppSync GraphQL APIs. Think of it as a bouncer that reads every incoming request and decides whether to let it through based on rules you define.
 
 WAF evaluates incoming requests against a set of rules you define. Each rule inspects a specific aspect of the request (IP address, headers, body, URI, query string) and takes an action: allow, block, count, or CAPTCHA.
 
@@ -152,7 +152,7 @@ Rate-based rules automatically block IP addresses that exceed a request threshol
 
 ### AWS Shield: DDoS Protection
 
-[AWS Shield](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html) provides protection against Distributed Denial of Service (DDoS) attacks. DDoS attacks attempt to make your application unavailable by overwhelming it with traffic from multiple sources.
+[AWS Shield](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html) defends your applications against Distributed Denial of Service (DDoS) attacks, which attempt to knock your service offline by flooding it with traffic from many sources simultaneously.
 
 #### Shield Standard vs. Shield Advanced
 
@@ -174,7 +174,7 @@ Shield Advanced adds application-layer (Layer 7) protection, which detects and m
 
 ### AWS CloudTrail: Auditing API Activity
 
-[AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html) records API calls made in your AWS account. Every time someone (a user, role, or AWS service) calls an AWS API, CloudTrail captures the event: who made the call, what action was performed, which resources were affected, when it happened, and from which IP address.
+[AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html) keeps a detailed log of every API call in your account. Whenever a user, role, or service interacts with AWS (creating a bucket, launching an instance, changing a policy), CloudTrail captures who did it, what they did, which resources were affected, when it happened, and from which IP address.
 
 #### Event Types
 
@@ -204,7 +204,7 @@ ORDER BY eventTime DESC
 
 ### Amazon GuardDuty: Intelligent Threat Detection
 
-[Amazon GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html) is a threat detection service that continuously monitors your AWS accounts and workloads for malicious activity. GuardDuty analyzes multiple data sources (CloudTrail management events, VPC Flow Logs, DNS logs, and optionally S3 data events, EKS audit logs, and RDS login activity) using machine learning, anomaly detection, and integrated threat intelligence.
+[Amazon GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html) acts as an always-on security analyst for your AWS accounts. It ingests data from CloudTrail management events, VPC Flow Logs, DNS logs, and optionally S3 data events, EKS audit logs, and RDS login activity, then applies machine learning and threat intelligence to surface suspicious behavior without requiring you to write detection rules.
 
 When GuardDuty detects suspicious activity, it generates a finding. Each finding includes:
 
@@ -228,7 +228,7 @@ GuardDuty requires no infrastructure to deploy. You enable it with a single clic
 
 ### AWS Config: Resource Compliance and Configuration History
 
-[AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html) continuously monitors and records the configuration of your AWS resources. It evaluates resource configurations against rules you define and reports whether each resource is compliant or non-compliant.
+[AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html) tracks the configuration state of your resources over time and evaluates them against compliance rules. While CloudTrail tells you who did what, Config tells you what the resource looked like before and after, and whether its current state meets your organization's standards.
 
 #### Config Rules
 
@@ -257,7 +257,7 @@ Config supports [automatic remediation](https://docs.aws.amazon.com/config/lates
 
 ### AWS Security Hub: Centralized Security View
 
-[AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub-v2.html) aggregates security findings from multiple AWS services (GuardDuty, Inspector, Macie, Config, Firewall Manager, IAM Access Analyzer) and third-party tools into a single dashboard. It normalizes findings into a standard format called the [AWS Security Finding Format (ASFF)](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html), making it easier to prioritize and act on security issues across your entire AWS environment.
+[AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub-v2.html) pulls security findings from GuardDuty, Inspector, Macie, Config, Firewall Manager, IAM Access Analyzer, and third-party tools into one dashboard. It normalizes everything into the [AWS Security Finding Format (ASFF)](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html), so you can prioritize issues across your entire environment without switching between consoles.
 
 Security Hub also runs automated compliance checks against industry standards:
 
