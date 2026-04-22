@@ -437,3 +437,9 @@ Extend this lab by implementing the following:
 3. Set up a CloudWatch Logs subscription filter that streams all ERROR-level log entries to a Lambda function, which then sends a notification to an SNS topic. This creates a real-time error notification pipeline.
 
 These challenges combine monitoring concepts with Lambda, SNS, and alarm configuration from previous modules.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

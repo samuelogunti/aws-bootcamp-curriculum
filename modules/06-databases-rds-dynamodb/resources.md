@@ -80,3 +80,9 @@ Module 06 focuses on Amazon RDS and DynamoDB fundamentals using the service-spec
 ## AWS Architecture References
 
 No specific architecture references for this module. Amazon RDS and DynamoDB are foundational database services that appear in most AWS reference architectures. Students will work with database-backed architecture patterns in later modules when they build serverless applications (Module 09), implement infrastructure as code (Module 11), and design multi-tier architectures (Module 18).
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

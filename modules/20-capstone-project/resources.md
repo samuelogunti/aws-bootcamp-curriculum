@@ -50,3 +50,9 @@
 - [AWS Solutions Library](https://aws.amazon.com/solutions/)
 - [Serverless Patterns Collection](https://serverlessland.com/patterns)
 - [AWS Well-Architected Labs](https://www.wellarchitectedlabs.com/)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

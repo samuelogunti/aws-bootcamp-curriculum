@@ -34,3 +34,9 @@
 - [AWS Architecture Center](https://aws.amazon.com/architecture/)
 - [AWS Security Reference Architecture](https://docs.aws.amazon.com/prescriptive-guidance/latest/security-reference-architecture/welcome.html)
 - [Cloud Design Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/introduction.html)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

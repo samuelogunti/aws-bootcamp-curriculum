@@ -267,3 +267,9 @@ Using only the AWS Management Console and concepts from Module 01, complete the 
 This exercise demonstrates the [principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html): granting users only the permissions they need. You will explore IAM policies in depth in Module 02.
 
 > **Tip:** Remember to delete the `bootcamp-readonly` user after completing the challenge to keep your account clean.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

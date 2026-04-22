@@ -17,3 +17,9 @@
    Further reading: [What Is the Principle of Least Privilege? (Cloudflare Learning Center)](https://www.cloudflare.com/learning/access-management/principle-of-least-privilege/)
 
 </details>
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

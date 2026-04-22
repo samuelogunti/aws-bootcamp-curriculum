@@ -375,3 +375,9 @@ Secondary Region (us-west-2)
 - Route 53 Alias records are the preferred way to point domains to AWS resources. They are free for AWS resource queries, support the zone apex, and automatically track IP address changes.
 - Route 53 routing policies give you fine-grained control over traffic distribution: use weighted routing for gradual deployments, latency-based routing for multi-Region performance, and failover routing for disaster recovery.
 - SSL/TLS termination at the load balancer with ACM certificates simplifies certificate management and offloads encryption from your backend targets.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

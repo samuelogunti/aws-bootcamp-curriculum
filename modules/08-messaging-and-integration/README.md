@@ -508,3 +508,9 @@ For more details on choosing between these services, see the [AWS decision guide
 - Use SNS for fan-out scenarios where a single event needs to reach multiple subscribers, and combine SNS with SQS queues to add buffering and independent error handling for each consumer.
 - Use EventBridge for content-based event routing, reacting to AWS service events, and integrating with SaaS partner applications; its event pattern matching is more expressive than SNS filter policies.
 - Always configure dead-letter queues for production messaging workloads to capture failed messages, prevent poison messages from blocking processing, and provide visibility into failures through CloudWatch monitoring.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

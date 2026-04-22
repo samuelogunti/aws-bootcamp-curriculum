@@ -135,3 +135,9 @@ No files or directories were created during this lab. No cleanup is needed.
    Expected output: `404`
 
 3. Try `curl -s https://httpbin.org/headers` to see what HTTP headers your terminal sends with each request.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

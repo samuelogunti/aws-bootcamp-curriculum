@@ -908,3 +908,9 @@ Using only the AWS Management Console and concepts from Modules 01 through 07, c
 3. **Health check tuning:** Modify the health check settings on `lab07-target-group` to use a custom path `/health` instead of `/`. SSH into both instances and create a `/var/www/html/health/index.html` file that returns a simple "OK" message. Observe the health check behavior with the new path.
 
 > **Tip:** Remember to clean up any additional resources you create during the challenge (extra target groups, listener rules) to avoid charges.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

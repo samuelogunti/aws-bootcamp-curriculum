@@ -258,3 +258,9 @@ No cloud resources were created during this lab. No further cleanup is needed.
    echo "The cloud is powerful" > it-fundamentals-lab/practice/file1.txt
    grep "cloud" it-fundamentals-lab/practice/file1.txt
    ```
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

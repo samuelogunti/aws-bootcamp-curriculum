@@ -200,3 +200,9 @@ Lenses extend the Framework with additional questions and best practices for spe
 - Use the AWS Well-Architected Tool to conduct structured reviews, identify high-risk issues, and create improvement plans that you track over time.
 - The Framework is most valuable as a regular practice (quarterly or semi-annual reviews), not a one-time assessment at launch.
 - Well-Architected lenses extend the Framework with specialized guidance for serverless, SaaS, data analytics, and other workload types.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

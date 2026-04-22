@@ -47,3 +47,9 @@ Complete the modules in order. Each module builds on skills from the previous on
 6. [Module 06: Security Fundamentals](modules/06-security-fundamentals/README.md) (Module 02 recommended)
 
 After completing all 6 modules, proceed to [Module 01: Cloud Fundamentals](../modules/01-cloud-fundamentals/README.md) to begin the AWS Bootcamp.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

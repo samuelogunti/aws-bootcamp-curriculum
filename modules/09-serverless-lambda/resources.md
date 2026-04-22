@@ -97,3 +97,9 @@
 
 - [Serverless Applications Lens (AWS Well-Architected Framework)](https://docs.aws.amazon.com/wellarchitected/latest/serverless-applications-lens/welcome.html): Best practices for designing, deploying, and architecting serverless application workloads on AWS. Covers all six pillars of the Well-Architected Framework as they apply to serverless architectures.
 - [Integrating Microservices by Using AWS Serverless Services (Messaging)](https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-integrating-microservices/messaging.html): AWS Prescriptive Guidance on using Lambda with SQS, SNS, and EventBridge for asynchronous communication in microservices architectures. Extends the messaging patterns introduced in Module 08.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

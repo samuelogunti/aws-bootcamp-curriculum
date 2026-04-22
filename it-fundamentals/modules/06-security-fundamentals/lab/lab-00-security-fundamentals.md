@@ -226,3 +226,9 @@ No cloud resources were created during this lab. No further cleanup is needed.
 ## Challenge (Optional)
 
 Research what the numbers in `chmod 600` mean. Hint: 6 = read (4) + write (2) for the owner, 0 = no permissions for the group, and 0 = no permissions for others. Try `chmod 644 secret.txt` and compare the permissions with `ls -la`. What changed, and who can now read the file?
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

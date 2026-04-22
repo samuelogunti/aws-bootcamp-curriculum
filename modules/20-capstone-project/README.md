@@ -175,3 +175,9 @@ Use the [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchite
 - Infrastructure as code, CI/CD, monitoring, and security are not optional extras; they are core requirements that distinguish a production-ready application from a prototype.
 - Use the Well-Architected Framework as a self-assessment tool to evaluate your architecture critically and identify areas for improvement.
 - Document your trade-offs: every architecture involves compromises, and explaining why you made a specific choice is as important as the choice itself.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

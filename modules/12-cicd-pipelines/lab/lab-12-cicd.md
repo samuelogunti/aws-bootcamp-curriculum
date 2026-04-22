@@ -648,3 +648,9 @@ Extend your CI/CD pipeline with the following enhancements:
 2. **Implement a code change and observe the pipeline.** Modify the Lambda function in `hello_world/app.py` to return a different message (for example, "hello from CI/CD pipeline"). Update the integration test in `testspec.yml` to validate the new message. Re-zip and upload the source to S3. Watch the pipeline execute all stages and verify the deployed API returns the updated message. This demonstrates the full CI/CD feedback loop: change code, push, build, test, deploy, validate.
 
 3. **Add a linting step.** Install `flake8` in the buildspec install phase and add a linting command in the pre_build phase before the unit tests. Configure flake8 to check the `hello_world/` directory. If the linter finds issues, the build should fail before tests even run. This demonstrates the "fail fast" principle in CI/CD pipelines.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

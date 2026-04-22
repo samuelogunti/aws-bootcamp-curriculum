@@ -164,3 +164,9 @@ Extend this lab with the following advanced exercises:
 2. Design a multi-account architecture for the bootcamp application using AWS Organizations. Create an OU structure diagram, define SCPs for each OU, and write a CloudFormation StackSet template that deploys a baseline configuration (CloudTrail, Config, GuardDuty) to all member accounts.
 
 3. Build an Athena-based dashboard by creating a set of saved queries that answer key operational questions. Schedule a Lambda function to run these queries daily and publish the results to an SNS topic for the operations team.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

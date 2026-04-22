@@ -797,3 +797,9 @@ Using only concepts from Modules 01 through 05, complete the following:
 3. Upload a file using SSE-KMS encryption instead of the default SSE-S3. Use the AWS-managed KMS key (`aws/s3`) for simplicity. Compare the metadata of an SSE-S3 encrypted object and an SSE-KMS encrypted object using `aws s3api head-object`. Note the differences in the `ServerSideEncryption` and `SSEKMSKeyId` fields.
 
 > **Tip:** Remember to delete all resources created during the challenge (additional buckets, KMS-encrypted objects, logging configurations) to avoid charges.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

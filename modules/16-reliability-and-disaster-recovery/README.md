@@ -271,3 +271,9 @@ A chaos engineering experiment follows this process:
 - The four DR strategies (backup/restore, pilot light, warm standby, multi-site active-active) represent a spectrum of cost vs. recovery speed; choose based on your workload's business criticality and budget.
 - Apply resilience patterns (retry with backoff, circuit breaker, bulkhead, timeout) in distributed applications to prevent cascading failures when individual components fail.
 - Test your reliability assumptions through chaos engineering; a disaster recovery plan that has never been tested is a plan that may not work when you need it.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

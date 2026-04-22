@@ -77,3 +77,9 @@ Module 05 focuses on Amazon S3 storage fundamentals using the Amazon S3 User Gui
 ## AWS Architecture References
 
 No specific architecture references for this module. Amazon S3 is a foundational storage service that appears in nearly every AWS reference architecture. Students will work with S3-based architecture patterns in later modules when they build serverless applications (Module 09), implement infrastructure as code (Module 11), and design multi-tier architectures (Module 18).
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

@@ -37,3 +37,9 @@
 
 - [AWS Architecture Center: Disaster Recovery](https://aws.amazon.com/architecture/disaster-recovery/)
 - [Resilience Analysis Framework](https://docs.aws.amazon.com/prescriptive-guidance/latest/resilience-analysis-framework/welcome.html)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

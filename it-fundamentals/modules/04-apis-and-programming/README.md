@@ -164,3 +164,9 @@ JSON rules:
 ---
 
 [Previous: Module 03, Networking and the Internet](../03-networking-and-internet/README.md) | [Next: Module 05, Version Control with Git](../05-version-control-git/README.md) | [IT Fundamentals Overview](../../README.md)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

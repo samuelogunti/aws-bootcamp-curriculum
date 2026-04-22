@@ -792,3 +792,9 @@ If you scored below 70%, review the following topics organized by module:
 - AWS Backup: backup plans, vaults, rules, resource assignment, cross-Region copy
 - Chaos engineering: AWS Fault Injection Service (FIS), experiment design, hypothesis-driven testing
 - Reference: [Reliability Pillar](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

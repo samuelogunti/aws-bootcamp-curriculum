@@ -37,3 +37,9 @@
 
 - [Monitoring and Observability Lens](https://docs.aws.amazon.com/wellarchitected/latest/monitoring-and-observability-lens/monitoring-and-observability-lens.html)
 - [Serverless Applications Lens: Operational Excellence](https://docs.aws.amazon.com/wellarchitected/latest/serverless-applications-lens/operational-excellence.html)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

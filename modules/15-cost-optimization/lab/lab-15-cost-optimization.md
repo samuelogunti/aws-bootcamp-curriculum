@@ -110,3 +110,9 @@ Extend this lab with the following advanced optimizations:
 3. Analyze your DynamoDB tables' capacity mode. If any tables use on-demand mode with predictable traffic, calculate the cost difference between on-demand and provisioned mode (with auto scaling) and document your recommendation.
 
 These challenges combine cost optimization with Lambda, CloudFormation, and CloudWatch concepts from previous modules.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

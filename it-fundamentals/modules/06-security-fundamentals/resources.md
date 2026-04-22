@@ -22,3 +22,9 @@
 
 - [What Is AWS IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
 - [What Is AWS KMS?](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

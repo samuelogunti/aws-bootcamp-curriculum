@@ -828,3 +828,9 @@ Extend your ECS deployment with the following enhancements:
 2. **Add ECS service auto scaling.** Configure [target tracking scaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html) on your ECS service to maintain average CPU utilization at 50%. Set the minimum task count to 2 and the maximum to 4. Use `aws application-autoscaling register-scalable-target` and `aws application-autoscaling put-scaling-policy` to configure the policy.
 
 3. **Add an ECR lifecycle policy.** Create a [lifecycle policy](https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html) on your ECR repository that keeps only the 5 most recent tagged images and expires all untagged images older than 1 day. Use `aws ecr put-lifecycle-policy` with a JSON policy document.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

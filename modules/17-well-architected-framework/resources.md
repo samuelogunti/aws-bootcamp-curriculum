@@ -32,3 +32,9 @@
 - [AWS Architecture Center](https://aws.amazon.com/architecture/)
 - [AWS Well-Architected Labs](https://www.wellarchitectedlabs.com/)
 - [Serverless Applications Lens](https://docs.aws.amazon.com/wellarchitected/latest/serverless-applications-lens/welcome.html)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

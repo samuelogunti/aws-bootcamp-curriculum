@@ -426,3 +426,9 @@ For DynamoDB, access control is handled entirely through [IAM policies](https://
 - Amazon DynamoDB is a serverless NoSQL database that delivers single-digit millisecond response times regardless of table size. Design your table schema around your application's access patterns, not around entity relationships.
 - Always place RDS instances in private subnets, enable encryption at rest and in transit, and use IAM database authentication or IAM policies to control access. For DynamoDB, use VPC endpoints to keep traffic off the public internet.
 - Use the SQL vs. NoSQL decision framework to choose the right database for each workload. Many production architectures use both RDS and DynamoDB, each handling the access patterns it is best suited for.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

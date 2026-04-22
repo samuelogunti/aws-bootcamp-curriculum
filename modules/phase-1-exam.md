@@ -796,3 +796,9 @@ If you scored below 70%, review the following topics organized by module before 
 - Security groups vs. NACLs: stateful vs. stateless, allow-only vs. allow-and-deny, resource-level vs. subnet-level
 - VPC design patterns: two-tier and three-tier architectures, and how security groups enforce tier isolation
 - Reference: [Amazon VPC User Guide](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

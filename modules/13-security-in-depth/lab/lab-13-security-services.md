@@ -330,3 +330,9 @@ Extend this lab by implementing the following:
 3. Create an EventBridge rule that triggers an SNS notification whenever GuardDuty generates a finding with High severity. Test it by generating sample findings and verifying that the email notification arrives.
 
 These challenges combine security services with Lambda, EventBridge, and SNS concepts from previous modules.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

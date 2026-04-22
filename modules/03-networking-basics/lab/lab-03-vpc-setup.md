@@ -1032,3 +1032,9 @@ Using only concepts from Modules 01 through 03, complete the following:
 3. Verify your NACL rules by checking the rule evaluation order. Remember that NACL rules are evaluated in number order, and the first matching rule is applied.
 
 > **Tip:** Remember to delete the second NAT gateway, its Elastic IP, the additional route table, and the custom NACL after completing the challenge to avoid charges.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

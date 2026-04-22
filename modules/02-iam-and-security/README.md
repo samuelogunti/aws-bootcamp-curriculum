@@ -323,3 +323,9 @@ Practical steps for applying least privilege:
 - Use IAM roles instead of long-term access keys whenever possible; roles provide temporary credentials that reduce the risk of credential exposure.
 - Every IAM policy follows a JSON structure with Effect, Action, Resource, and (optionally) Condition elements; an explicit deny always overrides any allow.
 - Apply the principle of least privilege, enable MFA for all human users, and never use the root user for daily tasks.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

@@ -802,3 +802,9 @@ If you scored below 70%, review the following topics organized by module before 
 - AWS Step Functions: state machines, state types, Standard vs. Express workflows
 - Choosing the right integration service: SQS for point-to-point queuing, SNS for fan-out notifications, EventBridge for content-based event routing
 - Reference: [Amazon SQS Developer Guide](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

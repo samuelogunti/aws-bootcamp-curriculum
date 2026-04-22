@@ -928,3 +928,9 @@ Using only concepts from Modules 01 through 04, complete the following:
 3. Create a second version of the launch template with a different user data script (for example, one that displays a different message). Update the Auto Scaling group to use the new template version and perform an [instance refresh](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html) to roll out the change. Observe how Auto Scaling replaces instances one at a time.
 
 > **Tip:** Remember to delete all resources created during the challenge (new volumes, scaling policies, additional template versions) to avoid charges.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

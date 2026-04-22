@@ -300,3 +300,9 @@ Migration sequencing principles:
 - Event-driven architectures decouple producers from consumers using EventBridge, SQS, and SNS, enabling independent scaling, failure isolation, and flexible routing.
 - The strangler fig pattern enables safe, incremental migration from monolith to microservices by routing traffic feature-by-feature through ALB path-based routing.
 - Architecture is a design activity: draw the diagram first, evaluate it against the Well-Architected Framework pillars, then build it.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

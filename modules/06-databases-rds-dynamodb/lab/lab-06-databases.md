@@ -1145,3 +1145,9 @@ Using only concepts from Modules 01 through 06, complete the following:
 3. Create a second DynamoDB table with a simple primary key (partition key only, no sort key). Insert several items and attempt to use the Query operation. Observe how Query behaves differently with a simple key versus a composite key. With a simple key, each Query returns at most one item (since the partition key must be unique). This demonstrates why composite keys are valuable for one-to-many relationships.
 
 > **Tip:** Remember to delete all resources created during the challenge (GSIs, additional RDS instances, additional DynamoDB tables) to avoid charges.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

@@ -112,3 +112,9 @@ Extend this lab with the following advanced exercises:
 3. Create a CloudFormation template that automates the remediation of one HRI you identified. For example, if the review found that S3 buckets lack versioning, create a Config rule with automatic remediation that enables versioning on non-compliant buckets.
 
 These challenges combine Well-Architected concepts with serverless, security, and IaC practices from previous modules.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

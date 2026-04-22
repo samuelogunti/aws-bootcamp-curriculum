@@ -79,3 +79,9 @@ Module 03 focuses on VPC networking fundamentals using the Amazon VPC User Guide
 ## AWS Architecture References
 
 No specific architecture references for this module. The two-tier and three-tier VPC architecture patterns covered in the lesson content are foundational patterns that appear throughout the AWS Architecture Center. Students will encounter these patterns in practice during later modules when deploying multi-tier applications with load balancers (Module 07), databases (Module 06), and containers (Module 10).
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

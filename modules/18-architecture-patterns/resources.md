@@ -31,3 +31,9 @@
 - [AWS Architecture Center](https://aws.amazon.com/architecture/)
 - [AWS Solutions Library](https://aws.amazon.com/solutions/)
 - [Serverless Patterns Collection](https://serverlessland.com/patterns)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

@@ -24,3 +24,9 @@
 ## Recommended Learning Resources
 
 - [The Python Tutorial (python.org)](https://docs.python.org/3/tutorial/)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

@@ -664,3 +664,9 @@ Extend your serverless API with the following enhancements:
 2. **Add input validation.** Modify the POST handler to return a 400 response if the request body is missing the `name` field. Return a clear error message in the response body explaining what is required.
 
 3. **Use environment variables.** Instead of hardcoding the DynamoDB table name in your Lambda function code, pass it as an [environment variable](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html). Update the function configuration using `aws lambda update-function-configuration --environment` and modify your handler to read the table name from `os.environ`.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

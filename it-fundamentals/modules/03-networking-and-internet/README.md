@@ -189,3 +189,9 @@ In cloud computing, you will configure TLS certificates on load balancers and AP
 ---
 
 [Previous: Module 02, The Command Line](../02-command-line/README.md) | [Next: Module 04, APIs and Programming Basics](../04-apis-and-programming/README.md) | [IT Fundamentals Overview](../../README.md)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

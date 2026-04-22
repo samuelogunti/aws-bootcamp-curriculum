@@ -79,3 +79,9 @@ Module 04 focuses on EC2 compute fundamentals using the Amazon EC2 User Guide, A
 ## AWS Architecture References
 
 No specific architecture references for this module. EC2 instances are a foundational building block that appears in nearly every AWS reference architecture. Students will work with EC2-based architecture patterns in later modules when they add load balancers (Module 07), deploy containerized applications (Module 10), and design multi-tier architectures (Module 18).
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

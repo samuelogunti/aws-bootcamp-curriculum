@@ -78,3 +78,9 @@ Module 01 covers general cloud computing concepts rather than individual AWS ser
 ## AWS Architecture References
 
 No specific architecture references for this module. Architecture patterns and reference architectures are introduced in later modules after students have learned the core AWS services.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

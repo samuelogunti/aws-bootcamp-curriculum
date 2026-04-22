@@ -365,3 +365,9 @@ Common Spot Instance use cases include batch processing, data analysis, CI/CD bu
 - Amazon EBS provides persistent block storage with four volume types (gp3, io2, st1, sc1) suited to different performance and cost requirements. Use snapshots for backups and encryption for data protection.
 - Auto Scaling groups with launch templates automatically maintain your desired instance count, replace unhealthy instances, and scale capacity based on demand across multiple Availability Zones.
 - EC2 pricing models (On-Demand, Reserved Instances, Savings Plans, Spot Instances) offer trade-offs between flexibility and cost savings. Match the pricing model to your workload's commitment level and fault tolerance.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

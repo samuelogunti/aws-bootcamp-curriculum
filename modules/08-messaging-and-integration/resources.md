@@ -66,3 +66,9 @@
 ## AWS Architecture References
 
 - [Integrating Microservices by Using AWS Serverless Services (Messaging)](https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-integrating-microservices/messaging.html): AWS Prescriptive Guidance on using SQS, SNS, and EventBridge for asynchronous communication in microservices architectures. Students will explore these patterns further in Module 09 (Serverless: Lambda) and Module 18 (Architecture Patterns).
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

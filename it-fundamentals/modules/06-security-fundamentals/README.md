@@ -83,3 +83,9 @@ This principle is the foundation of AWS IAM, which you will learn in Module 02 o
 ---
 
 [Previous: Module 05, Version Control with Git](../05-version-control-git/README.md) | [Next: Module 01, Cloud Fundamentals (bootcamp)](../../../modules/01-cloud-fundamentals/README.md) | [IT Fundamentals Overview](../../README.md)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

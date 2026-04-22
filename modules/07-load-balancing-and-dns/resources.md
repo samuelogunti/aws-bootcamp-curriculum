@@ -75,3 +75,9 @@
 ## AWS Architecture References
 
 No specific architecture references for this module. Elastic Load Balancing and Amazon Route 53 are foundational networking services that appear in most AWS reference architectures. Students will work with load-balanced, DNS-routed architectures in later modules when they build serverless applications (Module 09), deploy containerized workloads (Module 10), and design multi-tier architecture patterns (Module 18).
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

@@ -269,3 +269,9 @@ Use Amazon DynamoDB with a TTL attribute for automatic session expiration.
 - ElastiCache (Redis) reduces database load and improves latency for frequently accessed data; choose the caching strategy (cache-aside, write-through) based on your consistency and latency requirements.
 - Step Functions orchestrate multi-step workflows with built-in error handling, retries, and branching; use them when orchestration logic is too complex for direct Lambda invocation or SQS.
 - Athena provides serverless SQL analytics on S3 data; optimize cost and performance by using columnar formats (Parquet) and partitioning data by common query filters.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

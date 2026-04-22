@@ -319,3 +319,9 @@ Effective alerting is the bridge between monitoring and incident response. Poorl
 - Configure CloudWatch alarms on symptoms (error rate, latency) rather than causes (CPU utilization), and use composite alarms to reduce alert noise.
 - Use structured JSON logging so that CloudWatch Logs Insights can parse, filter, and aggregate your log data efficiently.
 - AWS X-Ray traces requests across service boundaries; enable it on Lambda, API Gateway, and ECS to identify performance bottlenecks in multi-service architectures.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

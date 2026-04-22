@@ -557,3 +557,9 @@ Start from minimal base images such as Alpine Linux or distroless images. Smalle
 - AWS Fargate removes the need to manage EC2 instances for container workloads. Start with Fargate for most use cases and move to the EC2 launch type only when you need GPU support, custom OS configuration, or cost optimization at scale with Reserved Instances.
 - ECS integrates with ALB for load balancing, with service auto scaling for demand-based capacity, and with ECR for secure image storage. Use lifecycle policies to clean up old images and scan-on-push to detect vulnerabilities.
 - Follow container security best practices: run as a non-root user, scan images for vulnerabilities, manage secrets through Secrets Manager or Parameter Store (never in images or plain-text environment variables), and use read-only file systems where possible.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

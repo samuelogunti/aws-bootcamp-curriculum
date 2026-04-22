@@ -242,3 +242,9 @@ The exact split of responsibilities varies by service type:
 - The three service models (IaaS, PaaS, SaaS) determine how much of the technology stack you manage versus how much AWS manages.
 - Security on AWS is a shared responsibility: AWS secures the cloud infrastructure, and you secure your data, configurations, and applications within the cloud.
 - The AWS Free Tier provides a cost-free way to explore services, but you must monitor usage to avoid unexpected charges.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

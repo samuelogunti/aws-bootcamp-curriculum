@@ -138,3 +138,9 @@ Key differences: Linux uses forward slashes (`/`) and is case-sensitive (`File.t
 ---
 
 [Next: Module 02, The Command Line](../02-command-line/README.md) | [IT Fundamentals Overview](../../README.md)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

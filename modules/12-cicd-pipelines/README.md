@@ -610,3 +610,9 @@ Resources:
 - Deployment strategies (all-at-once, rolling, blue/green, canary) offer different trade-offs between speed, risk, and cost; choose based on your application's availability requirements.
 - Always include automated tests in your pipeline and gate production deployments with manual approvals until your team has high confidence in the automated quality checks.
 - Define your pipeline configuration as code (CloudFormation or CDK) and store it in version control alongside your application, applying the same IaC principles from Module 11.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

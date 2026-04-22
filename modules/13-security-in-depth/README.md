@@ -305,3 +305,9 @@ Each check produces a finding with a severity rating and a remediation recommend
 - Store secrets in AWS Secrets Manager (with automatic rotation) or Parameter Store (for simpler, non-rotating configuration), and never hardcode credentials in source code or environment variables.
 - AWS WAF, Shield, CloudTrail, GuardDuty, Config, and Security Hub work together to protect, detect, audit, and assess your security posture continuously.
 - Enable CloudTrail in all Regions, turn on GuardDuty in all Regions, and use Config rules to enforce compliance baselines across your account.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

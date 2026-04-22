@@ -104,3 +104,9 @@ find . -name "*.txt"   # Find all .txt files in the current directory tree
 ---
 
 [Previous: Module 01, Computers and Operating Systems](../01-computers-and-operating-systems/README.md) | [Next: Module 03, Networking and the Internet](../03-networking-and-internet/README.md) | [IT Fundamentals Overview](../../README.md)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

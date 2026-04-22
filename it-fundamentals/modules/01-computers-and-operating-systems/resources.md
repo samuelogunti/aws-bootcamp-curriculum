@@ -27,3 +27,9 @@
 ## AWS Documentation References
 
 - [What Is Amazon EC2? (Amazon EC2 Concepts)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

@@ -451,3 +451,8 @@ https://<bucket-name>.s3-accelerate.amazonaws.com
 - Enable versioning on buckets that store important data to protect against accidental deletion and overwrites. Combine versioning with Lifecycle rules to manage storage costs for old versions.
 - Control access to S3 using bucket policies and IAM policies together, and keep Block Public Access enabled at the account level as a safety net. ACLs are a legacy mechanism and should be disabled on new buckets.
 - S3 encrypts all new objects by default with SSE-S3. Use SSE-KMS when you need audit logging, key access control, or compliance with regulations that require customer-managed keys.
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

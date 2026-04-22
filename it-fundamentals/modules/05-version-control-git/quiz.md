@@ -23,3 +23,9 @@
    Further reading: [Getting Started - About Version Control (git-scm.com)](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 
 </details>
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

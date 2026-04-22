@@ -851,3 +851,9 @@ Extend your infrastructure as code skills with the following enhancements:
 2. **Add a POST endpoint to the SAM API.** Create a second Lambda function in the SAM template that accepts POST requests at `/items` and writes a new item to the DynamoDB table. Use the `DynamoDBCrudPolicy` SAM policy template instead of `DynamoDBReadPolicy`. Redeploy with `sam deploy` and test with `curl -X POST`.
 
 3. **Use cross-stack references.** Create a third CloudFormation template that imports the VPC ID and public subnet ID exported by the network stack using `Fn::ImportValue`. Use the imported values to launch a second EC2 instance in the same VPC. This demonstrates how teams can share infrastructure across independently managed stacks.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

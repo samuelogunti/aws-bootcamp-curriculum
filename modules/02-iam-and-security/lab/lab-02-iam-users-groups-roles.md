@@ -578,3 +578,9 @@ Using only concepts from Modules 01 and 02, complete the following:
 This exercise reinforces the concept of [least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html): auditors need read access to security configurations but should never be able to modify them.
 
 > **Tip:** Remember to delete the `Auditors` group and `audit-user-01` user after completing the challenge.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

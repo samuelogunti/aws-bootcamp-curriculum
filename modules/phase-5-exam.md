@@ -766,3 +766,9 @@ If you scored below 70%, review the following topics organized by module:
 - Athena: schema-on-read, Parquet/ORC for cost optimization, partitioning, Glue Data Catalog
 - Architecture Decision Records (ADRs): context, decision, alternatives considered, consequences
 - Reference: [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

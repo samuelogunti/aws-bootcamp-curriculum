@@ -105,3 +105,9 @@
 - [Best Practices: Running Your Application with Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/application.html): Covers container image best practices, task definition configuration, and ECS service design patterns for production workloads.
 - [Configuring Service Auto Scaling (ECS Best Practices Guide)](https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/capacity-autoscaling.html): Guidance on choosing the right scaling metric based on application resource utilization patterns, including CPU, memory, and concurrency-based scaling.
 - [Amazon ECS Best Practices](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-best-practices.html): Comprehensive best practices covering networking, Fargate security, container images, clusters, tasks, services, and security for Amazon ECS workloads.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

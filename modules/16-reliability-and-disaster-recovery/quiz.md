@@ -100,3 +100,9 @@
     Further reading: [AWS Fault Injection Service](https://docs.aws.amazon.com/fis/latest/userguide/what-is.html)
 
 </details>
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

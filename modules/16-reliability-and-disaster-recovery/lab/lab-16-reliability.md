@@ -119,3 +119,9 @@ Extend this lab with the following advanced exercises:
 3. Configure S3 Cross-Region Replication for the S3 bucket from [Module 05](../../05-storage-s3/README.md). Upload an object to the source bucket and verify it appears in the destination bucket in another Region. Measure the replication lag.
 
 These challenges combine DR concepts with Route 53, Auto Scaling, S3, and FIS from previous modules.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

@@ -785,3 +785,9 @@ Extend this lab by completing the following tasks using only concepts and servic
 3. **CloudWatch alarm on the DLQ.** Create a CloudWatch alarm that triggers when `ApproximateNumberOfMessagesVisible` on the DLQ exceeds 0. Subscribe your email to the alarm's SNS notification topic. Send a poison message to the source queue, let it move to the DLQ, and verify that you receive an alarm notification email.
 
 > **Tip:** For the FIFO queue challenge, remember to set `FifoQueue=true` and `ContentBasedDeduplication=true` (or provide a `MessageDeduplicationId` with each message) when creating the queue. FIFO queue names must end with the `.fifo` suffix.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

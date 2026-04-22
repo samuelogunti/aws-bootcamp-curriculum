@@ -673,3 +673,9 @@ All three tools ultimately produce CloudFormation stacks. SAM and CDK are higher
 - Always use change sets to preview stack updates before executing them in production. A single unexpected resource replacement can cause downtime or data loss.
 - AWS SAM extends CloudFormation with a simplified syntax for serverless applications, reducing boilerplate for Lambda functions, API Gateway endpoints, and DynamoDB tables. The SAM CLI enables local testing before deployment.
 - Choose your IaC tool based on workload type and team skills: CloudFormation for general infrastructure, SAM for serverless workloads, and CDK for complex infrastructure that benefits from programming language features.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

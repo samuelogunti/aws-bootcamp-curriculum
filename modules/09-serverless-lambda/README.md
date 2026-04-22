@@ -551,3 +551,9 @@ The Lambda function's execution role (from [Module 02](../02-iam-and-security/RE
 - Cold starts add latency to the first invocation in a new execution environment; mitigate them by minimizing package size, initializing SDK clients outside the handler, and using provisioned concurrency or SnapStart for latency-sensitive workloads.
 - Lambda integrates with dozens of AWS services through two patterns: push-based triggers (where the source service invokes Lambda directly) and poll-based event source mappings (where Lambda polls the source for new records).
 - Combining API Gateway, Lambda, and DynamoDB creates a fully serverless REST API with no infrastructure to provision, automatic scaling, and pay-per-request pricing across all three services.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

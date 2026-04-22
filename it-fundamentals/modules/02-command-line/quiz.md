@@ -28,3 +28,9 @@
    Further reading: [GNU Coreutils: cat](https://www.gnu.org/software/coreutils/manual/coreutils.html)
 
 </details>
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

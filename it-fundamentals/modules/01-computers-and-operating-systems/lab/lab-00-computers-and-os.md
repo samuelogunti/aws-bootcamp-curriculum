@@ -256,3 +256,9 @@ Find out how many CPU cores your computer has:
 - **Windows (Command Prompt):** Run `wmic cpu get NumberOfCores`
 
 Compare your CPU core count to the vCPU counts in AWS EC2 instance types (you will learn about these in Module 04 of the bootcamp).
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

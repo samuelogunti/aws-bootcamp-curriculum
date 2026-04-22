@@ -253,3 +253,9 @@ No cloud resources were created during this lab. No further cleanup is needed.
    ```
 
 3. Modify `hello.py` to add a dictionary variable and print its key-value pairs using a loop.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

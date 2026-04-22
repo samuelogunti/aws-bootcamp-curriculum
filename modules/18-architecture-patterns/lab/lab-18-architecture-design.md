@@ -103,3 +103,9 @@ Extend this lab with the following advanced exercises:
 2. Design a migration plan for converting the architecture from Scenario A (e-commerce) from a monolithic implementation to the microservices architecture you designed, using the strangler fig pattern. Define the migration phases, the order of feature extraction, and the rollback plan for each phase.
 
 3. Create a second version of your architecture optimized for a different priority. For example, if your original design prioritized reliability, create a version optimized for cost (and document what you sacrificed). Compare the two versions across all six Well-Architected pillars.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

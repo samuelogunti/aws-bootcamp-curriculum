@@ -35,3 +35,9 @@
 
 - [Cost Optimization: AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2025-02-25/framework/cost-optimization.html)
 - [Laying the Foundation: Setting Up Your Environment for Cost Optimization](https://aws.amazon.com/architecture/cost-optimization/)
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

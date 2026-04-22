@@ -94,3 +94,9 @@
 - [Overview of Deployment Options on AWS](https://docs.aws.amazon.com/whitepapers/latest/overview-deployment-options/welcome.html): Comprehensive reference covering deployment services, strategies, and patterns available on AWS, including detailed comparisons of blue/green, rolling, and canary approaches.
 - [CodePipeline Pipeline Structure Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html): Detailed reference for the JSON structure of a CodePipeline pipeline definition, including stages, actions, artifact stores, and action type configurations. Essential for defining pipelines as code.
 - [Invoke a Lambda Function in a Pipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-invoke-lambda-function.html): Reference architecture for extending CodePipeline with custom Lambda functions for tasks such as creating resources, running custom tests, or integrating with third-party services.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

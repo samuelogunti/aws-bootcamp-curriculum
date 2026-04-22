@@ -233,3 +233,9 @@ No cloud resources were created during this lab. No further cleanup is needed.
 2. Run `git log --all --oneline --graph` to see a visual representation of your branches and commits.
 
 3. Try `git diff` after editing a file but before staging it to see what changed.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

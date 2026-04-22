@@ -89,3 +89,9 @@
 
 - [CloudFormation Best Practices](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html): Comprehensive guidance on organizing stacks by lifecycle, using cross-stack references, adopting IaC practices, managing change sets, implementing stack policies, and securing templates.
 - [Reviewing IaC Tools for the AWS Cloud](https://docs.aws.amazon.com/prescriptive-guidance/latest/choose-iac-tool/iac-tools.html): Detailed comparison of five IaC tools available for provisioning and managing AWS resources, including feature matrices and decision criteria.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

@@ -415,3 +415,9 @@ aws ec2 describe-subnets --filters "Name=vpc-id,Values=vpc-xxxxxxxx"
 - Route tables determine where traffic flows. Each subnet is associated with a route table, and the most specific route (longest prefix match) wins.
 - Security groups (stateful, resource-level, allow-only) are your primary firewall. Network ACLs (stateless, subnet-level, allow and deny) provide an additional defense layer.
 - The three-tier architecture (presentation, application, data) is the most common VPC design pattern, using layered security groups to restrict traffic between tiers following the principle of least privilege.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*

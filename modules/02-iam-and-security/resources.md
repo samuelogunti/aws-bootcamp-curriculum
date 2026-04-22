@@ -75,3 +75,9 @@
 ## AWS Architecture References
 
 No specific architecture references for this module. IAM is a foundational service that applies across all architectures. Architecture patterns that use IAM roles, policies, and cross-account access are introduced in later modules.
+
+---
+
+*AWS Bootcamp: From Novice to Architect*
+*Author: Samuel Ogunti*
+*License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)*
