@@ -21,13 +21,51 @@ Estimated lecture time: 15 to 20 minutes
 By the end of this module, you will be able to:
 
 - Explain what an API is and how REST APIs use HTTP methods
-- Summarize core programming concepts: variables, functions, loops
+- Summarize core programming concepts: variables, functions, loops, conditionals, and data structures
 
 <!-- Speaker notes: Two objectives for this module, both at the Remember and Understand levels of Bloom's Taxonomy. These concepts connect directly to Lambda functions and IAM policies in the bootcamp. Approximately 1 minute on this slide. -->
 
 ---
 
-## APIs: REST and HTTP Methods
+## Prerequisites and Agenda
+
+**Prerequisites:** Terminal skills (Module 02), HTTP context (Module 03), Python 3 installed
+
+**Agenda:**
+1. What is an API?
+2. REST APIs and HTTP methods
+3. JSON format and rules
+4. Variables and data types
+5. Functions
+6. Conditionals (if/elif/else)
+7. Loops
+8. JSON for cloud configuration
+
+<!-- Speaker notes: Module 02 is recommended for terminal skills and Module 03 for HTTP context. Python 3 is needed for the lab. Approximately 1 minute. -->
+
+---
+
+# What Is an API?
+
+<!-- Speaker notes: Transition slide. An API (Application Programming Interface) defines how one program talks to another. In cloud computing, almost everything is accessed through APIs. -->
+
+---
+
+## APIs: How Programs Communicate
+
+An API (Application Programming Interface) defines how one program talks to another. You send a request, the other program sends back a response.
+
+- The AWS Console sends API calls to AWS services when you click buttons
+- The AWS CLI sends API calls from your terminal
+- Your application code sends API calls using SDKs
+
+> In cloud computing, almost everything is accessed through APIs.
+
+<!-- Speaker notes: When you click "Create bucket" in the S3 console, the console sends a REST API call to the S3 service on your behalf. The CLI does the same thing from the terminal. Approximately 2 minutes. -->
+
+---
+
+## REST APIs and HTTP Methods
 
 REST APIs use URLs to identify resources and HTTP methods for actions:
 
@@ -42,11 +80,11 @@ REST APIs use URLs to identify resources and HTTP methods for actions:
 curl https://api.example.com/users/123
 ```
 
-<!-- Speaker notes: Explain that the AWS Management Console, AWS CLI, and SDKs all communicate with AWS through REST APIs. When you click "Create bucket" in the S3 console, it sends a REST API call to the S3 service. Approximately 4 minutes. -->
+<!-- Speaker notes: REST stands for Representational State Transfer. Resources are identified by URLs, actions by HTTP methods, and data is exchanged in JSON. Approximately 3 minutes. -->
 
 ---
 
-## JSON: The Language of APIs
+## API Response Example
 
 ```json
 {
@@ -57,12 +95,37 @@ curl https://api.example.com/users/123
 }
 ```
 
-- Keys are always strings in double quotes
-- Values can be strings, numbers, booleans, arrays, or objects
-- No trailing commas, no comments
-- AWS IAM policies, CloudFormation templates, and API responses all use JSON
+- The server returns data in JSON format
+- Status codes indicate success (200) or failure (403, 404, 500)
+- Every AWS service has a REST API behind the scenes
 
-<!-- Speaker notes: JSON is the most common data format students will encounter in the bootcamp. IAM policies, Lambda event payloads, and API Gateway responses are all JSON. Encourage students to get comfortable reading nested JSON structures. Approximately 4 minutes. -->
+> **Bootcamp connection:** Understanding APIs prepares you for building serverless APIs with Lambda and API Gateway in Module 09: Serverless (Lambda).
+
+<!-- Speaker notes: In Module 05 (Storage: S3), students will interact with the S3 API to create buckets and upload objects. Approximately 2 minutes. -->
+
+---
+
+## JSON: The Language of APIs
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::my-bucket/*"
+    }
+  ]
+}
+```
+
+**JSON rules:**
+- Keys are always strings in double quotes
+- Values: strings, numbers, booleans, arrays, objects, or null
+- No trailing commas, no comments (unlike YAML)
+
+<!-- Speaker notes: This is an actual IAM policy statement. Students will write these in Module 02 of the bootcamp. JSON is everywhere in AWS: IAM policies, CloudFormation templates, Lambda event payloads, API Gateway responses. Approximately 3 minutes. -->
 
 ---
 
@@ -72,13 +135,13 @@ You send a GET request to `https://api.example.com/admin/users` and receive a 40
 
 **What does this tell you, and what would you check first?**
 
-<!-- Speaker notes: Expected answer: A 403 means the server understood the request but refuses to authorize it. The client does not have permission to access that resource. Students should check: Are they authenticated? Do they have the correct role or permissions? Is there an IP restriction? This connects directly to IAM policies in Module 02 of the bootcamp, where a misconfigured policy results in Access Denied (403). Give students 2 to 3 minutes to discuss. Approximately 5 minutes total. -->
+<!-- Speaker notes: Expected answer: A 403 means the server understood the request but refuses to authorize it. The client does not have permission to access that resource. Students should check: Are they authenticated? Do they have the correct role or permissions? Is there an IP restriction? This connects directly to IAM policies in Module 02 of the bootcamp. Give students 2 to 3 minutes to discuss. Approximately 5 minutes total. -->
 
 ---
 
 # Programming Basics
 
-<!-- Speaker notes: Transition slide. This section takes approximately 10 minutes across four slides. The goal is recognition, not mastery. Students need to read Python code, not write it from scratch. -->
+<!-- Speaker notes: Transition slide. The goal is recognition, not mastery. Students need to read Python code, not write it from scratch. Lambda functions, automation scripts, and IaC templates all use these concepts. -->
 
 ---
 
@@ -90,12 +153,14 @@ age = 28                   # Integer (whole number)
 price = 19.99              # Float (decimal number)
 is_active = True           # Boolean (true or false)
 tags = ["web", "api"]      # List (ordered collection)
+config = {"region": "us-east-1", "env": "prod"}  # Dictionary
 ```
 
 - A variable stores a value that your program can use and change
-- Python does not require you to declare the type; it is inferred
+- Python infers the type automatically (no type declarations needed)
+- Dictionaries (key-value pairs) map directly to JSON objects
 
-<!-- Speaker notes: Use simple examples. The goal is recognition, not mastery. In Module 09, students will write Lambda functions that use variables to process event data. Approximately 3 minutes. -->
+<!-- Speaker notes: Use simple examples. In Module 09, students will write Lambda functions that use variables to process event data. The dictionary type maps directly to JSON, which is why Python is popular for AWS work. Approximately 3 minutes. -->
 
 ---
 
@@ -106,15 +171,35 @@ def calculate_cost(hours, rate_per_hour):
     total = hours * rate_per_hour
     return total
 
-monthly_cost = calculate_cost(730, 0.0116)
-print(f"Monthly cost: ${monthly_cost:.2f}")
+monthly_cost = calculate_cost(730, 0.0116)  # 730 hours * $0.0116/hr
+print(f"Monthly cost: ${monthly_cost:.2f}")  # Monthly cost: $8.47
 ```
 
-- A function is a reusable block of code that performs a specific task
-- Functions take inputs (parameters) and return outputs
+- A function is a reusable block of code with inputs and outputs
 - AWS Lambda runs your code inside a function that AWS invokes
+- Every Lambda function has a handler that receives an event and returns a response
 
-<!-- Speaker notes: Emphasize the connection to Lambda. Every Lambda function has a handler function that receives an event and returns a response. The structure is the same: inputs, processing, output. Approximately 3 minutes. -->
+<!-- Speaker notes: Emphasize the connection to Lambda. The structure is the same: inputs (event), processing, output (response). Approximately 3 minutes. -->
+
+---
+
+## Conditionals
+
+```python
+instance_type = "t3.micro"
+if instance_type.startswith("t3"):
+    print("Burstable instance")
+elif instance_type.startswith("m6"):
+    print("General purpose instance")
+else:
+    print("Other instance type")
+```
+
+- `if` checks a condition; `elif` checks additional conditions; `else` is the fallback
+- Conditionals let your code make decisions based on data
+- Lambda functions use conditionals to handle different event types
+
+<!-- Speaker notes: Conditionals are used in Lambda functions to route different event types (S3 events vs API Gateway events vs scheduled events). Approximately 2 minutes. -->
 
 ---
 
@@ -144,21 +229,39 @@ for region in regions:
 }
 ```
 
-- Keys are always strings in double quotes
-- Values can be strings, numbers, booleans, arrays, or objects
-- JSON is the standard data format for cloud APIs and configuration
+- IAM policies, CloudFormation templates, and API responses all use JSON
+- You will read and write JSON constantly in the bootcamp
+- Get comfortable with nested objects and arrays now
 
-<!-- Speaker notes: This JSON example is an IAM policy statement, which students will write in Module 02 of the bootcamp. Getting comfortable with JSON syntax now saves time later. Approximately 2 minutes. -->
+> **Bootcamp connection:** Understanding programming basics prepares you for Lambda functions in Module 09 and infrastructure-as-code with CDK in Module 11.
+
+<!-- Speaker notes: This JSON example is an IAM policy statement. Getting comfortable with JSON syntax now saves time later. Approximately 2 minutes. -->
+
+---
+
+## Instructor Notes: Common Questions
+
+**Q: Which programming language should I learn?**
+Python is the most common for AWS Lambda and automation. The bootcamp uses Python. If you know JavaScript, the concepts transfer directly.
+
+**Q: Why does JSON not allow trailing commas or comments?**
+JSON is a strict data interchange format (RFC 8259). YAML, used in SAM templates, does allow comments.
+
+<!-- Speaker notes: Reassure students that the goal is recognition, not mastery. They need to read Python code, not write it from scratch at this stage. Approximately 2 minutes. -->
 
 ---
 
 ## Key Takeaways
 
 - APIs allow programs to communicate. AWS services are accessed through REST APIs.
-- JSON is the universal data format for cloud APIs and configuration.
-- Programming basics (variables, functions, loops) are the building blocks of Lambda functions.
+- REST uses HTTP methods: GET (read), POST (create), PUT (update), DELETE (remove)
+- JSON is the universal data format for cloud APIs and configuration
+- Variables store values; functions are reusable code blocks; loops repeat actions
+- Conditionals (if/elif/else) let code make decisions
+- Python dictionaries map directly to JSON objects
+- Lambda functions use all of these concepts
 
-<!-- Speaker notes: Three key takeaways for this module. Reinforce that every concept covered today connects directly to a bootcamp module. Approximately 1 minute. -->
+<!-- Speaker notes: Seven key takeaways covering APIs, JSON, and all programming concepts. Approximately 1 minute. -->
 
 ---
 
@@ -176,4 +279,4 @@ What you will do:
 
 Questions?
 
-<!-- Speaker notes: Walk through the lab structure briefly. Remind students that the lab is fully guided with exact commands and expected output for every step. Students need Python 3 installed for the second half of the lab. On Windows, the command is python instead of python3. Take 2 to 3 minutes for questions before transitioning to the lab. -->
+<!-- Speaker notes: Students need Python 3 installed for the second half of the lab. On Windows, the command is python instead of python3. Take 2 to 3 minutes for questions before transitioning to the lab. -->
