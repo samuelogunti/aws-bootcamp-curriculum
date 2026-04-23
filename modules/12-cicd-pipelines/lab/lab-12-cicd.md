@@ -621,6 +621,12 @@ rm -rf lab12-sam-app
 
 > **Warning:** If you skip the cleanup steps, the S3 buckets with stored objects will incur storage charges. The CodePipeline itself costs approximately $1 per active pipeline per month. CloudFormation stacks with active Lambda functions and API Gateway endpoints may incur charges from invocations.
 
+## Cleanup
+
+Follow Step 7 in the Instructions section above to delete all resources created during this lab. The cleanup removes the CloudFormation stack, CodePipeline, CodeBuild projects, S3 buckets, IAM roles, CloudWatch Log groups, and local files.
+
+> **Warning:** If you skip cleanup, the S3 buckets with stored objects will incur storage charges. The CodePipeline costs approximately $1 per active pipeline per month. CloudFormation stacks with active Lambda functions and API Gateway endpoints may incur charges from invocations.
+
 ## Validation
 
 Confirm that you have completed the lab successfully by verifying each of the following:
